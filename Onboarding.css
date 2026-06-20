@@ -1,0 +1,130 @@
+.onboarding-page {
+  max-width: 800px;
+  margin: 2rem auto;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.progress-container {
+  margin-bottom: 3rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: #E5E7EB;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--success);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wizard-box {
+  background: white;
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-content {
+  flex: 1;
+  text-align: center;
+}
+
+.step-content h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.step-content p {
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.option-card {
+  padding: 1.5rem;
+  border: 1px solid #E5E7EB;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  color: var(--primary);
+  transition: var(--transition);
+}
+
+.option-card:hover {
+  border-color: var(--action);
+  color: var(--action);
+  background-color: rgba(255, 107, 0, 0.05);
+}
+
+.slider-container {
+  padding: 2rem 0;
+}
+
+.income-slider {
+  width: 100%;
+  accent-color: var(--action);
+  height: 6px;
+  cursor: pointer;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.wizard-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #F3F4F6;
+}
+
+.btn-back {
+  padding: 0.75rem 1.5rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.btn-back:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.btn-next {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-next:hover {
+  background-color: var(--secondary);
+  box-shadow: 0 4px 12px rgba(0, 53, 128, 0.2);
+}

@@ -1,0 +1,122 @@
+.predictor-page {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.risk-header {
+  background: white;
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.risk-assessment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.risk-level {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 10px solid #E5E7EB;
+}
+
+.risk-level.high {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.risk-pct {
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.risk-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.issues-list h2 {
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+.issue-card {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  border-left: 6px solid #CBD5E1;
+}
+
+.issue-card.high { border-left-color: var(--danger); }
+.issue-card.medium { border-left-color: var(--warning); }
+.issue-card.low { border-left-color: var(--secondary); }
+
+.issue-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.severity-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  color: white;
+}
+
+.high .severity-badge { background-color: var(--danger); }
+.medium .severity-badge { background-color: var(--warning); }
+.low .severity-badge { background-color: var(--secondary); }
+
+.issue-header h3 {
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.issue-msg {
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.fix-box {
+  background-color: #F9FAFB;
+  padding: 1.25rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.5rem;
+}
+
+.fix-box strong {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.btn-fix {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-fix:hover {
+  background-color: var(--secondary);
+}

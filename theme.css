@@ -1,0 +1,74 @@
+:root {
+  /* BharatGov Color Palette */
+  --primary: #003580;       /* Blue, trust + authority */
+  --primary-rgb: 0, 53, 128;
+  --secondary: #004AAD;
+  --action: #FF6B00;        /* Saffron, CTA + progress */
+  --success: #138808;       /* India green */
+  --warning: #F5A623;
+  --danger: #D0021B;
+  
+  /* Backgrounds & Surfaces */
+  --bg-main: #F5F6FA;
+  --bg-surface: #FFFFFF;
+  --bg-sidebar: #002B66;    /* Slightly darker blue for sidebar */
+  
+  /* Text */
+  --text-primary: #1A1A2E;
+  --text-muted: #6B7280;
+  --text-on-primary: #FFFFFF;
+  
+  /* Sizing & Spacing */
+  --sidebar-width: 280px;
+  --header-height: 70px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  
+  /* Transitions */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
