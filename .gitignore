@@ -1,10 +1,41 @@
-.vercel
-.vercel/
+# Dependencies
 node_modules/
 frontend/node_modules/
 frontend/dist/
+
+# Build output
+static/
+
+# Python
 __pycache__/
 *.pyc
+*.pyo
+.venv/
+venv/
+
+# Environment
+.env
+
+# Vercel
+.vercel
+.vercel/
+
+# Data / ML artifacts
+data/embeddings/
+data/cache/
+models/
+*.pkl
+*.npy
+*.faiss
+
+# Logs
+scraper/logs/*.log
+backend/logs/*.log
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Archives
 archive.zip
 updated_data.csv
