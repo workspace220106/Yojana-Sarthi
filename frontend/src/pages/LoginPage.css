@@ -24,7 +24,7 @@
 /* Left Branding Side */
 .branding-side {
   flex: 1.1;
-  background: linear-gradient(135deg, var(--bg-sidebar, #002B66) 0%, var(--primary, #003580) 100%);
+  background: #052F5F;
   color: #ffffff;
   padding: 3.5rem 3rem;
   display: flex;
@@ -185,7 +185,7 @@
 
 .role-btn.active {
   background: #ffffff;
-  color: var(--primary, #003580);
+  color: #052F5F;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
@@ -233,9 +233,9 @@
 }
 
 .input-group input:focus {
-  border-color: var(--primary, #003580);
+  border-color: #052F5F;
   background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(0, 53, 128, 0.1);
+  box-shadow: 0 0 0 4px rgba(5, 47, 95, 0.1);
 }
 
 .form-options {
@@ -263,14 +263,14 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: linear-gradient(135deg, var(--primary, #003580) 0%, var(--bg-sidebar, #002b66) 100%);
+  background: #052F5F;
   color: #ffffff;
   padding: 14px;
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 600;
   margin-top: 0.5rem;
-  box-shadow: 0 4px 12px rgba(0, 53, 128, 0.15);
+  box-shadow: 0 4px 12px rgba(5, 47, 95, 0.15);
   transition: all 0.2s ease;
 }
 
