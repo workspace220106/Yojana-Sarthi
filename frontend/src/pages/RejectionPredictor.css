@@ -1,0 +1,157 @@
+.predictor-page {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.risk-header {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.risk-assessment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.risk-level {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 8px solid #CBD5E0;
+}
+
+.risk-level.high {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.risk-level.medium {
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+.risk-level.low {
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.risk-pct {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.risk-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.issues-list h2 {
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.issue-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  border-left: 6px solid #CBD5E0;
+}
+
+.issue-card.high { border-left-color: var(--danger); }
+.issue-card.medium { border-left-color: var(--warning); }
+.issue-card.low { border-left-color: var(--success); }
+
+.issue-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.severity-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: white;
+}
+
+.high .severity-badge { background-color: var(--danger); }
+.medium .severity-badge { background-color: var(--warning); }
+.low .severity-badge { background-color: var(--success); }
+
+.issue-header h3 {
+  font-size: 1.1rem;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.issue-msg {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.fix-box {
+  background-color: #F7FAFC;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #E2E8F0;
+}
+
+.fix-box strong {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.fix-box p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.no-issues-card {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.no-issues-card .icon-success {
+  color: var(--success);
+}
+
+.no-issues-card h3 {
+  font-size: 1.3rem;
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.no-issues-card p {
+  color: var(--text-muted);
+  max-width: 500px;
+}
