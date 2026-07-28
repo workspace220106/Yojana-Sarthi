@@ -1,1 +1,2555 @@
-[]
+[
+  {
+    "id": "LBezF5gB5uF80_MGGY81",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "SUPI",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Finance",
+      "schemeCategory": [
+        "Business & Entrepreneurship",
+        "Banking,Financial Services and Insurance",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Stand-Up India",
+      "schemeCloseDate": "2025-03-31",
+      "priority": 1,
+      "slug": "sui",
+      "briefDescription": "A scheme by Ministry of Finance for financing SC/ST and  Women Entrepreneurs by facilitating bank loans for setting up a greenfield project  Enterprise in manufacturing, services, trading sector and activities allied to agriculture.",
+      "tags": [
+        "Loan",
+        "Entrepreneur",
+        "Finance",
+        "Business"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "TRezF5gB5uF80_MGII9K",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "PMSBY",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Finance",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance"
+      ],
+      "schemeName": "Pradhan Mantri Suraksha Bima Yojana",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "pmsby",
+      "briefDescription": "An Accident Insurance Scheme offering accidental death and disability cover for death or disability on account of an accident.",
+      "tags": [
+        "Bank Account Holders",
+        "Insurance",
+        "Accident Insurance",
+        "Death Insurance"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "TxezF5gB5uF80_MGII-P",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "Sfava",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Culture",
+      "schemeCategory": [
+        "Sports & Culture",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Scheme For Financial Assistance For Veteran Artists",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "sfava",
+      "briefDescription": "A pension scheme by MoC improves the financial and socio-economic status of the old artists and scholars who have contributed significantly in their specialized fields. Still, due to old age, they have to lead a miserable life or are in penury condition.",
+      "tags": [
+        "Artists",
+        "Pension",
+        "Veteran",
+        "Culture",
+        "Senior Citizen",
+        "Financial Assistance"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "9ca0F5gB0AGc0F0iFTMU",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "RGISFM",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry of Education",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Research Grant For In-Service Faculty Members",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "rgisfm",
+      "briefDescription": "The scheme \"Research Grant for In-Service Faculty Members\" was introduced by the University Grants Commission (UGC), Department of Higher Education (DoHE). The objective of this research grant is to provide opportunities to regularly appointed faculty members of Universities/ Institutes/ Colleges.",
+      "tags": [
+        "Research",
+        "Fellowship",
+        "Faculty",
+        "UGC"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "lRe0F5gB5uF80_MGEY82",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "POST-ST",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Tribal Affairs",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Post Matric Scholarship Scheme For The Students Belonging To Scheduled Tribe For Studies In India",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "post-st",
+      "briefDescription": "This is a centrally sponsored scheme by the Ministry of Tribal Affairs, for the students of Scheduled Tribe (ST) for studies in India. This scheme is for pursuing higher education starting from class XI to Post Graduation courses in India. ",
+      "tags": [
+        "Scholarship",
+        "Scheduled Tribe Students",
+        "Post Matric",
+        "Education",
+        "Study"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "2KG0F5gBXu-iUKXqGXTu",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "IP-MEA",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of External Affairs",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Internship Programme By The Ministry Of External Affairs",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "ip-mea",
+      "briefDescription": "The Ministry of External Affairs launched the first edition of the Internship Programme in 2022. The internship policy aims to take foreign policy closer to the people. A total of 75 internships will be offered in the year 2022 in a single term of three months during April to June 2022.",
+      "tags": [
+        "Internship"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "2cazF5gB0AGc0F0ikDMK",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "HIIP",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Housing & Shelter",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Homes For Intellectually Impaired Persons",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "hiip",
+      "briefDescription": "The \"Homes for Intellectually Impaired Persons\" is a scheme by the Department of Social Justice & Special Assistance, Govt. of Maharashtra. In this scheme, Mentally Deficient Children who are in need of care and protection are admitted into shelter homes through the Child Welfare Committees.",
+      "tags": [
+        "Child",
+        "Person With Disability",
+        "Shelter",
+        "Social Justice"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "ZBezF5gB5uF80_MGi49H",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "MA-MAHA",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Education & Learning"
+      ],
+      "schemeName": "Merit Awards",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "ma-maha",
+      "briefDescription": "In the \"Merit Awards\" scheme, awards are given to the students with disability who rank 1st, 2nd, and 3rd among disabled students in the Secondary School Certificate (S.S.C.) and Higher Secondary Certificate (H.S.C.)  in their respective divisional boards of education.",
+      "tags": [
+        "Education",
+        "Award",
+        "Student With Disability",
+        "School"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "dBezF5gB5uF80_MGjI81",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "PMSVS-MAHARASHTRA",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Post-Matric Scholarship To VJNT Students - Maharashtra",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "pmsvs-maharashtra",
+      "briefDescription": "The Government of Maharashtra has introduced a scheme namely “Post-Matric Scholarship to VJNT students” to encourage the students of the Vimukta Jatis & Nomadic Tribes (VJNT) to undergo Post-Matric Courses.",
+      "tags": [
+        "Student",
+        "Scholarship",
+        "Post-Matric",
+        "Vimukta Jatis & Nomadic Tribes"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "eBezF5gB5uF80_MGjo_V",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "TSSAD",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Skills & Employment",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "The Scheme Of State Award For Disabled",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "tssad",
+      "briefDescription": "The \"The Scheme of State Award for Disabled\" is a scheme by the Dept. of Social Justice & Special Assistance, Govt. of Maharashtra. In this scheme, every year, the State Government felicitates awards to the Best Disabled Employees/Employers/Placement Agencies who have done outstanding work.",
+      "tags": [
+        "Persons With Disability",
+        "Employment",
+        "Award",
+        "Placement"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "2cazF5gB0AGc0F0ikDMK",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "HIIP",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Housing & Shelter",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Homes For Intellectually Impaired Persons",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "hiip",
+      "briefDescription": "The \"Homes for Intellectually Impaired Persons\" is a scheme by the Department of Social Justice & Special Assistance, Govt. of Maharashtra. In this scheme, Mentally Deficient Children who are in need of care and protection are admitted into shelter homes through the Child Welfare Committees.",
+      "tags": [
+        "Child",
+        "Person With Disability",
+        "Shelter",
+        "Social Justice"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "ZBezF5gB5uF80_MGi49H",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "MA-MAHA",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Education & Learning"
+      ],
+      "schemeName": "Merit Awards",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "ma-maha",
+      "briefDescription": "In the \"Merit Awards\" scheme, awards are given to the students with disability who rank 1st, 2nd, and 3rd among disabled students in the Secondary School Certificate (S.S.C.) and Higher Secondary Certificate (H.S.C.)  in their respective divisional boards of education.",
+      "tags": [
+        "Education",
+        "Award",
+        "Student With Disability",
+        "School"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "ZxezF5gB5uF80_MGi49l",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "SPMSD",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "State Post-metric Scholarship For Disabled",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "spmsd",
+      "briefDescription": "The \"State Post-metric Scholarship for Disabled\" is a scheme by the Department of Social Justice & Special Assistance, Govt. of Maharashtra. The objective of this scheme is to encourage students with disability (SwDs) to pursue higher education.",
+      "tags": [
+        "Persons With Disability",
+        "Social Welfare",
+        "Financial Assistance",
+        "Post-Matric",
+        "Student",
+        "Scholarship"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "GMa1F5gB0AGc0F0iJjQD",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "MABCSTSS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Maintenance Allowance To Backward Class Students Under Training In Sainik Schools",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "mabcstss",
+      "briefDescription": "The scheme “Maintenance Allowance to Backward Class Students Under Training in Sainik School” is a Scholarship Scheme by the Social Justice and Special Assistance Department, Government of Maharashtra. ",
+      "tags": [
+        "Vimukta Jatis",
+        "Nomadic Tribes",
+        "Other Backward Class",
+        "School",
+        "Social Welfare",
+        "Allowance"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "uqHTF5gBXu-iUKXqxXe5",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "Hepsn",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Social Justice and Empowerment",
+      "schemeCategory": [
+        "Education & Learning",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Persons With Disabilities Scheme In Colleges: Higher Education For Persons With Special Needs",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "hepsn",
+      "briefDescription": "The Persons with Disabilities Act 1995 indicates that differently-abled persons should have access to education at all levels. In the higher education sector, the University Grants Commission (UGC) is supporting universities and colleges in the country to involve in special education activities.",
+      "tags": [
+        "Education",
+        "Persons With Disablities",
+        "Higher Education",
+        "Learning"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "qRfTF5gB5uF80_MGK5JA",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "ITISCBIC",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Finance",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Indirect Tax Internship Scheme In Central Board Of Indirect Taxes And Customs (CBIC)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "itiscbic",
+      "briefDescription": "The \"Indirect Tax Internship Scheme\" by CBIC takes Law Students/ Graduates as Interns every year. The interns are expected to study case files, assist in legal research and drafting of petitions, brief the counsels and extend any other related legal/general assistance to officers/counsels.",
+      "tags": [
+        "Student",
+        "Individual",
+        "Tax",
+        "Finance",
+        "Law"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "sxfTF5gB5uF80_MGQJJl",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "NSSFP",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of New and Renewable Energy",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "National Solar Science Fellowship Programme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "nssfp",
+      "briefDescription": "The “National Solar Science Fellowship Programme” of the Ministry of New & Renewable Energy was launched in February 2011. The aim of the National Solar Science Fellowship Programme is to provide a platform to top-quality scientists and engineers in the area of solar energy research.",
+      "tags": [
+        "Scientist",
+        "Engineer",
+        "Solar Science",
+        "Fellowship",
+        "Research"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "paHTF5gBXu-iUKXqK3c9",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "SISDGFT",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Commerce And Industry",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Summer Internship Scheme Of DGFT",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "sisdgft",
+      "briefDescription": "The Summer Internship Scheme by the Directorate General of Foreign Trade is for the interaction of the officers of the Directorate with young scholars and researchers with brilliant academic backgrounds from reputed academic institutions pursuing Studies/Research in Public Policy/Economics/Law etc.",
+      "tags": [
+        "Internship",
+        "Student",
+        "Foreign Trade",
+        "Public Policy",
+        "Commerce"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "ssbTF5gB0AGc0F0iKjax",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "CVCIS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Personnel, Public Grievances And Pensions",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Central Vigilance Commission (CVC) Internship Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "cvcis",
+      "briefDescription": "CVC initiated an Internship Scheme in the year 2016. This Scheme seeks to engage Indian Nationals, who are Graduates (awaiting final year results) /Post Graduate or Research Students enrolled in reputed Universities/Institutions in India or abroad.",
+      "tags": [
+        "Internship",
+        "Law",
+        "Information Technology",
+        "Student",
+        "Vigilance"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "ohfTF5gB5uF80_MGGZKA",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "VTVSCSGIT",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Vocational Training For VJNT And SBC Candidates Studying In Government Industrial Training Institute",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "vtvscsgit",
+      "briefDescription": "The State Government of Maharashtra has introduced in 2003-04 the scheme to create self-employment for unemployed youths and students of VJNT and SBC who apply for a Vocational Training.",
+      "tags": [
+        "Vocational Training",
+        "Government Industrial Training",
+        "Vimukta Jati And Nomadic Tribes",
+        "Special Backward Classes"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "Y6G3F5gBXu-iUKXqNnU-",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "CSSPREMSOBCSI",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Social Justice and Empowerment",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Education & Learning"
+      ],
+      "schemeName": "Centrally Sponsored Scheme of Pre-matric Scholarship to Other Backward Classes (OBC) for Studies in India",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "csspremsobcsi",
+      "briefDescription": "\"Centrally Sponsored Scheme of Pre-matric Scholarship to Other Backward Classes for Studies in India\" is a Scholarship Scheme by the Ministry of Social Justice and Empowerment. The objective is to award scholarships to school-going children of poorer OBC parents.",
+      "tags": [
+        "Scholarship",
+        "Other Backward Class",
+        "OBC",
+        "Pre-Matric",
+        "Student"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "j8a3F5gB0AGc0F0iODQL",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "SSSPS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Home Affairs",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Swatantrata Sainik Samman Pension Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "sssps",
+      "briefDescription": "Launched on 15th August 1972, \"Swatantrata Sainik Samman Pension Scheme\" is a Pension Scheme by the Ministry of Home Affairs. The scheme provides the grant of pension to living freedom fighters and their families; if they are no more alive, and to the families or martyrs.",
+      "tags": [
+        "Pension",
+        "Freedom Fighter",
+        "Prisoner"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "oKG4F5gBXu-iUKXqL3VE",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "AKTINF",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Science And Technology",
+      "schemeCategory": [
+        "Science, IT & Communications"
+      ],
+      "schemeName": "Abdul Kalam Technology Innovation National Fellowship",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "aktinf",
+      "briefDescription": "Indian National Academy of Engineering (INAE) will award \"Abdul Kalam Technology Innovation National Fellowship\" to outstanding engineers to recognize, encourage and support translational research by individuals to achieve excellence in engineering, innovation and technology development.",
+      "tags": [
+        "Abdul Kalam",
+        "Innovation",
+        "Fellowship",
+        "Translational Research",
+        "SERB",
+        "Research"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "3hfVF5gB5uF80_MGtJKU",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "GBS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Social Justice and Empowerment",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Banking,Financial Services and Insurance"
+      ],
+      "schemeName": "Green Business Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "gbs",
+      "briefDescription": "Green Business Scheme has been launched by the National Safai Karamcharis Finance and Development Corporation to provide financial assistance in the form of loans for activities that can tackle the impacts of climate change and also be income-generating.",
+      "tags": [
+        "Income Generation",
+        "Coverage",
+        "Battery Electric Vehicle",
+        "Compressed Air Vehicle",
+        "Solar Energy Gadgets",
+        "Poly Houses",
+        "Loan"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "1Be6F5gB5uF80_MGRJAa",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "RGSAIP",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Panchayati Raj",
+      "schemeCategory": [
+        "Education & Learning",
+        "Skills & Employment"
+      ],
+      "schemeName": "Rashtriya Gram Swaraj Abhiyan - Internship Program",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "rgsaip",
+      "briefDescription": "The 'Internship Program' as part of the Framework for Implementation of Centrally Sponsored Scheme of Revamped Rashtriya Gram Swaraj Abhiyan (RGSA) (2022-23 to 2025-26) of the Ministry of Panchayati Raj (MoPR), Government of India (Gol), seeks to engage 'Students'.",
+      "tags": [
+        "Internship",
+        "Research Scolars",
+        "Students"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "76HXF5gBXu-iUKXqOXcF",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "NHDP-DBA-SAIC",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Textiles",
+      "schemeCategory": [
+        "Sports & Culture",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "National Handicrafts Development Programme: Direct Benefit to Artisans - Supports to Artisans in Indigent Circumstances",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "nhdp-dba-saic",
+      "briefDescription": "The scheme \"Direct Benefit to Artisans - Supports to Artisans in Indigent Circumstances\" is designed to give a boost to the handicraft sector in India. Assistance of upto ₹8,000/- per month is granted to the Artisans in Indigent Circumstances in the form of monthly allowance/lump sum grant/ both.",
+      "tags": [
+        "Pension",
+        "Artisan",
+        "Handicraft",
+        "Senior Citizen",
+        "Financial Assistance",
+        "Social Welfare"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "dsbmF5gB0AGc0F0i0DcA",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "NCESSIS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Earth Sciences",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "National Centre for Earth Science Studies Internship Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "ncessis",
+      "briefDescription": "The “National Centre for Earth Science Studies Internship” scheme by the Earth System Science Organization, Ministry of Earth Sciences, provides various opportunities for school as well as college students to familiarise and/or pursue research on different branches of earth sciences.",
+      "tags": [
+        "Internship",
+        "Student",
+        "Research Scholar",
+        "Post Graduation",
+        "Graduation",
+        "Training",
+        "Dissertation",
+        "NCESS",
+        "Research"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "YMa7F5gB0AGc0F0i0DWq",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "TNSFDCIS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Social Justice and Empowerment",
+      "schemeCategory": [
+        "Education & Learning",
+        "Skills & Employment"
+      ],
+      "schemeName": "The NSFDC Internship Scheme ",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "tnsfdcis",
+      "briefDescription": "\"The NSFDC Internship Scheme 2024\" is implemented by the National Scheduled Castes Finance & Development Corporation, Ministry of Social Justice & Empowerment, Govt. of India. The internship will expose students to various programs & schemes undertaken by NSFDC, offering them hands-on experience in",
+      "tags": [
+        "Internship",
+        "Opportunity",
+        "Student",
+        "Skill Development"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "zqG-F5gBXu-iUKXqYnaK",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "IGNWPSM",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Indira Gandhi National Widow Pension Scheme (Maharashtra)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "ignwpsm",
+      "briefDescription": "\"Indira Gandhi National Widow Pension Scheme (Maharashtra)\" is a scheme by the Social Justice & Special Assistance Dept, Govt of Maharashtra. In this scheme, widows aged 40 to 79 years who are from a BPL family receive a pension of ₹1500/- per month.",
+      "tags": [
+        "Widow",
+        "Woman",
+        "Pension"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "zxe-F5gB5uF80_MGY5GK",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "EACS1T7A8T10",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Educational Assistance to the Children Studying in 1st to 7th and 8th to 10th Class",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "eacs1t7a8t10",
+      "briefDescription": "Under this scheme, educational assistance is provided of ₹2,500/- to the children studying in 1st to 7th standard and ₹5,000/- for the children studying in 8th to 10th standard of the registered construction worker. The scheme covers up to two children and the wife of a registered male worker.",
+      "tags": [
+        "Building Worker",
+        "Student",
+        "Construction Worker",
+        "Educational Assistance",
+        "Labour"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "zxe-F5gB5uF80_MGY5GK",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "EACS1T7A8T10",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Educational Assistance to the Children Studying in 1st to 7th and 8th to 10th Class",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "eacs1t7a8t10",
+      "briefDescription": "Under this scheme, educational assistance is provided of ₹2,500/- to the children studying in 1st to 7th standard and ₹5,000/- for the children studying in 8th to 10th standard of the registered construction worker. The scheme covers up to two children and the wife of a registered male worker.",
+      "tags": [
+        "Building Worker",
+        "Student",
+        "Construction Worker",
+        "Educational Assistance",
+        "Labour"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "ZhfoF5gB5uF80_MG6ZO-",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "MKYM",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Skills & Employment",
+        "Women and Child"
+      ],
+      "schemeName": "Mahila Kisan Yojana (Maharashtra)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "mkym",
+      "briefDescription": "\"Mahila Kisan Yojana\" is implemented by the Dept. of Social Justice & Special Assistance, Govt. of Maharashtra. The scheme aims to uplift the lifestyle of economically disadvantaged Charmakar communities. it supports the production and sale of various types of footwear and leather articles.",
+      "tags": [
+        "Employment",
+        "Charmakar",
+        "Subsidy",
+        "Loan",
+        "Woman",
+        "Scheduled Caste",
+        "Farmer"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "xKG-F5gBXu-iUKXqYnYM",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "IGOAPSM",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Indira Gandhi National Old Age Pension Scheme (Maharashtra)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "igoapsm",
+      "briefDescription": "The scheme \"Indira Gandhi National Old Age Pension\" is a social welfare scheme by the Social Justice & Special Assistance Department, Government of Maharashtra. In this scheme, ₹600 per month is provided to elderly individuals aged 65 years and above from BPL families.",
+      "tags": [
+        "Pension",
+        "Old Age",
+        "Below The Poverty Line",
+        "Senior Citizen",
+        "BPL"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "cMbBF5gB0AGc0F0iiTYS",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "ICSSR DOCTORAL FELLOWSHIP",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry of Education",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "ICSSR Doctoral Fellowship",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "doctoral-fellowship",
+      "briefDescription": "The Indian Council of Social Science Research (ICSSR) offers Doctoral Fellowships to support full-time Ph.D. scholars engaged in high-quality research in the field of social and human sciences. These fellowships are awarded to Indian research scholars registered in Ph.D. programs at UGC-recognized u",
+      "tags": [
+        "ICSSR Fellowships",
+        "Doctoral Fellowship",
+        "Social Science Research",
+        "PhD",
+        "Research Scholars"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "jKGgWpgBXu-iUKXqeHkx",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "MI-HMA-NHDP",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Textiles",
+      "schemeCategory": [
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": "\"Marketing Incentive\" under the \"Handloom Marketing Assistance\" Component of the National Handloom Development Programme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "mi-hma-nhdp",
+      "briefDescription": "The scheme aims to develop and promote marketing channels for handloom products to bring greater visibility to the sector and ensure commensurate remuneration to weavers. It provides Marketing Incentive to eligible handloom agencies for creating conducive conditions for marketing handloom products.",
+      "tags": [
+        "Marketing",
+        "Incentive",
+        "Handloom",
+        "Weaver",
+        "Textile"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "Psb7k5kB0AGc0F0iuznQ",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "VPHD_FT",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry of Electronics and Information Technology",
+      "schemeCategory": [
+        "Science, IT & Communications",
+        "Education & Learning"
+      ],
+      "schemeName": "Visvesvaraya PhD Scheme for Electronics and IT: Full Time PhD Candidates",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "vphdseitftphdc",
+      "briefDescription": "The scheme aims at generating a total of 1000 Full-time PhD Candidates in emerging research areas of Electronic System Design and Manufacturing (ESDM) and IT/IT Enabled Services (ITES) sectors over a period of 5 years.",
+      "tags": [
+        "Visvesvaraya PhD",
+        "Electronics And IT",
+        "Full Time PhD",
+        "Fellowship"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "MKFVlJkBXu-iUKXq3Xp3",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "VPHD_PT",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry of Electronics and Information Technology",
+      "schemeCategory": [
+        "Science, IT & Communications",
+        "Education & Learning"
+      ],
+      "schemeName": "Visvesvaraya PhD Scheme for Electronics and IT: Part Time PhD Candidates",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "vphdseitptphdc",
+      "briefDescription": "The scheme aims at generating a total of 150 Part-time PhDs in emerging research areas of Electronics System Design & Manufacturing (ESDM) and IT/IT Enabled Services (IT/ITES) sectors over a period of 5 years.",
+      "tags": [
+        "Visvesvaraya PhD",
+        "Electronics And IT",
+        "Part Time PhD",
+        "Research"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "QMZZlJkB0AGc0F0iCTno",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "VPHD_YFRF",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry of Electronics and Information Technology",
+      "schemeCategory": [
+        "Science, IT & Communications",
+        "Education & Learning"
+      ],
+      "schemeName": "Visvesvaraya PhD Scheme for Electronics and IT: Young Faculty Research Fellowships ",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "yfrf",
+      "briefDescription": "This fellowship is meant for Young Faculty having regular position at their institution and proven track record in research. Support is provisioned for 50 candidates, for an initial period of support of 2 years, extendible till 5 years based on performance review.",
+      "tags": [
+        "Visvesvaraya PhD",
+        "Electronics And IT",
+        "Young Faculty",
+        "Research",
+        "Fellowship"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "b8YXCpoB0AGc0F0irTne",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "FAISHL",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Defence",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance",
+        "Housing & Shelter",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Financial Assistance as Interest Subsidy on Home Loan",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "faishl",
+      "briefDescription": "The scheme aims to provide 50% reimbursement of interest on home loans up to ₹1,00,000 for eligible war widows, war bereaved families, war disabled personnel, and attributable peacetime casualties.",
+      "tags": [
+        "Housing",
+        "Loan",
+        "Ex-servicemen",
+        "Disabled"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "t8b8u5oB0AGc0F0iofpP",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "VCF-SC",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Social Justice and Empowerment",
+      "schemeCategory": [
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": "Venture Capital Fund for Scheduled Castes",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "vcf-sc",
+      "briefDescription": "The scheme aims to promote entrepreneurship among Scheduled Caste individuals by providing concessional finance. Benefits include investment ranging from ₹10,00,000/- to ₹15,00,00,000/- as debt or equity for eligible Private Limited or Public Limited companies.",
+      "tags": [
+        "Entrepreneur",
+        "Finance",
+        "Capital",
+        "Investment",
+        "Technology",
+        "Startup"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "tcdc2psB0AGc0F0iRgBn",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "PGSPCSCSTC",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry of Education",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Post-Graduate Scholarships for Professional Courses for SC/ST Candidates",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "pgspcscstc",
+      "briefDescription": "The scheme has been initiated to provide opportunity to deprived sections of the society, viz. SC/ST for undertaking postgraduate level studies in Professional subjects like Engineering & Technology, Management, Pharmacy etc. in recognised Indian Universities/Institutions/Colleges.",
+      "tags": [
+        "Post Graduate",
+        "Scholarship",
+        "Professional Course",
+        "ST",
+        "SC",
+        "Student",
+        "UGC"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "86IZ_psBXu-iUKXqRkXe",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "PM-USP-CSSS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry of Education",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Pradhan Mantri Uchchatar Shiksha Protsahan (PM-USP) Central Sector Scheme of Scholarship for College and University students",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "csss-cus",
+      "briefDescription": "A scholarship scheme by the Dept. of Higher Education to provide financial assistance to meritorious students from poor families to meet a part of their day-to-day expenses while pursuing higher studies. The scholarships are awarded on the basis of results of Higher Secondary / Class 12th Board Exam",
+      "tags": [
+        "Scholarship",
+        "Student",
+        "Financial Assistance",
+        "College",
+        "University"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "vsc4_psB0AGc0F0iOAEd",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "FESMWPNIE",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry of Education",
+      "schemeCategory": [
+        "Education & Learning",
+        "Sports & Culture"
+      ],
+      "schemeName": "Free Education For Sports Medal Winners / Participants Of National/ International Events",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "fesmwpnie",
+      "briefDescription": "The scheme of \"Free Education for Sports Medal Winners / Participants of National/ International Events\" is introduced by UGC, to provide financial assistance to the medal winners\\ elite sports persons studying in universities/colleges leading to all the full-time regular courses.",
+      "tags": [
+        "Sports",
+        "Education"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "4hhF_psB5uF80_MGqFuB",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "NITI-I",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "NITI Aayog (National Institution for Transforming India)",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "NITI Internship Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "niti-i",
+      "briefDescription": "This Scheme seeks to engage students pursuing Under Graduate/Graduate/Post Graduate Degrees or are Research Scholars enrolled in recognized University/Institution within India or abroad, as \"interns\". They shall be given exposure to various Verticals/ Divisions/Units within NITI Aayog.",
+      "tags": [
+        "Internship",
+        "Student"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "_BimHZwB5uF80_MGFlyI",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "SNAS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Statistics and Programme Implementation",
+      "schemeCategory": [
+        "Science, IT & Communications"
+      ],
+      "schemeName": "Sukhatme National Award in Statistics",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "snas",
+      "briefDescription": "The scheme aims to recognise excellence in statistical research and official statistics. Through this scheme, national recognition is provided to eligible Indian statisticians for lifetime or young achiever contributions.",
+      "tags": [
+        "Award",
+        "Research",
+        "Young Statistician",
+        "Statistics",
+        "Data Management System",
+        "Data Intergration"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "KBgyRpwB5uF80_MGV12W",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "SIIP",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry of Education",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Study in India Programme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "siip",
+      "briefDescription": "The Study in India Programme aims to promote India as a global education hub by offering centralized admissions, quality education, and visa support to international students.”",
+      "tags": [
+        "International Student",
+        "Higher Education",
+        "Financial Assistance",
+        "Courses"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "7sdChZwB0AGc0F0iwAOR",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "DACSSISELOSOBCEBC",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Social Justice and Empowerment",
+      "schemeCategory": [
+        "Education & Learning",
+        "Social welfare & Empowerment",
+        "Banking,Financial Services and Insurance"
+      ],
+      "schemeName": "Dr Ambedkar Central Sector Scheme of Interest Subsidy on Educational Loans for Overseas Studies for Other Backward Classes (OBCs) and Economically Backward Classes (EBCs)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "dacssiselosobcebc",
+      "briefDescription": "The scheme provides interest subsidy to the students belonging to the OBCs and EBCs on the interest payable for the period of the moratorium for the Education Loans for overseas studies to pursue approved courses of studies abroad at Masters, M.Phil. and PhD level. ",
+      "tags": [
+        "Loan",
+        "Subsidy",
+        "Interest",
+        "Education",
+        "Other Backward Class",
+        "Economically Backward Class"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "r6LAS5wBXu-iUKXqDkfO",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "KGVYKVY",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Micro, Small and Medium Enterprises",
+      "schemeCategory": [
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": " Khadi Gramodyog Vikas Yojana: Khadi Vikas Yojana",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "kvyoj",
+      "briefDescription": "The scheme aims to increase productivity and wages of Khadi artisans, improve production infrastructure, boost employment and sales, revive traditional rural skills, modernize sales outlets, and promote marketing and exports.",
+      "tags": [
+        "Khadi",
+        "Gramodyog",
+        "Khadi Production",
+        "Village Industries",
+        "Khadi Artisans",
+        "Interest Subsidy"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "_qKMAJ0BXu-iUKXq2UyW",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "PRISM-C2-FWMPKHTTPTT",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Science And Technology",
+      "schemeCategory": [
+        "Science, IT & Communications",
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": "PRISM (Promoting Innovations in Individuals, Start-ups and MSMEs): Category-2: Fabrication of Working Model/Process Know-how/Testing & Trial/Patenting/Technology Transfer",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "prism-c2-fwmpkhttptt",
+      "briefDescription": "The scheme aims to promote innovations in individuals, start-ups, and Micro, Small and Medium Enterprises (PRISM). It offers financial support (up to ₹20,00,000/-) for Indian Citizens working on innovation projects requiring fabrication of working models, patenting, or technology transfer.",
+      "tags": [
+        "Innovation",
+        "Patent",
+        "Invention",
+        "Prototype",
+        "Technology"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "TqLe9ZwBXu-iUKXqREzZ",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "TARE",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Science And Technology",
+      "schemeCategory": [
+        "Science, IT & Communications"
+      ],
+      "schemeName": "Teachers Associateship for Research Excellence",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "tare",
+      "briefDescription": "The scheme “Teachers Associateship for Research Excellence (TARE)” was launched by Science & Engineering Research Board, Department of Science & Technology, Government of India which aims to facilitate mobility of faculty members working in State Universities /Colleges/Private Academic institutions.",
+      "tags": [
+        "TARE",
+        "Teacher",
+        "Research",
+        "Faculty",
+        "Fellowship",
+        "SERB"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "bqI_Gp0BXu-iUKXqpk27",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "ODOPA",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Commerce And Industry",
+      "schemeCategory": [
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": "One District One Product (ODOP) Awards",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "odopa",
+      "briefDescription": "The scheme aims to recognize and celebrate the outstanding efforts of States, UTs, Districts, and Indian Missions Abroad in promoting local products. It also seeks to boost economic development and support the Hon’ble Prime Minister’s vision of Atmanirbhar Bharat.",
+      "tags": [
+        "Awards",
+        "Industry",
+        "E Commerce",
+        "Indian Missions Abroad"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "9aKJJJ0BXu-iUKXqe00Z",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "RKVP",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Agriculture and Farmers Welfare",
+      "schemeCategory": [
+        "Agriculture,Rural & Environment"
+      ],
+      "schemeName": "Rashtriya Krishi Vigyan Puraskar",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "rkvp",
+      "briefDescription": "The Rashtriya Krishi Vigyan Puraskar (RKVP) aims to honor scientists and technical experts for outstanding contributions and innovations in agriculture and allied sciences.",
+      "tags": [
+        "Krishi",
+        "Award",
+        "Farmer",
+        "Sciences",
+        "Technologies"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "8seUJJ0B0AGc0F0i7wmz",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "PMFMS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Home Affairs",
+      "schemeCategory": [
+        "Public Safety,Law & Justice",
+        "Skills & Employment"
+      ],
+      "schemeName": "Police Medal for Meritorious Service",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "pmfms",
+      "briefDescription": "Under this scheme, medals, official recognition, and service distinction are provided to the personnel serving in police, CAPFs, CPOs, and other public safety organizations.",
+      "tags": [
+        "Meritorious Service",
+        "Professional Excellence",
+        "Award",
+        "Police"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "W8fkR50B0AGc0F0i5Qoo",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "TLOIIS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "The Lokpal of India",
+      "schemeCategory": [
+        "Education & Learning",
+        "Skills & Employment"
+      ],
+      "schemeName": "The Lokpal of India Internship Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "tloiis",
+      "briefDescription": "The Lokpal of India Internship Scheme offers students exposure to anti-corruption laws and institutions. Interns learn about governance, legal frameworks, and contribute ideas to enhance transparency and accountability in public administration.",
+      "tags": [
+        "Financial Assistance",
+        "Student",
+        "Internship",
+        "Stipend"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "IRicLp0B5uF80_MG9WT9",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "NATTFEIVTAED",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Skill Development And Entrepreneurship",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "National Award to Teachers (For Excellence in Vocational Training and Entrepreneurship Development)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "nattfeivtaed",
+      "briefDescription": "The objective of this scheme is to recognize and honor excellence in vocational training and entrepreneurship development by faculty and trainers.",
+      "tags": [
+        "National Award",
+        "Teachers",
+        "Training",
+        "Entrepreneurship"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "AhjtJJ0B5uF80_MGcGQ2",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "PA",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Home Affairs",
+      "schemeCategory": [
+        "Skills & Employment",
+        "Sports & Culture"
+      ],
+      "schemeName": "Padma Awards",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "pa",
+      "briefDescription": "The scheme aims to recognize distinguished and exceptional achievements across various fields of public service and national importance.",
+      "tags": [
+        "Award",
+        "Public Service",
+        "Art",
+        "Social Work",
+        "Civil Service"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "2sdCYp0B0AGc0F0iiArm",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "CDPNER:EC",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Commerce And Industry",
+      "schemeCategory": [
+        "Agriculture,Rural & Environment"
+      ],
+      "schemeName": "Coffee Development Programme in North Eastern Region: Expansion of Coffee",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "cdpnerec",
+      "briefDescription": "The scheme \"Coffee Development Programme in North Eastern Region: Expansion of Coffee\" by the Coffee Board, Department of Commerce, Ministry of Commerce and Industry, aims to facilitate afforestation in the Jhum lands and help settle the tribals on a permanent footing.",
+      "tags": [
+        "Agriculture",
+        "Farmer",
+        "DBT",
+        "Subsidy"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "mxikdZ0B5uF80_MGSGUQ",
+    "fields": {
+      "beneficiaryState": [
+        "Tamil Nadu",
+        "Gujarat",
+        "Rajasthan",
+        "Maharashtra",
+        "West Bengal"
+      ],
+      "schemeShortTitle": "SGRCSL",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Commerce And Industry",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Education & Learning"
+      ],
+      "schemeName": "Scheme For Grant Of Rewards To The Children Of Salt Labourers",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "sgrcsl",
+      "briefDescription": "The scheme “Scheme for Grant of Rewards to the Children of Salt Labourers” was launched by Department for Promotion of Industry and Internal Trade (DPIIT), Ministry of Commerce and Industry in the year 1985.",
+      "tags": [
+        "Salt Workers",
+        "Salt Labourers",
+        "Children",
+        "Rewards",
+        "Salt Industry",
+        "Students"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "DMe9hZ0B0AGc0F0iYQxY",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "WOS-A",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Science And Technology",
+      "schemeCategory": [
+        "Education & Learning",
+        "Skills & Employment",
+        "Social welfare & Empowerment",
+        "Science, IT & Communications",
+        "Women and Child"
+      ],
+      "schemeName": "Women Scientist Scheme-A",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "wos-a",
+      "briefDescription": "A Research Grant by MoST for female candidates to pursue research in frontier areas of science and engineering, preferably those having a break in career (minimum two years) and not having regular employment, to explore possibility of re-entry into the profession.\n",
+      "tags": [
+        "Women",
+        "Scientist",
+        "Technology",
+        "Science",
+        "Empowerment",
+        "Fellowship",
+        "Education",
+        "Unemployed"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "wccHd50B0AGc0F0i7QsY",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "WIDUSHI",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Science And Technology",
+      "schemeCategory": [
+        "Women and Child",
+        "Science, IT & Communications"
+      ],
+      "schemeName": "Women’s Instinct for Developing and Ushering in Scientific Heights & Innovation",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "widushi",
+      "briefDescription": "'WIDUSHI' programme aims to encourage and support senior women scientists to conduct research in interdisciplinary areas of Science and Technology.",
+      "tags": [
+        "WIDUSHI",
+        "Woman",
+        "KIRAN",
+        "Scientist",
+        "Retired",
+        "Fellowship",
+        "Research"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "MRhGhp0B5uF80_MGv2bq",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "PG-IGSSGC",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry of Education",
+      "schemeCategory": [
+        "Education & Learning",
+        "Women and Child"
+      ],
+      "schemeName": "Post Graduate Indira Gandhi Scholarship For Single Girl Child",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "pg-igssgc",
+      "briefDescription": "A scholarship scheme by the University Grants Commission for Girl students who are admitted in the first year of PG courses in any designated university or a postgraduate college, and happen to be the only girl child in the family. The amount of fellowship is ₹ 36,200/- per annum.",
+      "tags": [
+        "Scholarship",
+        "Girl Child"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "RMdyrp0B0AGc0F0iAw0S",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "NSTDTD",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Communication",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance"
+      ],
+      "schemeName": "National Savings Time Deposit (TD)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "nstdtd",
+      "briefDescription": "The objective of the National Savings Time Deposit (TD) scheme is to promote safe and fixed-term savings by offering assured returns, encouraging individuals to invest regularly with flexible deposit amounts and no upper limit.",
+      "tags": [
+        "Savings Account",
+        "Banking",
+        "Money",
+        "Time Deposit"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "TKJtrp0BXu-iUKXqq1G_",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "FAFTCC",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Culture",
+      "schemeCategory": [
+        "Sports & Culture"
+      ],
+      "schemeName": "Financial Assistance for Tagore Cultural Complexes (TCC)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "faftcc",
+      "briefDescription": "This scheme promotes cultural activities across states and fosters unity while providing opportunities for creative expression and learning, especially for the youth.",
+      "tags": [
+        "Tagore",
+        "Music",
+        "Dance",
+        "Art And Culture"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "7BgR950B5uF80_MGpmin",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "AY",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Defence",
+      "schemeCategory": [
+        "Skills & Employment"
+      ],
+      "schemeName": "Agnipath Yojana",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "ay",
+      "briefDescription": "A welfare scheme by the Department of Military Affairs, MoD under which rigorous military training will be imparted to the youth aged between 17.5 to 23 years and meeting other educational, physical, and medical criteria, who are aspirational to be a part of the armed forces.",
+      "tags": [
+        "Youth",
+        "Armed Forces",
+        "Military",
+        "Agniveer",
+        "Employment",
+        "Indian Navy",
+        "Indian Air Force",
+        "Indian Army"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "S6IT_Z0BXu-iUKXqRVNs",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "PM VIKAS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Minority Affairs",
+      "schemeCategory": [
+        "Skills & Employment",
+        "Social welfare & Empowerment",
+        "Education & Learning",
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": "Pradhan Mantri Virasat ka Samvardhan",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "pm-vikas",
+      "briefDescription": "PM VIKAS is a Central sector scheme that focuses on socio-economic empowerment of six notified minorities in the country through skilling & training, women leadership & empowerment and education. The scheme integrates erstwhile skilling & education schemes of the Ministry of Minority Affairs.",
+      "tags": [
+        "Skill Development",
+        "Women Entrepeneurship",
+        "Education Of School Dropouts",
+        "Socio-economic Empowerment",
+        "Minorities"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "jxgdIJ4B5uF80_MGOmpz",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "IGNDPS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Rural Development",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Indira Gandhi National Disability Pension Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "igndps",
+      "briefDescription": "The scheme aims to provide social security pensions to divyangjans aged 18 and above who belong to a poor family (BPL) in society.\n\n",
+      "tags": [
+        "Differently Abled",
+        "Pension",
+        "Below Poverty Line - BPL"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "LqKpG54BXu-iUKXq61Sa",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "MDA-FERT",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Chemicals And Fertilizers",
+      "schemeCategory": [
+        "Business & Entrepreneurship",
+        "Science, IT & Communications"
+      ],
+      "schemeName": "Market Development Assistance",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "mda-fert",
+      "briefDescription": "The scheme aims to promote organic fertilizers produced at Bio-Gas and Compressed Bio-Gas plants under the Galvanizing Organic Bio-Agro Resources Dhan initiative. It provides Market Development Assistance of ₹1,500/- per Metric Tonne to manufacturing and marketing entities of organic fertilizers.",
+      "tags": [
+        "Manufacturer",
+        "Operator",
+        "Institute",
+        "Subsidy",
+        "Fertilizer"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "TMcMHJ4B0AGc0F0imBBj",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "N-PDF",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Science And Technology",
+      "schemeCategory": [
+        "Science, IT & Communications"
+      ],
+      "schemeName": "National Post Doctoral Fellowship",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "n-pdf",
+      "briefDescription": "The “National Post Doctoral Fellowship (N-PDF)” was launched by the Science and Engineering Research Board, Government of India to identify motivated young researchers and provide them support for doing research in frontier areas of science and engineering.",
+      "tags": [
+        "National",
+        "Post Doctoral",
+        "Fellowship",
+        "Science",
+        "Research",
+        "Fellow"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "thg0IZ4B5uF80_MGlmo1",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "RTIF",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Personnel, Public Grievances And Pensions",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Right To Information Fellowship",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "rtif",
+      "briefDescription": "Under this scheme, DOPT proposes to offer four short-term fellowships to researchers from the field of media / Civil Society professionals / RTI Trainers to conduct field-based research on themes relating to RTI. It is hoped that the research output will enhance their understanding of the RTI Act.",
+      "tags": [
+        "Internship",
+        "Student",
+        "RTI",
+        "Journalism",
+        "Communication"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "q6J2OZ4BXu-iUKXqj1Ux",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "BIO-RIDE",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Science And Technology",
+      "schemeCategory": [
+        "Science, IT & Communications",
+        "Education & Learning"
+      ],
+      "schemeName": "Biotechnology Research Innovation And Entrepreneurship Development (Bio-RIDE)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "bio-ride",
+      "briefDescription": "The scheme aims to foster innovation, promote bio-entrepreneurship, and strengthen India's position as a global leader in biomanufacturing and biotechnology. It provides seed funding, extramural grants, and infrastructure support to startups, enterprises, industries, and academia.",
+      "tags": [
+        "Institution",
+        "Research",
+        "Grant",
+        "Incubation",
+        "Mentorship",
+        "Innovation",
+        "Entrepreneurship"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "lqJfOZ4BXu-iUKXqF1VE",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "HSFEPQIISARADOCSCRNPKAOS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Commerce And Industry",
+      "schemeCategory": [
+        "Agriculture,Rural & Environment",
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": "Integrated Scheme for Export Promotion & Quality Improvement in Spices and Research and Development of Cardamom: \\Small Cardamom Replanting/New Planting: Karnataka (Ha.) and other States",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "hsfepqiisaradocscrnpkaos",
+      "briefDescription": "To motivate growers in Karnataka and other states to improve production and productivity through systematic replanting of diseased, old, and senile plantations, and to promote area expansion under cultivation.",
+      "tags": [
+        "Replanting",
+        "Plant",
+        "Agriculture",
+        "Planting"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "aMf8KZ4B0AGc0F0izxGi",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "INSPIRE-F",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Science And Technology",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Innovation In Science Pursuit For Inspired Research (INSPIRE) - Fellowship",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "inspire-f",
+      "briefDescription": "INSPIRE Fellowship is one of the components of INSPIRE scheme implemented by the Department of Science and Technology (DST), Government of India to strengthen the Science and Technology base of the country. This Component focuses on attracting students to pursue doctoral degree.",
+      "tags": [
+        "Fellowship",
+        "Science",
+        "University",
+        "Doctoral"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "rxhLP54B5uF80_MG52sI",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "MDAS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Tourism",
+      "schemeCategory": [
+        "Travel & Tourism",
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": "Marketing Development Assistance Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "mdas",
+      "briefDescription": "The Marketing Development Assistance (MDA) Scheme under the Overseas Promotion & Publicity (OPP) Scheme aims to support the promotion and marketing of Indian tourism in overseas markets. ",
+      "tags": [
+        "Tourism",
+        "Financial Assistance",
+        "Promotion",
+        "Operators",
+        "International"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "I6LVJZ4BXu-iUKXqSVWk",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "BIG",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Science And Technology",
+      "schemeCategory": [
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": "Biotechnology Ignition Grant Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "big",
+      "briefDescription": "The “Biotechnology Ignition Grant Scheme (BIG)” is a flagship scheme of BIRAC which recognizes and invests in innovative ideas in the biotech sector. BIG scheme supports individual entrepreneurs/ start-ups from ideation to Proof of Concept.",
+      "tags": [
+        "Biotechnology",
+        "Ignition Grant",
+        "BIRAC",
+        "BIG",
+        "Entrepreneur",
+        "Start-up"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "7BiHTp4B5uF80_MG42uA",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "PM POSHAN",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry of Education",
+      "schemeCategory": [
+        "Health & Wellness",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "PM POSHAN - Prime Minister's Overarching Scheme For Holistic Nourishment",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "pm-poshan",
+      "briefDescription": "PM POSHAN is a centrally sponsored scheme by the Department of School Education & Literacy, Ministry of Education. Under this scheme, one hot cooked meal will be provided to the children studying in Government and Government – aided schools. The Scheme is implemented by the Ministry of Education.",
+      "tags": [
+        "School",
+        "Children",
+        "Health",
+        "Govt Scheme",
+        "Nutrition India"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "yRj2RJ4B5uF80_MGe2uP",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "JDS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Textiles",
+      "schemeCategory": [
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": "Jute Diversification Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "jds",
+      "briefDescription": "The scheme aims to set up production centres to promote eco-friendly jute products and generate sustained employment. It provides skill training, machine subsidies, and financial incentives to collaborating agencies, targeting artisans, women self-help groups, and entrepreneurs.",
+      "tags": [
+        "Artisan",
+        "Entrepreneur",
+        "Training",
+        "Employment",
+        "Subsidy",
+        "Equipment",
+        "Incentive"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "MKK4XZ4BXu-iUKXqj1YI",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "MFS-NMDFC",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Minority Affairs",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance"
+      ],
+      "schemeName": "Micro Finance Scheme of NMDFC",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "mfs-nmdfc",
+      "briefDescription": "Under the scheme, an amount of Rs. 1 lakh under credit Line-1 & upto  Rs. 1.5 lakh under Credit Line-2 is extended to each member of SHG (belong to Minority communities) at interest rate of 7% & 10% respectively.  Concession of 2% is extended to women beneficiaries under Credit Line-2.",
+      "tags": [
+        "Micro Finance Scheme Of NMDFC"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "0qKdP54BXu-iUKXq5lVJ",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "PLISJDP",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Textiles",
+      "schemeCategory": [
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": "Production Linked Incentive Support on JDPs",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "plisjdp",
+      "briefDescription": "The scheme aims to make Indian Jute Diversified Products globally cost-competitive and increase their export market share. It provides a financial reimbursement of up to ₹12,00,000/- per annum on raw material costs for Jute Mill Companies and MSME units engaged in exporting JDPs.",
+      "tags": [
+        "Jute",
+        "Manufacturer",
+        "Exporter",
+        "Enterprise",
+        "Incentive",
+        "Reimbursement",
+        "Subsidy",
+        "Export"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "NaK7XZ4BXu-iUKXqLlZl",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "TLS-NMDFC",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Minority Affairs",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance"
+      ],
+      "schemeName": "Term Loan Scheme of NMDFC",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "tls-nmdfc",
+      "briefDescription": "Under this scheme, credit of up to ₹20,00,000/- under Credit Line-1 and up to ₹30,00,000/- under Credit line -2 is extended to beneficiaries among minority communities at 6%  p.a. & 8% p.a. respectively for financing economically viable income generation ventures.",
+      "tags": [
+        "Term Loan Scheme Of NMDFC"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "qxgjjJ4B5uF80_MGxG22",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "PRE-SC",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Social Justice and Empowerment",
+      "schemeCategory": [
+        "Education & Learning",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Pre-Matric Scholarship for Scheduled Caste Students",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "pre-sc",
+      "briefDescription": "The scheme aims to support the education of Scheduled Caste students at the pre-matric stage, reduce dropouts, and improve educational participation. Through this scheme, annual academic allowances are provided to eligible Scheduled Caste students studying in Classes IX and X.",
+      "tags": [
+        "Pre Matric",
+        "Scholarship",
+        "Scheduled Caste",
+        "Student",
+        "Social Welfare",
+        "Person With Disability"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "laJ_gp4BXu-iUKXqp1c-",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "NSMIAS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Finance",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance"
+      ],
+      "schemeName": "National Savings (Monthly Income  Account) Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "pomis",
+      "briefDescription": "The scheme provides a fixed monthly income to investors through periodic interest payments on a one-time deposit made at the time of account opening.",
+      "tags": [
+        "Investment",
+        "Savings",
+        "Financial Assistance",
+        "Post Office"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "tsdLjJ4B0AGc0F0i4BPR",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "RKVYSHFSHC",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Agriculture and Farmers Welfare",
+      "schemeCategory": [
+        "Agriculture,Rural & Environment"
+      ],
+      "schemeName": "RKVY Soil Health and Fertility - Soil Health Card",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "rkvyshfshc",
+      "briefDescription": "The scheme aims to promote soil test-based nutrient management by providing Soil Health Cards containing soil analysis results and fertilizer recommendations to farmers across India.",
+      "tags": [
+        "Soil Health",
+        "INM",
+        "Soil Testing",
+        "Farmer",
+        "RKVY"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "gRibgp4B5uF80_MGcm21",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "HOAPDVSRA",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Science And Technology",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Hari Om Ashram Prerit Doctor Vikram Sarabhai Research Award",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "hoapdvsra",
+      "briefDescription": "The Shri Hari Om Ashram Prerit Doctor Vikram Sarabhai Research Awards are biennial awards established with funds from Pujya Shri Mota of Hari Om Ashram, Nadiad, to recognize outstanding contributions by Indian scientists under the age of 45 in the fields of Space Sciences etc.",
+      "tags": [
+        "Award",
+        "Scientist",
+        "Research",
+        "Cash Prize"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "u8ddjJ4B0AGc0F0i-hMX",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "POST-DIS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Social Justice and Empowerment",
+      "schemeCategory": [
+        "Education & Learning",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Post Matric Scholarship Students With Disabilities",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "post-dis",
+      "briefDescription": "A scholarship scheme by DoEPwD for students with disabilities pursuing a post-matric qualification from UGC/AICTE recognized universities, i.e. students of Class 11th, Class 12th, including Polytechnics, Post-Matriculation Diploma/Certificates and Bachelor’s/Master’s Degree/Diploma in India.",
+      "tags": [
+        "Persons With Disability",
+        "Post-Matric",
+        "Student",
+        "Scholarship",
+        "Diploma",
+        "Degree",
+        "Graduation",
+        "Post-Graduation"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "26LsjJ4BXu-iUKXqg1ea",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "TCE-SC",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Social Justice and Empowerment",
+      "schemeCategory": [
+        "Education & Learning",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Top Class Education For Scheduled Caste Students",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "tce-sc",
+      "briefDescription": "The Scheme aims at recognising and promoting quality education amongst students belonging to SCs by providing financial support. The Scheme will cover SC students for pursuing studies beyond the 12th class.",
+      "tags": [
+        "Student",
+        "Scholarship",
+        "Education",
+        "Scheduled Caste",
+        "Tuition Fee"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "Gcc_kp4B0AGc0F0ihRRF",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "NTS-UG",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Agriculture and Farmers Welfare",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "National Talent Scholarship Undergraduate",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "nts-ug",
+      "briefDescription": "The scholarship aims to support meritorious students by providing financial assistance of ₹3,000 per month during their undergraduate studies.",
+      "tags": [
+        "Student",
+        "Scholarship",
+        "Agriculture",
+        "Education"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "uRhrjJ4B5uF80_MGaW10",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "DCPF",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry of Education",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "AICTE - Distinguished Chair Professor Fellowship",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "dcpf",
+      "briefDescription": "The fellowship intends to utilize the expertise of highly qualified and experienced superannuated professionals who have made an unparalleled, exceptional professional contribution to society in their respective fields/disciplines.",
+      "tags": [
+        "Fellowship",
+        "Financial Assistance",
+        "Research"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "QqIjlp4BXu-iUKXqFFhN",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "WOS-B",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Science And Technology",
+      "schemeCategory": [
+        "Skills & Employment",
+        "Social welfare & Empowerment",
+        "Science, IT & Communications",
+        "Women and Child"
+      ],
+      "schemeName": "Women Scientist Scheme-B",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "wos-b",
+      "briefDescription": "A Research Grant by MoST for female candidates with break in their career interested in addressing societal challenges through viable S&T interventions. Women scientists who wish to apply under this scheme are required to develop their own project/proposals for scientific and technological solutions",
+      "tags": [
+        "Women",
+        "Scientist",
+        "Female",
+        "Technology",
+        "Science",
+        "Research",
+        "Fellowship"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "M8eFlp4B0AGc0F0imxTm",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "NPSVS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Finance",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance"
+      ],
+      "schemeName": "NPS Vatsalya Scheme ",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "npsvs",
+      "briefDescription": "NPS Vatsalya is a contributory saving cum long-term financial security scheme designed exclusively for minors for the purposes of enhancing financial literacy and financial planning and to encourage empowerment of children, emanating from the vision of \"Viksit Bharat@2047.",
+      "tags": [
+        "NPS",
+        "Minor",
+        "Pension Fund",
+        "PFRDA",
+        "Long Term Financial Security",
+        "Financial",
+        "Saving"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "Lxidlp4B5uF80_MGnm7J",
+    "fields": {
+      "beneficiaryState": [
+        "All"
+      ],
+      "schemeShortTitle": "NFSMCSS",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Agriculture and Farmers Welfare",
+      "schemeCategory": [
+        "Agriculture,Rural & Environment"
+      ],
+      "schemeName": "National Food Security Mission NFSM",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "nfsmcss",
+      "briefDescription": "National Food Security Mission was launched in 2007-08 to increase the production of rice, wheat and pulses. Later, coarse cereals, nutri cereals, commercial crops (sugarcane, jute, and cotton) were also added to the mission.",
+      "tags": [
+        "Demonstration",
+        "Seed Distribution",
+        "Seed Hub",
+        "Seed Production",
+        "Pulses",
+        "Rice",
+        "Wheat",
+        "Nutri Cereals",
+        "Millets"
+      ]
+    },
+    "highlight": {}
+  }
+]
