@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserCheck, Lock, ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
+import { UserCheck, Lock, ArrowRight, CheckCircle2, AlertCircle, ShieldCheck, FileText, CreditCard } from 'lucide-react';
 import emblem from '../assets/images/emblem.png';
 import './LoginPage.css';
 
@@ -111,21 +111,53 @@ const LoginPage = () => {
         {/* Left Branding Side */}
         <div className="branding-side">
           <div className="branding-content">
-            <div className="branding-logo">
-              <div className="emblem-wrapper">
-                <img src={emblem} alt="Yojana Sarthi Emblem" className="mini-emblem" />
+            <div className="branding-top">
+              <div className="branding-logo">
+                <div className="emblem-wrapper">
+                  <img src={emblem} alt="Yojana Sarthi Emblem" className="mini-emblem" />
+                </div>
+                <div className="branding-text">
+                  <h1>Yojana Sarthi</h1>
+                  <span className="branding-badge">Official Portal</span>
+                </div>
               </div>
-              <div className="branding-text">
-                <h1>Yojana Sarthi</h1>
-                <span className="branding-badge">Official Portal</span>
-              </div>
+
+              <p className="branding-tagline">
+                Connecting every citizen with state and central welfare schemes. Secure, transparent, and instant eligibility matching.
+              </p>
             </div>
 
-            <p className="branding-tagline">
-              Connecting every citizen with state and central welfare schemes. Secure, transparent, and instant eligibility matching.
-            </p>
+            <div className="branding-features">
+              <div className="feature-item">
+                <div className="feature-icon-wrapper">
+                  <ShieldCheck size={20} />
+                </div>
+                <div className="feature-text">
+                  <h4>Aadhaar & DigiLocker Integration</h4>
+                  <p>Secure instant document verification for fast scheme approvals.</p>
+                </div>
+              </div>
 
+              <div className="feature-item">
+                <div className="feature-icon-wrapper">
+                  <FileText size={20} />
+                </div>
+                <div className="feature-text">
+                  <h4>Instant Eligibility Matcher</h4>
+                  <p>Calculates your category, age, and income eligibility rules automatically.</p>
+                </div>
+              </div>
 
+              <div className="feature-item">
+                <div className="feature-icon-wrapper">
+                  <CreditCard size={20} />
+                </div>
+                <div className="feature-text">
+                  <h4>Direct Benefit Tracker</h4>
+                  <p>Monitor DBT payments, application progress, and subsidy disbursements.</p>
+                </div>
+              </div>
+            </div>
 
             <div className="trust-footer">
               <CheckCircle2 size={16} />
