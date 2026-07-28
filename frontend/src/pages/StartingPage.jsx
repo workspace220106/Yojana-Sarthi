@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Shield, Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Shield, ArrowRight, CheckCircle2 } from 'lucide-react';
 import emblem from '../assets/images/emblem.png';
 import './StartingPage.css';
 
@@ -59,13 +59,6 @@ const StartingPage = () => {
           >
             <span>Launch Scheme Engine</span>
             <ArrowRight size={18} />
-          </button>
-          <button 
-            className="explore-btn"
-            onClick={() => navigate('/landing')}
-          >
-            <Sparkles size={16} />
-            <span>Explore Features</span>
           </button>
         </div>
       </div>

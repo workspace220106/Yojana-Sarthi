@@ -187,24 +187,6 @@
   background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
 }
 
-.explore-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 14px 28px;
-  border-radius: 12px;
-  transition: all 0.25s ease;
-}
-
-.explore-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-}
 
 .footer-credits {
   position: absolute;
