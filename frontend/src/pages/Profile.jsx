@@ -16,6 +16,8 @@ import {
   Gauge
 } from 'lucide-react';
 import './Profile.css';
+import { auth, db } from '../firebase';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('info');
@@ -47,24 +49,41 @@ const Profile = () => {
   const [syncing, setSyncing] = useState(false);
   const [linkingError, setLinkingError] = useState('');
 
-  // Load profile data and documents from localStorage on mount
+  // Load profile data and documents from Cloud Firestore on mount/auth state change
   useEffect(() => {
-    const savedProfile = localStorage.getItem('yojana_sarthi_profile');
-    if (savedProfile) {
-      try {
-        setProfileData(JSON.parse(savedProfile));
-      } catch (e) {
-        console.error(e);
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        try {
+          const docRef = doc(db, "citizens", user.uid);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            setProfileData(data);
+            localStorage.setItem('yojana_sarthi_profile', JSON.stringify(data));
+            if (data.documents) {
+              setDocuments(data.documents);
+              localStorage.setItem('yojana_sarthi_docs', JSON.stringify(data.documents));
+            }
+          }
+        } catch (err) {
+          console.error("Failed to load profile from Firestore:", err);
+        }
+      } else {
+        // Fallback to local storage if user not logged in yet
+        const savedProfile = localStorage.getItem('yojana_sarthi_profile');
+        if (savedProfile) {
+          try {
+            setProfileData(JSON.parse(savedProfile));
+          } catch (e) {}
+        }
+        const savedDocs = localStorage.getItem('yojana_sarthi_docs');
+        if (savedDocs) {
+          try {
+            setDocuments(JSON.parse(savedDocs));
+          } catch (e) {}
+        }
       }
-    }
-    const savedDocs = localStorage.getItem('yojana_sarthi_docs');
-    if (savedDocs) {
-      try {
-        setDocuments(JSON.parse(savedDocs));
-      } catch (e) {
-        console.error(e);
-      }
-    }
+    });
 
     // Check for returning Cashfree Redirect verification ID
     const cfVerId = localStorage.getItem('yojana_sarthi_cf_ver_id');
@@ -78,11 +97,19 @@ const Profile = () => {
           if (!res.ok) throw new Error('API server returned error');
           return res.json();
         })
-        .then(data => {
+        .then(async (data) => {
           if (data.status === 'AUTHENTICATED' || data.status === 'SUCCESS' || data.status === 'COMPLETED') {
             const details = data.user_details || {};
             const fullName = details.name || 'Verified Beneficiary';
             
+            const freshDocs = [
+              { name: 'Aadhaar Card (Verified via Cashfree SecureID)', addedAt: new Date().toLocaleDateString() },
+              { name: 'PAN Card (Verified via Cashfree SecureID)', addedAt: new Date().toLocaleDateString() },
+              { name: 'Driving License (Verified via Cashfree SecureID)', addedAt: new Date().toLocaleDateString() },
+              { name: '7/12 Land holding records (Verified via Cashfree)', addedAt: new Date().toLocaleDateString() },
+              { name: 'HSC Academic Marksheet (Verified via Cashfree)', addedAt: new Date().toLocaleDateString() }
+            ];
+
             const verifiedProfile = {
               fullName: fullName,
               aadhaar: details.aadhaar_number || 'XXXX-XXXX-8924',
@@ -95,21 +122,20 @@ const Profile = () => {
               category: 'OBC',
               gender: details.gender === 'M' ? 'Male' : 'Female',
               verification_status: 'Verified',
-              data_sources: ['User Input', 'DigiLocker']
+              data_sources: ['User Input', 'DigiLocker'],
+              documents: freshDocs
             };
 
             setProfileData(verifiedProfile);
-            localStorage.setItem('yojana_sarthi_profile', JSON.stringify(verifiedProfile));
-
-            const freshDocs = [
-              { name: 'Aadhaar Card (Verified via Cashfree SecureID)', addedAt: new Date().toLocaleDateString() },
-              { name: 'PAN Card (Verified via Cashfree SecureID)', addedAt: new Date().toLocaleDateString() },
-              { name: 'Driving License (Verified via Cashfree SecureID)', addedAt: new Date().toLocaleDateString() },
-              { name: '7/12 Land holding records (Verified via Cashfree)', addedAt: new Date().toLocaleDateString() },
-              { name: 'HSC Academic Marksheet (Verified via Cashfree)', addedAt: new Date().toLocaleDateString() }
-            ];
             setDocuments(freshDocs);
+            localStorage.setItem('yojana_sarthi_profile', JSON.stringify(verifiedProfile));
             localStorage.setItem('yojana_sarthi_docs', JSON.stringify(freshDocs));
+
+            // Save to Firestore if user logged in
+            const user = auth.currentUser;
+            if (user) {
+              await setDoc(doc(db, "citizens", user.uid), verifiedProfile);
+            }
 
             localStorage.removeItem('yojana_sarthi_cf_ver_id');
             setSyncing(false);
@@ -129,6 +155,8 @@ const Profile = () => {
           setSyncing(false);
         });
     }
+
+    return () => unsubscribe();
   }, []);
 
   const handleInputChange = (e) => {
@@ -139,15 +167,28 @@ const Profile = () => {
     }));
   };
 
-  const saveProfile = (e) => {
+  const saveProfile = async (e) => {
     e.preventDefault();
     const updated = {
       ...profileData,
       verification_status: profileData.verification_status || 'Unverified',
-      data_sources: profileData.data_sources || ['User Input']
+      data_sources: profileData.data_sources || ['User Input'],
+      documents: documents
     };
+    
     setProfileData(updated);
     localStorage.setItem('yojana_sarthi_profile', JSON.stringify(updated));
+    
+    // Save to Cloud Firestore
+    const user = auth.currentUser;
+    if (user) {
+      try {
+        await setDoc(doc(db, "citizens", user.uid), updated);
+      } catch (err) {
+        console.error("Failed to save profile to Firestore:", err);
+      }
+    }
+
     setIsEditing(false);
     
     // Dispatch update event
@@ -155,19 +196,42 @@ const Profile = () => {
     alert('Profile saved successfully!');
   };
 
-  const addDocument = (e) => {
+  const addDocument = async (e) => {
     e.preventDefault();
     if (!newDocName.trim()) return;
     const updatedDocs = [...documents, { name: newDocName.trim(), addedAt: new Date().toLocaleDateString() }];
     setDocuments(updatedDocs);
     localStorage.setItem('yojana_sarthi_docs', JSON.stringify(updatedDocs));
+    
+    // Save to Firestore
+    const user = auth.currentUser;
+    if (user) {
+      try {
+        const updated = { ...profileData, documents: updatedDocs };
+        await setDoc(doc(db, "citizens", user.uid), updated);
+      } catch (err) {
+        console.error("Failed to add document to Firestore:", err);
+      }
+    }
+
     setNewDocName('');
   };
 
-  const removeDocument = (index) => {
+  const removeDocument = async (index) => {
     const updatedDocs = documents.filter((_, idx) => idx !== index);
     setDocuments(updatedDocs);
     localStorage.setItem('yojana_sarthi_docs', JSON.stringify(updatedDocs));
+    
+    // Save to Firestore
+    const user = auth.currentUser;
+    if (user) {
+      try {
+        const updated = { ...profileData, documents: updatedDocs };
+        await setDoc(doc(db, "citizens", user.uid), updated);
+      } catch (err) {
+        console.error("Failed to remove document from Firestore:", err);
+      }
+    }
   };
 
   // Real Cashfree API Flow Redirect Trigger
@@ -241,7 +305,7 @@ const Profile = () => {
     setSyncing(true);
 
     // Simulate downloading documents and verifying profile parameters
-    setTimeout(() => {
+    setTimeout(async () => {
       const userStr = localStorage.getItem('yojana_sarthi_current_user');
       let currentUserName = 'Citizen';
       let phoneNum = '9876543210';
@@ -255,7 +319,15 @@ const Profile = () => {
         } catch (err) {}
       }
 
-      // 1. Update Profile
+      const freshDocs = [
+        { name: 'Aadhaar Card (Verified via Cashfree SecureID)', addedAt: new Date().toLocaleDateString() },
+        { name: 'PAN Card (Verified via Cashfree SecureID)', addedAt: new Date().toLocaleDateString() },
+        { name: 'Driving License (Verified via Cashfree SecureID)', addedAt: new Date().toLocaleDateString() },
+        { name: '7/12 Land holding records (Verified via Cashfree)', addedAt: new Date().toLocaleDateString() },
+        { name: 'HSC Academic Marksheet (Verified via Cashfree)', addedAt: new Date().toLocaleDateString() }
+      ];
+
+      // 1. Update Profile & Documents in state and local storage
       const verifiedProfile = {
         fullName: currentUserName,
         aadhaar: 'XXXX-XXXX-8924',
@@ -268,21 +340,24 @@ const Profile = () => {
         category: 'OBC',
         gender: 'Male',
         verification_status: 'Verified',
-        data_sources: ['User Input', 'DigiLocker']
+        data_sources: ['User Input', 'DigiLocker'],
+        documents: freshDocs
       };
+      
       setProfileData(verifiedProfile);
-      localStorage.setItem('yojana_sarthi_profile', JSON.stringify(verifiedProfile));
-
-      // 2. Add Official DigiLocker Documents to Vault
-      const freshDocs = [
-        { name: 'Aadhaar Card (Verified via Cashfree SecureID)', addedAt: new Date().toLocaleDateString() },
-        { name: 'PAN Card (Verified via Cashfree SecureID)', addedAt: new Date().toLocaleDateString() },
-        { name: 'Driving License (Verified via Cashfree SecureID)', addedAt: new Date().toLocaleDateString() },
-        { name: '7/12 Land holding records (Verified via Cashfree)', addedAt: new Date().toLocaleDateString() },
-        { name: 'HSC Academic Marksheet (Verified via Cashfree)', addedAt: new Date().toLocaleDateString() }
-      ];
       setDocuments(freshDocs);
+      localStorage.setItem('yojana_sarthi_profile', JSON.stringify(verifiedProfile));
       localStorage.setItem('yojana_sarthi_docs', JSON.stringify(freshDocs));
+
+      // 2. Write to Firestore
+      const user = auth.currentUser;
+      if (user) {
+        try {
+          await setDoc(doc(db, "citizens", user.uid), verifiedProfile);
+        } catch (err) {
+          console.error("Failed to write simulation profile to Firestore:", err);
+        }
+      }
 
       // 3. Clear Linking State
       setSyncing(false);
@@ -295,21 +370,32 @@ const Profile = () => {
     }, 1500);
   };
 
-  const handleUnlinkDigiLocker = () => {
+  const handleUnlinkDigiLocker = async () => {
     if (window.confirm('Are you sure you want to unlink DigiLocker? Verified status will be reset.')) {
+      const userDocs = documents.filter(doc => !doc.name.includes('Cashfree') && !doc.name.includes('DigiLocker'));
+      
       const unlinkedProfile = {
         ...profileData,
         aadhaar: '',
         verification_status: 'Unverified',
-        data_sources: ['User Input']
+        data_sources: ['User Input'],
+        documents: userDocs
       };
+      
       setProfileData(unlinkedProfile);
-      localStorage.setItem('yojana_sarthi_profile', JSON.stringify(unlinkedProfile));
-
-      // Remove verified docs
-      const userDocs = documents.filter(doc => !doc.name.includes('Cashfree') && !doc.name.includes('DigiLocker'));
       setDocuments(userDocs);
+      localStorage.setItem('yojana_sarthi_profile', JSON.stringify(unlinkedProfile));
       localStorage.setItem('yojana_sarthi_docs', JSON.stringify(userDocs));
+
+      // Write to Firestore
+      const user = auth.currentUser;
+      if (user) {
+        try {
+          await setDoc(doc(db, "citizens", user.uid), unlinkedProfile);
+        } catch (err) {
+          console.error("Failed to unlink profile in Firestore:", err);
+        }
+      }
 
       // Dispatch event
       window.dispatchEvent(new Event('profileUpdate'));
@@ -924,7 +1010,8 @@ const Profile = () => {
                       category: 'All',
                       gender: 'All',
                       verification_status: 'Unverified',
-                      data_sources: ['User Input']
+                      data_sources: ['User Input'],
+                      documents: []
                     });
                     setDocuments([]);
                     // Dispatch update event

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, DollarSign, Briefcase, Users, Award, ShieldCheck, ArrowRight, ArrowLeft } from 'lucide-react';
 import './Onboarding.css';
+import { auth, db } from '../firebase';
+import { doc, setDoc } from 'firebase/firestore';
 
 const Onboarding = () => {
   const navigate = useNavigate();
@@ -16,7 +18,7 @@ const Onboarding = () => {
 
   const totalSteps = 5;
 
-  const nextStep = () => {
+  const nextStep = async () => {
     if (step === totalSteps) {
       const savedProfile = localStorage.getItem('yojana_sarthi_profile');
       let currentProfile = savedProfile ? JSON.parse(savedProfile) : {};
@@ -29,6 +31,16 @@ const Onboarding = () => {
       
       localStorage.setItem('yojana_sarthi_profile', JSON.stringify(currentProfile));
       
+      // Save to Cloud Firestore
+      const user = auth.currentUser;
+      if (user) {
+        try {
+          await setDoc(doc(db, "citizens", user.uid), currentProfile);
+        } catch (err) {
+          console.error("Failed to save onboarding parameters to Firestore:", err);
+        }
+      }
+
       // Dispatch custom profileUpdate event
       window.dispatchEvent(new Event('profileUpdate'));
       

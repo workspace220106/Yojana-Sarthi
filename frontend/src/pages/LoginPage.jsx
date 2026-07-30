@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { UserCheck, Lock, ArrowRight, CheckCircle2, AlertCircle, ShieldCheck, FileText, CreditCard } from 'lucide-react';
 import emblem from '../assets/images/emblem.png';
 import './LoginPage.css';
+import { auth, db } from '../firebase';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 
 const LoginPage = () => {
   const [role, setRole] = useState('citizen'); // 'citizen' or 'admin'
@@ -35,30 +38,22 @@ const LoginPage = () => {
           throw new Error("Mobile number must be a valid 10-digit number");
         }
         
-        // Local simulation for registration
-        const savedUsersRaw = localStorage.getItem('yojana_sarthi_mock_users') || '[]';
-        const mockUsers = JSON.parse(savedUsersRaw);
+        // 1. Create account in Firebase Auth
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
         
-        if (mockUsers.some(u => u.email === email && u.role === role)) {
-          throw new Error("User with this email is already registered for this portal.");
-        }
-        
-        const newUser = {
-          uid: 'mock-' + Math.random().toString(36).substr(2, 9),
+        const userData = {
+          uid: user.uid,
           fullName: fullName || (role === 'citizen' ? 'Citizen' : 'Administrator'),
           email,
-          password,
           role,
           mobileNumber,
           state: residentialState,
           createdAt: new Date().toISOString()
         };
         
-        mockUsers.push(newUser);
-        localStorage.setItem('yojana_sarthi_mock_users', JSON.stringify(mockUsers));
-        
-        // Save current active user profile
-        localStorage.setItem('yojana_sarthi_current_user', JSON.stringify(newUser));
+        // 2. Save session details locally
+        localStorage.setItem('yojana_sarthi_current_user', JSON.stringify(userData));
 
         if (role === 'citizen') {
           const defaultProfile = {
@@ -73,42 +68,87 @@ const LoginPage = () => {
             category: 'All',
             gender: 'All',
             verification_status: 'Unverified',
-            data_sources: ['User Input']
+            data_sources: ['User Input'],
+            documents: []
           };
+          
+          // 3. Save profile structure to Cloud Firestore
+          await setDoc(doc(db, "citizens", user.uid), defaultProfile);
           localStorage.setItem('yojana_sarthi_profile', JSON.stringify(defaultProfile));
+          
           // Dispatch custom profileUpdate event
           window.dispatchEvent(new Event('profileUpdate'));
         }
       } else {
-        // Sign In simulation
-        const savedUsersRaw = localStorage.getItem('yojana_sarthi_mock_users') || '[]';
-        const mockUsers = JSON.parse(savedUsersRaw);
+        // 1. Sign In using Firebase Auth
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
         
-        let user = mockUsers.find(u => u.email === email && u.password === password && u.role === role);
-        
-        if (!user) {
-          throw new Error("Account not found. Please verify your credentials or register a new account.");
-        }
+        const userData = {
+          uid: user.uid,
+          fullName: role === 'citizen' ? 'Citizen' : 'Administrator',
+          email,
+          role,
+          createdAt: new Date().toISOString()
+        };
 
-        localStorage.setItem('yojana_sarthi_current_user', JSON.stringify(user));
+        localStorage.setItem('yojana_sarthi_current_user', JSON.stringify(userData));
 
         if (role === 'citizen') {
-          const savedProfile = localStorage.getItem('yojana_sarthi_profile');
-          let currentProfile = savedProfile ? JSON.parse(savedProfile) : {};
-          currentProfile.fullName = user.fullName || currentProfile.fullName || 'Citizen';
-          currentProfile.phone = user.mobileNumber || currentProfile.phone || '';
-          currentProfile.state = user.state || currentProfile.state || 'Maharashtra';
+          // 2. Fetch profile from Cloud Firestore
+          const docRef = doc(db, "citizens", user.uid);
+          const docSnap = await getDoc(docRef);
+          
+          let currentProfile = {};
+          if (docSnap.exists()) {
+            currentProfile = docSnap.data();
+          } else {
+            // Fallback profile if document doesn't exist yet
+            currentProfile = {
+              fullName: user.displayName || 'Citizen',
+              aadhaar: '',
+              phone: '',
+              state: 'Maharashtra',
+              address: '',
+              age: '',
+              income: '',
+              occupation: 'All',
+              category: 'All',
+              gender: 'All',
+              verification_status: 'Unverified',
+              data_sources: ['User Input'],
+              documents: []
+            };
+            await setDoc(docRef, currentProfile);
+          }
+          
           localStorage.setItem('yojana_sarthi_profile', JSON.stringify(currentProfile));
+          
+          // Sync documents vault
+          if (currentProfile.documents) {
+            localStorage.setItem('yojana_sarthi_docs', JSON.stringify(currentProfile.documents));
+          } else {
+            localStorage.setItem('yojana_sarthi_docs', '[]');
+          }
+
           // Dispatch custom profileUpdate event
           window.dispatchEvent(new Event('profileUpdate'));
         }
       }
 
-      // Successful login/registration simulation, proceed to portal
+      // Successful login/registration, proceed to portal
       navigate('/landing');
     } catch (err) {
       console.error(err);
-      setError(err.message || 'Authentication failed. Please check credentials.');
+      let errorMsg = err.message || 'Authentication failed.';
+      if (err.code === 'auth/email-already-in-use') {
+        errorMsg = 'This email is already registered. Please sign in instead.';
+      } else if (err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found') {
+        errorMsg = 'Invalid email or password. Please verify your credentials.';
+      } else if (err.code === 'auth/invalid-email') {
+        errorMsg = 'Please enter a valid email address.';
+      }
+      setError(errorMsg);
     } finally {
       setLoading(false);
     }
