@@ -1,0 +1,29 @@
+# YojanaSarthi Backend Dependencies
+
+# Web Framework
+fastapi
+uvicorn[standard]
+
+# LLM & Embeddings
+google-generativeai
+sentence-transformers
+faiss-cpu
+
+# Data Processing
+numpy
+pandas
+
+# Database
+firebase-admin
+supabase
+
+# Scraping
+requests
+beautifulsoup4
+
+# Utils
+python-dotenv
+pydantic
+tqdm
+langchain
+langchain-community
