@@ -42,19 +42,6 @@ const LoginPage = () => {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         
-        const userData = {
-          uid: user.uid,
-          fullName: fullName || (role === 'citizen' ? 'Citizen' : 'Administrator'),
-          email,
-          role,
-          mobileNumber,
-          state: residentialState,
-          createdAt: new Date().toISOString()
-        };
-        
-        // 2. Save session details locally
-        localStorage.setItem('yojana_sarthi_current_user', JSON.stringify(userData));
-
         if (role === 'citizen') {
           const defaultProfile = {
             fullName: fullName || 'Citizen',
@@ -72,13 +59,14 @@ const LoginPage = () => {
             documents: []
           };
           
-          // 3. Save profile structure to Cloud Firestore
+          // 2. Save profile structure to Cloud Firestore
           await setDoc(doc(db, "citizens", user.uid), defaultProfile);
-          localStorage.setItem('yojana_sarthi_profile', JSON.stringify(defaultProfile));
-          
-          // Dispatch custom profileUpdate event
-          window.dispatchEvent(new Event('profileUpdate'));
         }
+
+        alert('Account created successfully! Please sign in using your new credentials to link your DigiLocker.');
+        setMode('login');
+        setPassword('');
+        setConfirmPassword('');
       } else {
         // 1. Sign In using Firebase Auth
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -133,11 +121,42 @@ const LoginPage = () => {
 
           // Dispatch custom profileUpdate event
           window.dispatchEvent(new Event('profileUpdate'));
+
+          // 3. Immediately launch Cashfree DigiLocker redirect flow as part of login
+          try {
+            const res = await fetch('/api/verification/digilocker/url', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                redirect_url: window.location.origin + '/profile'
+              })
+            });
+
+            if (!res.ok) throw new Error('API server returned error');
+            const data = await res.json();
+
+            if (data.url) {
+              localStorage.setItem('yojana_sarthi_cf_ver_id', data.verification_id);
+              // Redirect browser to Cashfree SecureID DigiLocker Gateway
+              window.location.href = data.url;
+              return;
+            } else {
+              throw new Error('Verification URL not generated');
+            }
+          } catch (cfErr) {
+            console.error(cfErr);
+            if (window.confirm('Login successful, but unable to initialize Cashfree DigiLocker Gateway. Would you like to proceed to your dashboard anyway and link it later?')) {
+              navigate('/landing');
+            }
+            return;
+          }
+        } else {
+          // For admin, go straight to landing
+          navigate('/landing');
         }
       }
-
-      // Successful login/registration, proceed to portal
-      navigate('/landing');
     } catch (err) {
       console.error(err);
       let errorMsg = err.message || 'Authentication failed.';
