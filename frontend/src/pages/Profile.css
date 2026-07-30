@@ -716,9 +716,265 @@
   to { transform: translateY(0); opacity: 1; }
 }
 
+/* Visual Charts Dashboard */
+.visual-charts-dashboard {
+  margin-top: 3rem;
+  border-top: 2px solid #EDF2F7;
+  padding-top: 2rem;
+}
+
+.charts-title-decor {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.charts-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.chart-wrapper-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chart-wrapper-card.full-row-card {
+  grid-column: span 2;
+}
+
+.chart-header-block {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid #E2E8F0;
+  padding-bottom: 8px;
+}
+
+.chart-header-block h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #2D3748;
+}
+
+.chart-header-icon {
+  color: #FF6B00;
+}
+
+/* Bar Chart */
+.bar-chart-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subject-lbl {
+  width: 70px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #4A5568;
+}
+
+.bar-track {
+  flex: 1;
+  height: 20px;
+  background: #EDF2F7;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  transition: width 1s ease-in-out;
+}
+
+.inner-score-txt {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: white;
+}
+
+.chart-footer-caption {
+  font-size: 0.78rem;
+  color: #718096;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+/* Donut Chart */
+.donut-chart-simulation {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.circle-pie-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.circular-chart {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.circle-center-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-center-label .large-txt {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #2D3748;
+  line-height: 1;
+}
+
+.circle-center-label .small-txt {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #718096;
+  text-transform: uppercase;
+}
+
+.pie-legend-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot.green { background: #27AE60; }
+.legend-dot.orange { background: #F39C12; }
+
+.legend-lbl {
+  font-size: 0.85rem;
+  color: #4A5568;
+}
+
+/* DL / PAN Badges */
+.dl-pan-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.dl-badge-graphic {
+  background: linear-gradient(135deg, #1A5276 0%, #2980B9 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 15px rgba(41, 128, 185, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 130px;
+}
+
+.dl-badge-graphic.pan-graphic {
+  background: linear-gradient(135deg, #0E6251 0%, #16A085 100%);
+  box-shadow: 0 4px 15px rgba(22, 160, 133, 0.2);
+}
+
+.graphic-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-lbl {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  opacity: 0.85;
+}
+
+.status-indicator {
+  font-size: 0.62rem;
+  font-weight: 900;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.dl-num {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin: 1rem 0;
+  font-family: monospace;
+}
+
+.graphic-bot-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.graphic-bot-row .sub-lbl {
+  font-size: 0.58rem;
+  font-weight: 700;
+  opacity: 0.75;
+  display: block;
+}
+
+.graphic-bot-row .val {
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
 @media (max-width: 900px) {
-  .info-display-grid, .form-grid, .verified-grid {
+  .info-display-grid, .form-grid, .verified-grid, .charts-grid-container, .dl-pan-badges-grid {
     grid-template-columns: 1fr;
+  }
+  .chart-wrapper-card.full-row-card {
+    grid-column: span 1;
   }
   .digilocker-hero-info {
     flex-direction: column;
