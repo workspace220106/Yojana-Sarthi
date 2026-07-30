@@ -23,7 +23,8 @@ def get_digilocker_url(callback_url: str):
     if not CLIENT_ID or not CLIENT_SECRET:
         raise ValueError("Cashfree Client ID or Client Secret is not configured.")
 
-    endpoint = f"{BASE_URL}/verification/digilocker/url"
+    # Endpoint is /verification/digilocker for generating the consent URL
+    endpoint = f"{BASE_URL}/verification/digilocker"
     verification_id = f"vid_{uuid.uuid4().hex[:12]}"
     
     headers = {
@@ -35,13 +36,13 @@ def get_digilocker_url(callback_url: str):
     payload = {
         "verification_id": verification_id,
         "redirect_url": callback_url,
-        "back_url": callback_url
+        "document_requested": ["AADHAAR", "PAN", "DRIVING_LICENSE"]
     }
     
     response = requests.post(endpoint, json=payload, headers=headers)
     
     if response.status_code != 200:
-        raise Exception(f"Cashfree API Error: {response.text}")
+        raise Exception(f"Cashfree API Error ({response.status_code}): {response.text}")
         
     data = response.json()
     return {
@@ -57,16 +58,21 @@ def get_digilocker_status(verification_id: str):
     if not CLIENT_ID or not CLIENT_SECRET:
         raise ValueError("Cashfree Client ID or Client Secret is not configured.")
 
-    endpoint = f"{BASE_URL}/verification/digilocker/status/{verification_id}"
+    # Status check is GET /verification/digilocker/status?verification_id={id}
+    endpoint = f"{BASE_URL}/verification/digilocker/status"
     
     headers = {
         "x-client-id": CLIENT_ID,
         "x-client-secret": CLIENT_SECRET
     }
     
-    response = requests.get(endpoint, headers=headers)
+    params = {
+        "verification_id": verification_id
+    }
+    
+    response = requests.get(endpoint, headers=headers, params=params)
     
     if response.status_code != 200:
-        raise Exception(f"Cashfree API Error: {response.text}")
+        raise Exception(f"Cashfree API Error ({response.status_code}): {response.text}")
         
     return response.json()
