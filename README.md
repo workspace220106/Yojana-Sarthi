@@ -2,22 +2,23 @@
 
 [![React](https://img.shields.io/badge/React-19.2-blue?logo=react&logoColor=white)](https://react.dev)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Modern-green?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![Gemini](https://img.shields.io/badge/Gemini-3.6--Flash-orange?logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
+[![Gemini](https://img.shields.io/badge/Gemini-Flash-orange?logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
 [![FAISS](https://img.shields.io/badge/FAISS-VectorStore-yellow)](https://github.com/facebookresearch/faiss)
+[![Firebase](https://img.shields.io/badge/Firebase-Admin-orange?logo=firebase&logoColor=white)](https://firebase.google.com)
 [![License](https://img.shields.io/badge/License-MIT-purple)](LICENSE)
 
-> An AI-powered platform to help Indian citizens (specifically focused on Maharashtra Welfare Services) discover, verify eligibility, compare, and apply for central and state government schemes.
+> Yojana Sarthi is an intelligent, RAG-powered (Retrieval-Augmented Generation) portal designed to help Indian citizens (specifically tailored for Maharashtra Welfare Services) seamlessly discover, check eligibility for, compare, and apply for central and state government schemes.
 
 ---
 
 ## 🏗️ System Architecture & Data Flow
 
-Yojana Sarthi leverages a Retrieval-Augmented Generation (RAG) pipeline to query and extract answers directly from official scheme documents without hallucinating information.
+Yojana Sarthi leverages a Retrieval-Augmented Generation (RAG) pipeline to fetch contextually relevant government scheme documentation and present it dynamically to citizens without LLM hallucinations.
 
 ```mermaid
 graph TD
     subgraph Data Pipeline & Scraper
-        A[MyScheme API / Scraper] -->|Raw Schemes| B[data/raw/maharashtra_schemes_complete.json]
+        A[MyScheme API / Web Scraper] -->|Raw Schemes| B[data/raw/maharashtra_schemes_complete.json]
         B -->|clean_data.py| C[data/cleaned/schemes_cleaned.json]
         C -->|chunk_data.py| D[data/chunks/scheme_chunks.json]
         D -->|generate_embeddings.py| E[data/embeddings/faiss.index]
@@ -32,9 +33,11 @@ graph TD
         J -->|Generate Response| K[RAG Output Response]
     end
 
-    subgraph Frontend React App
+    subgraph Frontend React App & Firebase
         L[Citizen UI] -->|Form / Search Query| G
         K -->|Display Response & Sources| L
+        L -->|Authenticate / Save Profiles| M[(Firestore - default)]
+        L -->|Admin Management| N[(Firestore - admin-db)]
     end
 ```
 
@@ -42,43 +45,65 @@ graph TD
 
 ## 🌟 Key Features
 
-### 🖥️ Citizen Frontend
-*   🔍 **Advanced Scheme Finder**: Search schemes by natural language query or filter by profile demographics (age, annual income, occupation, category, gender).
-*   📋 **Direct Benefit Transfer (DBT) Tracker**: Keep tabs on welfare payouts and disbursement criteria.
-*   🤖 **AI Assistant**: Chat with the RAG-powered Yojana Sarthi chatbot to query specific scheme regulations and instructions.
-*   📑 **Document Advisor**: Instant eligibility checker recommending required documentation for applications.
-*   ⚖️ **Scheme Comparison**: Side-by-side comparison of benefits, eligibility, and rules across multiple schemes.
-*   ⚠️ **Rejection Predictor**: Analyzes applicant details against scheme constraints to estimate potential rejection risks.
-*   🎙️ **Voice Interface**: Multilingual speech support for voice-enabled queries.
-*   🗣️ **Multilingual Settings**: Adjust preferences for Marathi, Hindi, and English support.
+### 🖥️ Citizen Frontend (React + Vite)
+*   🔍 **Advanced Scheme Finder**: Search schemes using natural language queries or filter dynamically by profile demographics (age, annual income, occupation, category, gender).
+*   📋 **Direct Benefit Transfer (DBT) Tracker**: Track welfare payouts and see specific disbursement criteria.
+*   🤖 **AI Assistant**: Converse with the RAG-powered chatbot to query detailed rules, applications, and instructions for any scheme.
+*   📑 **Document Advisor**: Instant eligibility checker recommending the exact documentation list required for applications.
+*   ⚖️ **Scheme Comparison**: Side-by-side comparison of benefits, eligibility requirements, and implementation rules across multiple schemes.
+*   ⚠️ **Rejection Predictor**: Automatically flags potential disqualifications by verifying user demographics against scheme constraints.
+*   🎙️ **Voice Interface**: Multilingual speech recognition support for voice-enabled queries.
+*   🗣️ **Multilingual Settings**: Adjust UI language and speech preferences for Marathi, Hindi, and English.
+*   👤 **Onboarding & User Profiles**: Guides users through profile setup to automatically personalize scheme recommendations.
+*   🛡️ **Admin Portal**: Dedicated administrator workspace using a separate named Firestore instance (`admin-db`) to manage scheme databases and audit logs.
 
-### ⚙️ RAG Backend
-*   ⚡ **FastAPI Web Framework**: High-performance asynchronous routes for chat, recommendations, and eligibility checks.
-*   🧠 **FAISS Similarity Search**: Dense vector retrieval based on the `all-MiniLM-L6-v2` Sentence Transformer.
-*   🤖 **Google Gemini Integration**: Powered by `gemini-3.6-flash` utilizing the official `google-genai` client with error-handling and automated retries.
-*   🔬 **Extensive Test Pipeline**: Dedicated unit and performance tests (`test_gemini.py`, `test_pipeline.py`, etc.) for validating the retriever and LLM outputs.
+### ⚙️ RAG Backend (FastAPI + FAISS + Gemini)
+*   ⚡ **FastAPI Web Framework**: Asynchronous, high-performance API endpoints for chat, recommendations, and eligibility checks.
+*   🧠 **FAISS Similarity Search**: Dense vector retrieval based on the `all-MiniLM-L6-v2` Sentence Transformer for quick and accurate content lookup.
+*   🤖 **Google Gemini Integration**: Powered by Gemini models utilizing the official `google-genai` client, complete with custom retries and JSON fallback validation.
+*   🔬 **Extensive Verification Suite**: Automated tests (`test_pipeline.py`, `test_retriever.py`, `test_gemini.py`) to validate LLM generation and retrieval relevance.
 
 ---
 
 ## 📂 Repository Directory Structure
 
 ```text
-├── .github/workflows/    # CI/CD pipelines for Backend and Scraper
-├── assets/               # Media and logo assets
-├── backend/              # FastAPI Application
-│   ├── rag/              # Vector search, prompt builders, and Gemini integrations
-│   ├── routes/           # Chat, eligibility, admin, translate, and scheme endpoints
-│   ├── tests/            # System unit tests
-│   ├── app.py            # FastAPI main server entry point
-│   └── config.py         # Application settings, model parameters, and global paths
-├── data/                 # Raw, cleaned, chunked, and embedded schemes databases
-├── docs/                 # General project documentation
-├── frontend/             # React + Vite SPA
-│   ├── src/pages/        # Scheme search, RAG chat, comparison, and advisor pages
-│   ├── src/components/   # Reusable UI widgets and layout templates
-│   └── src/styles/       # UI theme custom styling
-├── models/               # Model weights storage
-└── scraper/              # Data collection and cleaning scripts
+├── .github/                # GitHub configurations and workflows
+│   └── workflows/          # Workflows directory (empty / provisioned for CI/CD)
+├── assets/                 # Logo and visual media assets
+├── backend/                # FastAPI Application
+│   ├── database/           # DB scripts and models (Firebase & schema storage)
+│   ├── middleware/         # Custom API middlewares (CORS, logging)
+│   ├── rag/                # Vector search, prompt builders, and Gemini integrations
+│   │   ├── gemini_client.py   # Interface to Google Gemini API
+│   │   ├── prompt_builder.py  # Context-rich system prompt compiler
+│   │   ├── rag_pipeline.py    # Main pipeline coordinating retriever & LLM
+│   │   ├── retriever.py       # Sentence-Transformers search engine
+│   │   └── vector_store.py    # FAISS local index loader
+│   ├── routes/             # API Router definitions (chat, schemes, admin, etc.)
+│   ├── services/           # Underlying business logic modules (eligibility, translation, speech)
+│   ├── tests/              # Core unit tests
+│   ├── app.py              # FastAPI main server entry point
+│   ├── config.py           # Application settings, model parameters, and global paths
+│   └── schemas.py          # Pydantic data schemas for API requests/responses
+├── data/                   # Embedded, raw, chunked, and cleaned scheme files
+├── docs/                   # General project documentation
+├── frontend/               # React + Vite Single Page Application (SPA)
+│   ├── src/                # Source files
+│   │   ├── components/     # Reusable UI widgets and layout templates
+│   │   ├── pages/          # Individual feature pages (AIAssistant, Profile, Admin, etc.)
+│   │   ├── services/       # API call wrappers (api.js)
+│   │   ├── styles/         # Page-specific CSS styling
+│   │   ├── App.jsx         # Component router and dashboard layout
+│   │   ├── firebase.js     # Firebase connection wrapper (auth, citizen db, admin db)
+│   │   └── main.jsx        # App entry point
+│   └── vercel.json         # Deployment configuration for Vercel hosting
+├── scraper/                # Web scraping and data parsing pipeline
+│   ├── chunk_data.py       # Divides scheme details into context-aware chunks
+│   ├── clean_data.py       # Preprocesses raw JSON payloads
+│   ├── fetch_maharashtra.py# Downloads Maharashtra welfare schemes
+│   └── generate_embeddings.py # Builds local FAISS index from scheme chunks
+└── requirements.txt        # Full python environment requirements list
 ```
 
 ---
@@ -99,8 +124,8 @@ graph TD
     cd backend
     python -m venv .venv
     # Activate virtual environment:
-    # Windows:
-    .venv\Scripts\activate
+    # Windows (PowerShell):
+    .venv\Scripts\activate.ps1
     # macOS/Linux:
     source .venv/bin/activate
     ```
@@ -111,13 +136,13 @@ graph TD
     ```
 
 3.  **Configure Environment Variables**:
-    Create a `.env` file in the root directory:
+    Create a `.env` file in the root project directory:
     ```env
     GEMINI_API_KEY=your_google_gemini_api_key_here
     ```
 
 4.  **Run Pipeline Tests**:
-    To verify that retrieval and LLM responses are functioning correctly:
+    Verify that retrieval and Gemini integrations are working properly:
     ```bash
     python test_pipeline.py
     ```
@@ -145,13 +170,13 @@ graph TD
     ```bash
     npm run dev
     ```
-    The app will open locally at `http://localhost:5173`.
+    The application will run locally at `http://localhost:5173`.
 
 ---
 
 ### 🧹 3. Scraper & Embedding Pipeline
 
-To ingest, clean, chunk, and embed new schemes manually, run the following steps from the project root:
+To fetch, clean, chunk, and index schemes manually from the project root:
 
 1.  **Clean Raw Scheme Data**:
     ```bash
