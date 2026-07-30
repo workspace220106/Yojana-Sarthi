@@ -42,3 +42,4 @@ langchain
 langchain-community
 
 pydantic
+supabase
