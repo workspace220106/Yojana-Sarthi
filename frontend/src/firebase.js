@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
 
 // Web app's Firebase configuration
 const firebaseConfig = {
@@ -16,6 +17,7 @@ const firebaseConfig = {
 // Initialize Firebase services
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const analytics = getAnalytics(app);
 
 // 1. Citizen Database (Default Instance)
 export const db = getFirestore(app); 
