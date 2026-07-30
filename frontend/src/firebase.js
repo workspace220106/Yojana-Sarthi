@@ -5,13 +5,13 @@ import { getAnalytics } from "firebase/analytics";
 
 // Web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDdfQc5slI2GfEis2TBPbCUuj6HHV02rdc",
-  authDomain: "yojana-sarthi.firebaseapp.com",
-  projectId: "yojana-sarthi",
-  storageBucket: "yojana-sarthi.firebasestorage.app",
-  messagingSenderId: "718499824002",
-  appId: "1:718499824002:web:2f102e4cfb9d4f389d0f9b",
-  measurementId: "G-25SSNENHFE"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyDdfQc5slI2GfEis2TBPbCUuj6HHV02rdc",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "yojana-sarthi.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "yojana-sarthi",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "yojana-sarthi.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "718499824002",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:718499824002:web:2f102e4cfb9d4f389d0f9b",
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-25SSNENHFE"
 };
 
 // Initialize Firebase services
