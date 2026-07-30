@@ -13,14 +13,18 @@ pipeline = RAGPipeline()
 
 @router.post("/", response_model=ChatResponse)
 def chat(request: ChatRequest):
-    """
-    Chat endpoint for Yojana Sarthi.
-    """
+    print("Received request")
+    print(request.query)
+
     try:
+        print("Calling pipeline...")
         result = pipeline.ask(request.query)
+        print("Pipeline finished!")
+
         return result
 
     except Exception as e:
+        print("ERROR:", e)
         raise HTTPException(
             status_code=500,
             detail=str(e)
