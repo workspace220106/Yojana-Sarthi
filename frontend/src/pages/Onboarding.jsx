@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, DollarSign, Briefcase, Users, Award, ShieldCheck, ArrowRight, ArrowLeft } from 'lucide-react';
 import './Onboarding.css';
-import { auth, db } from '../firebase';
-import { doc, setDoc } from 'firebase/firestore';
+import { supabase } from '../supabase';
 
 const Onboarding = () => {
   const navigate = useNavigate();
@@ -31,13 +30,28 @@ const Onboarding = () => {
       
       localStorage.setItem('yojana_sarthi_profile', JSON.stringify(currentProfile));
       
-      // Save to Cloud Firestore
-      const user = auth.currentUser;
-      if (user) {
+      // Save to Supabase
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
         try {
-          await setDoc(doc(db, "citizens", user.uid), currentProfile);
+          await supabase.from('citizens').upsert({
+            id: session.user.id,
+            full_name: currentProfile.fullName || 'Citizen',
+            aadhaar: currentProfile.aadhaar || '',
+            phone: currentProfile.phone || '',
+            state: currentProfile.state || 'Maharashtra',
+            address: currentProfile.address || '',
+            age: currentProfile.age ? parseInt(currentProfile.age) : null,
+            income: currentProfile.income ? parseInt(currentProfile.income) : null,
+            occupation: currentProfile.occupation,
+            category: currentProfile.category,
+            gender: currentProfile.gender,
+            verification_status: currentProfile.verification_status || 'Unverified',
+            data_sources: currentProfile.data_sources || ['User Input'],
+            documents: currentProfile.documents || []
+          });
         } catch (err) {
-          console.error("Failed to save onboarding parameters to Firestore:", err);
+          console.error("Failed to save onboarding parameters to Supabase:", err);
         }
       }
 

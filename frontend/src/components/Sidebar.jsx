@@ -18,8 +18,7 @@ import {
 } from 'lucide-react';
 import emblem from '../assets/images/emblem.png';
 import './Sidebar.css';
-import { auth } from '../firebase';
-import { signOut } from 'firebase/auth';
+import { supabase } from '../supabase';
 
 const Sidebar = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
@@ -29,7 +28,7 @@ const Sidebar = ({ isOpen, onClose }) => {
   const handleLogout = async () => {
     if (window.confirm("Are you sure you want to log out?")) {
       try {
-        await signOut(auth);
+        await supabase.auth.signOut();
         localStorage.removeItem('yojana_sarthi_current_user');
         localStorage.removeItem('yojana_sarthi_profile');
         localStorage.removeItem('yojana_sarthi_docs');

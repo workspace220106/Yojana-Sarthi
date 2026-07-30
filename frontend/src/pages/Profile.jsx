@@ -16,8 +16,7 @@ import {
   Gauge
 } from 'lucide-react';
 import './Profile.css';
-import { auth, db } from '../firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { supabase } from '../supabase';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('info');
@@ -49,41 +48,74 @@ const Profile = () => {
   const [syncing, setSyncing] = useState(false);
   const [linkingError, setLinkingError] = useState('');
 
-  // Load profile data and documents from Cloud Firestore on mount/auth state change
+  // Load profile data and documents from Supabase on mount
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        try {
-          const docRef = doc(db, "citizens", user.uid);
-          const docSnap = await getDoc(docRef);
-          if (docSnap.exists()) {
-            const data = docSnap.data();
-            setProfileData(data);
-            localStorage.setItem('yojana_sarthi_profile', JSON.stringify(data));
-            if (data.documents) {
-              setDocuments(data.documents);
-              localStorage.setItem('yojana_sarthi_docs', JSON.stringify(data.documents));
-            }
-          }
-        } catch (err) {
-          console.error("Failed to load profile from Firestore:", err);
-        }
-      } else {
-        // Fallback to local storage if user not logged in yet
-        const savedProfile = localStorage.getItem('yojana_sarthi_profile');
-        if (savedProfile) {
-          try {
-            setProfileData(JSON.parse(savedProfile));
-          } catch (e) {}
-        }
-        const savedDocs = localStorage.getItem('yojana_sarthi_docs');
-        if (savedDocs) {
-          try {
-            setDocuments(JSON.parse(savedDocs));
-          } catch (e) {}
-        }
+    // 1. Get initial session/user
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        fetchProfile(session.user.id);
       }
     });
+
+    // 2. Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        fetchProfile(session.user.id);
+      } else {
+        // Fallback to local storage if signed out
+        loadLocalFallback();
+      }
+    });
+
+    // Helper to fetch profile from Supabase
+    async function fetchProfile(userId) {
+      try {
+        const { data, error } = await supabase
+          .from('citizens')
+          .select('*')
+          .eq('id', userId)
+          .single();
+        
+        if (data && !error) {
+          const profile = {
+            fullName: data.full_name || 'Citizen',
+            aadhaar: data.aadhaar || '',
+            phone: data.phone || '',
+            state: data.state || 'Maharashtra',
+            address: data.address || '',
+            age: data.age ? String(data.age) : '',
+            income: data.income ? String(data.income) : '',
+            occupation: data.occupation || 'All',
+            category: data.category || 'All',
+            gender: data.gender || 'All',
+            verification_status: data.verification_status || 'Unverified',
+            data_sources: data.data_sources || ['User Input'],
+            documents: data.documents || []
+          };
+          setProfileData(profile);
+          setDocuments(data.documents || []);
+          localStorage.setItem('yojana_sarthi_profile', JSON.stringify(profile));
+          localStorage.setItem('yojana_sarthi_docs', JSON.stringify(data.documents || []));
+        }
+      } catch (err) {
+        console.error("Failed to load profile from Supabase:", err);
+      }
+    }
+
+    function loadLocalFallback() {
+      const savedProfile = localStorage.getItem('yojana_sarthi_profile');
+      if (savedProfile) {
+        try {
+          setProfileData(JSON.parse(savedProfile));
+        } catch (e) {}
+      }
+      const savedDocs = localStorage.getItem('yojana_sarthi_docs');
+      if (savedDocs) {
+        try {
+          setDocuments(JSON.parse(savedDocs));
+        } catch (e) {}
+      }
+    }
 
     // Check for returning Cashfree Redirect verification ID
     const cfVerId = localStorage.getItem('yojana_sarthi_cf_ver_id');
@@ -131,10 +163,25 @@ const Profile = () => {
             localStorage.setItem('yojana_sarthi_profile', JSON.stringify(verifiedProfile));
             localStorage.setItem('yojana_sarthi_docs', JSON.stringify(freshDocs));
 
-            // Save to Firestore if user logged in
-            const user = auth.currentUser;
-            if (user) {
-              await setDoc(doc(db, "citizens", user.uid), verifiedProfile);
+            // Save to Supabase
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session?.user) {
+              await supabase.from('citizens').upsert({
+                id: session.user.id,
+                full_name: fullName,
+                aadhaar: details.aadhaar_number || 'XXXX-XXXX-8924',
+                phone: details.phone_number || '9876543210',
+                state: details.state || 'Maharashtra',
+                address: details.address || 'Shivaji Nagar, Pune, Maharashtra - 411005',
+                age: 34,
+                income: 240000,
+                occupation: 'Farmer',
+                category: 'OBC',
+                gender: details.gender === 'M' ? 'Male' : 'Female',
+                verification_status: 'Verified',
+                data_sources: ['User Input', 'DigiLocker'],
+                documents: freshDocs
+              });
             }
 
             localStorage.removeItem('yojana_sarthi_cf_ver_id');
@@ -156,7 +203,7 @@ const Profile = () => {
         });
     }
 
-    return () => unsubscribe();
+    return () => subscription.unsubscribe();
   }, []);
 
   const handleInputChange = (e) => {
@@ -172,20 +219,34 @@ const Profile = () => {
     const updated = {
       ...profileData,
       verification_status: profileData.verification_status || 'Unverified',
-      data_sources: profileData.data_sources || ['User Input'],
-      documents: documents
+      data_sources: profileData.data_sources || ['User Input']
     };
     
     setProfileData(updated);
     localStorage.setItem('yojana_sarthi_profile', JSON.stringify(updated));
     
-    // Save to Cloud Firestore
-    const user = auth.currentUser;
-    if (user) {
+    // Save to Supabase
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session?.user) {
       try {
-        await setDoc(doc(db, "citizens", user.uid), updated);
+        await supabase.from('citizens').upsert({
+          id: session.user.id,
+          full_name: updated.fullName,
+          aadhaar: updated.aadhaar,
+          phone: updated.phone,
+          state: updated.state,
+          address: updated.address,
+          age: updated.age ? parseInt(updated.age) : null,
+          income: updated.income ? parseInt(updated.income) : null,
+          occupation: updated.occupation,
+          category: updated.category,
+          gender: updated.gender,
+          verification_status: updated.verification_status,
+          data_sources: updated.data_sources,
+          documents: documents
+        });
       } catch (err) {
-        console.error("Failed to save profile to Firestore:", err);
+        console.error("Failed to save profile to Supabase:", err);
       }
     }
 
@@ -203,14 +264,15 @@ const Profile = () => {
     setDocuments(updatedDocs);
     localStorage.setItem('yojana_sarthi_docs', JSON.stringify(updatedDocs));
     
-    // Save to Firestore
-    const user = auth.currentUser;
-    if (user) {
+    // Save to Supabase
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session?.user) {
       try {
-        const updated = { ...profileData, documents: updatedDocs };
-        await setDoc(doc(db, "citizens", user.uid), updated);
+        await supabase.from('citizens').update({
+          documents: updatedDocs
+        }).eq('id', session.user.id);
       } catch (err) {
-        console.error("Failed to add document to Firestore:", err);
+        console.error("Failed to add document to Supabase:", err);
       }
     }
 
@@ -222,14 +284,15 @@ const Profile = () => {
     setDocuments(updatedDocs);
     localStorage.setItem('yojana_sarthi_docs', JSON.stringify(updatedDocs));
     
-    // Save to Firestore
-    const user = auth.currentUser;
-    if (user) {
+    // Save to Supabase
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session?.user) {
       try {
-        const updated = { ...profileData, documents: updatedDocs };
-        await setDoc(doc(db, "citizens", user.uid), updated);
+        await supabase.from('citizens').update({
+          documents: updatedDocs
+        }).eq('id', session.user.id);
       } catch (err) {
-        console.error("Failed to remove document from Firestore:", err);
+        console.error("Failed to remove document from Supabase:", err);
       }
     }
   };
@@ -349,13 +412,28 @@ const Profile = () => {
       localStorage.setItem('yojana_sarthi_profile', JSON.stringify(verifiedProfile));
       localStorage.setItem('yojana_sarthi_docs', JSON.stringify(freshDocs));
 
-      // 2. Write to Firestore
-      const user = auth.currentUser;
-      if (user) {
+      // 2. Write to Supabase
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
         try {
-          await setDoc(doc(db, "citizens", user.uid), verifiedProfile);
+          await supabase.from('citizens').upsert({
+            id: session.user.id,
+            full_name: currentUserName,
+            aadhaar: 'XXXX-XXXX-8924',
+            phone: phoneNum,
+            state: stateVal,
+            address: 'Sector 5, Shivaji Nagar, Pune, Maharashtra - 411005',
+            age: 34,
+            income: 240000,
+            occupation: 'Farmer',
+            category: 'OBC',
+            gender: 'Male',
+            verification_status: 'Verified',
+            data_sources: ['User Input', 'DigiLocker'],
+            documents: freshDocs
+          });
         } catch (err) {
-          console.error("Failed to write simulation profile to Firestore:", err);
+          console.error("Failed to write simulation profile to Supabase:", err);
         }
       }
 
@@ -387,13 +465,28 @@ const Profile = () => {
       localStorage.setItem('yojana_sarthi_profile', JSON.stringify(unlinkedProfile));
       localStorage.setItem('yojana_sarthi_docs', JSON.stringify(userDocs));
 
-      // Write to Firestore
-      const user = auth.currentUser;
-      if (user) {
+      // Write to Supabase
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
         try {
-          await setDoc(doc(db, "citizens", user.uid), unlinkedProfile);
+          await supabase.from('citizens').upsert({
+            id: session.user.id,
+            full_name: unlinkedProfile.fullName,
+            aadhaar: '',
+            phone: unlinkedProfile.phone,
+            state: unlinkedProfile.state,
+            address: unlinkedProfile.address,
+            age: unlinkedProfile.age ? parseInt(unlinkedProfile.age) : null,
+            income: unlinkedProfile.income ? parseInt(unlinkedProfile.income) : null,
+            occupation: unlinkedProfile.occupation,
+            category: unlinkedProfile.category,
+            gender: unlinkedProfile.gender,
+            verification_status: unlinkedProfile.verification_status,
+            data_sources: unlinkedProfile.data_sources,
+            documents: userDocs
+          });
         } catch (err) {
-          console.error("Failed to unlink profile in Firestore:", err);
+          console.error("Failed to unlink profile in Supabase:", err);
         }
       }
 
@@ -995,7 +1088,7 @@ const Profile = () => {
               <p>Clearing profile data will remove all configuration settings stored locally.</p>
               <button 
                 className="btn-danger-action"
-                onClick={() => {
+                onClick={async () => {
                   if (window.confirm('Are you sure you want to clear all saved data?')) {
                     localStorage.removeItem('yojana_sarthi_profile');
                     localStorage.removeItem('yojana_sarthi_docs');
@@ -1014,6 +1107,17 @@ const Profile = () => {
                       documents: []
                     });
                     setDocuments([]);
+                    
+                    // Clear in Supabase
+                    const { data: { session } } = await supabase.auth.getSession();
+                    if (session?.user) {
+                      try {
+                        await supabase.from('citizens').delete().eq('id', session.user.id);
+                      } catch (err) {
+                        console.error(err);
+                      }
+                    }
+
                     // Dispatch update event
                     window.dispatchEvent(new Event('profileUpdate'));
                     alert('All data cleared.');

@@ -3,9 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { UserCheck, Lock, ArrowRight, CheckCircle2, AlertCircle, ShieldCheck, FileText, CreditCard } from 'lucide-react';
 import emblem from '../assets/images/emblem.png';
 import './LoginPage.css';
-import { auth, db } from '../firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { supabase } from '../supabase';
 
 const LoginPage = () => {
   const [role, setRole] = useState('citizen'); // 'citizen' or 'admin'
@@ -38,19 +36,24 @@ const LoginPage = () => {
           throw new Error("Mobile number must be a valid 10-digit number");
         }
         
-        // 1. Create account in Firebase Auth
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
+        // 1. Create account in Supabase Auth
+        const { data: authData, error: authError } = await supabase.auth.signUp({
+          email,
+          password
+        });
+        if (authError) throw authError;
+        const user = authData.user;
         
-        if (role === 'citizen') {
+        if (role === 'citizen' && user) {
           const defaultProfile = {
-            fullName: fullName || 'Citizen',
+            id: user.id,
+            full_name: fullName || 'Citizen',
             aadhaar: '',
             phone: mobileNumber,
             state: residentialState,
             address: '',
-            age: '',
-            income: '',
+            age: null,
+            income: null,
             occupation: 'All',
             category: 'All',
             gender: 'All',
@@ -59,8 +62,9 @@ const LoginPage = () => {
             documents: []
           };
           
-          // 2. Save profile structure to Cloud Firestore
-          await setDoc(doc(db, "citizens", user.uid), defaultProfile);
+          // 2. Save profile structure to Supabase citizens table
+          const { error: dbError } = await supabase.from('citizens').upsert(defaultProfile);
+          if (dbError) throw dbError;
         }
 
         alert('Account created successfully! Please sign in using your new credentials to link your DigiLocker.');
@@ -68,12 +72,16 @@ const LoginPage = () => {
         setPassword('');
         setConfirmPassword('');
       } else {
-        // 1. Sign In using Firebase Auth
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
+        // 1. Sign In using Supabase Auth
+        const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
+          email,
+          password
+        });
+        if (authError) throw authError;
+        const user = authData.user;
         
         const userData = {
-          uid: user.uid,
+          uid: user.id,
           fullName: role === 'citizen' ? 'Citizen' : 'Administrator',
           email,
           role,
@@ -83,17 +91,34 @@ const LoginPage = () => {
         localStorage.setItem('yojana_sarthi_current_user', JSON.stringify(userData));
 
         if (role === 'citizen') {
-          // 2. Fetch profile from Cloud Firestore
-          const docRef = doc(db, "citizens", user.uid);
-          const docSnap = await getDoc(docRef);
+          // 2. Fetch profile from Supabase
+          const { data: profileData, error: dbError } = await supabase
+            .from('citizens')
+            .select('*')
+            .eq('id', user.id)
+            .single();
           
           let currentProfile = {};
-          if (docSnap.exists()) {
-            currentProfile = docSnap.data();
+          if (profileData && !dbError) {
+            currentProfile = {
+              fullName: profileData.full_name || 'Citizen',
+              aadhaar: profileData.aadhaar || '',
+              phone: profileData.phone || '',
+              state: profileData.state || 'Maharashtra',
+              address: profileData.address || '',
+              age: profileData.age ? String(profileData.age) : '',
+              income: profileData.income ? String(profileData.income) : '',
+              occupation: profileData.occupation || 'All',
+              category: profileData.category || 'All',
+              gender: profileData.gender || 'All',
+              verification_status: profileData.verification_status || 'Unverified',
+              data_sources: profileData.data_sources || ['User Input'],
+              documents: profileData.documents || []
+            };
           } else {
             // Fallback profile if document doesn't exist yet
             currentProfile = {
-              fullName: user.displayName || 'Citizen',
+              fullName: user.email.split('@')[0],
               aadhaar: '',
               phone: '',
               state: 'Maharashtra',
@@ -107,17 +132,20 @@ const LoginPage = () => {
               data_sources: ['User Input'],
               documents: []
             };
-            await setDoc(docRef, currentProfile);
+            await supabase.from('citizens').upsert({
+              id: user.id,
+              full_name: currentProfile.fullName,
+              state: currentProfile.state,
+              verification_status: currentProfile.verification_status,
+              data_sources: currentProfile.data_sources,
+              documents: currentProfile.documents
+            });
           }
           
           localStorage.setItem('yojana_sarthi_profile', JSON.stringify(currentProfile));
           
           // Sync documents vault
-          if (currentProfile.documents) {
-            localStorage.setItem('yojana_sarthi_docs', JSON.stringify(currentProfile.documents));
-          } else {
-            localStorage.setItem('yojana_sarthi_docs', '[]');
-          }
+          localStorage.setItem('yojana_sarthi_docs', JSON.stringify(currentProfile.documents || []));
 
           // Dispatch custom profileUpdate event
           window.dispatchEvent(new Event('profileUpdate'));
