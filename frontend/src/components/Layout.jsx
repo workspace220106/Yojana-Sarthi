@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Search, Bell, Globe, User, Shield } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import emblem from '../assets/images/emblem.png';
 import './Layout.css';
@@ -42,21 +43,24 @@ const Layout = ({ children }) => {
             <span className="menu-lbl">Menu</span>
           </button>
           
-          <div className="brand-emblem-box">
-            <img src={emblem} alt="Government Emblem" className="gov-emblem" />
-          </div>
-
-          <div className="gov-title-block">
-            <span className="gov-subtitle">महाराष्ट्र शासन • Government of Maharashtra</span>
-            <h1 className="portal-name">Yojana Sarthi — Scheme Portal</h1>
-          </div>
+          <Link to="/landing" className="header-brand-link">
+            <div className="brand-emblem-box">
+              <img src={emblem} alt="Government Emblem" className="gov-emblem" />
+            </div>
+            <div className="gov-title-block">
+              <span className="gov-subtitle">महाराष्ट्र शासन • Government of Maharashtra</span>
+              <h1 className="portal-name">Yojana Sarthi — Scheme Portal</h1>
+            </div>
+          </Link>
         </div>
 
         <div className="header-right-actions">
-          <div className="gov-notice-badge">
-            <Shield size={14} />
-            <span>Official DBT Service</span>
-          </div>
+          <Link to="/dashboard" className="gov-notice-badge-link" title="View Schemes Dashboard">
+            <div className="gov-notice-badge">
+              <Shield size={14} />
+              <span>Official DBT Service</span>
+            </div>
+          </Link>
 
           <button 
             className="lang-select-btn"
@@ -66,10 +70,12 @@ const Layout = ({ children }) => {
             <span>{lang}</span>
           </button>
 
-          <div className="user-profile-badge">
-            <User size={16} />
-            <span>{displayName}</span>
-          </div>
+          <Link to="/profile" className="user-profile-badge-link" title="View Profile Vault">
+            <div className="user-profile-badge">
+              <User size={16} />
+              <span>{displayName}</span>
+            </div>
+          </Link>
         </div>
       </header>
 

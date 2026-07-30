@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate, Link } from 'react-router-dom';
 import { 
   Home, 
   UserPlus, 
@@ -13,14 +13,34 @@ import {
   User, 
   ShieldCheck, 
   Languages,
-  X
+  X,
+  LogOut
 } from 'lucide-react';
 import emblem from '../assets/images/emblem.png';
 import './Sidebar.css';
+import { auth } from '../firebase';
+import { signOut } from 'firebase/auth';
 
 const Sidebar = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
   const [profile, setProfile] = useState(null);
+
+  const handleLogout = async () => {
+    if (window.confirm("Are you sure you want to log out?")) {
+      try {
+        await signOut(auth);
+        localStorage.removeItem('yojana_sarthi_current_user');
+        localStorage.removeItem('yojana_sarthi_profile');
+        localStorage.removeItem('yojana_sarthi_docs');
+        window.dispatchEvent(new Event('profileUpdate'));
+        onClose();
+        navigate('/login');
+      } catch (err) {
+        console.error("Sign out error:", err);
+      }
+    }
+  };
 
   useEffect(() => {
     // Read current user session
@@ -95,13 +115,15 @@ const Sidebar = ({ isOpen, onClose }) => {
   return (
     <aside className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       <div className="sidebar-header">
-        <div className="logo-container">
-          <img src={emblem} alt="Government Emblem" className="sidebar-emblem" />
-        </div>
-        <div className="brand-titles">
-          <h2>Yojana Sarthi</h2>
-          <span className="brand-subtitle">Government Scheme Navigation</span>
-        </div>
+        <Link to="/landing" onClick={onClose} className="sidebar-brand-link">
+          <div className="logo-container">
+            <img src={emblem} alt="Government Emblem" className="sidebar-emblem" />
+          </div>
+          <div className="brand-titles">
+            <h2>Yojana Sarthi</h2>
+            <span className="brand-subtitle">Government Scheme Navigation</span>
+          </div>
+        </Link>
         <button className="close-sidebar-btn" onClick={onClose} title="Close Navigation">
           <X size={20} />
         </button>
@@ -122,15 +144,20 @@ const Sidebar = ({ isOpen, onClose }) => {
       </nav>
 
       <div className="sidebar-footer">
-        <div className="user-mini-profile">
-          <div className="avatar">{initials}</div>
-          <div className="info">
-            <p className="name">{fullName}</p>
-            <span className={`status-pill ${profile?.verification_status === 'Verified' ? 'verified' : 'unverified'}`}>
-              {profile?.verification_status === 'Verified' ? 'Verified Beneficiary' : 'Unverified Beneficiary'}
-            </span>
+        <Link to="/profile" onClick={onClose} className="user-mini-profile-link">
+          <div className="user-mini-profile">
+            <div className="avatar">{initials}</div>
+            <div className="info">
+              <p className="name">{fullName}</p>
+              <span className={`status-pill ${profile?.verification_status === 'Verified' ? 'verified' : 'unverified'}`}>
+                {profile?.verification_status === 'Verified' ? 'Verified Beneficiary' : 'Unverified Beneficiary'}
+              </span>
+            </div>
           </div>
-        </div>
+        </Link>
+        <button className="sidebar-logout-btn" onClick={handleLogout} title="Log Out">
+          <LogOut size={18} />
+        </button>
       </div>
     </aside>
   );

@@ -202,3 +202,25 @@
     font-size: 1rem;
   }
 }
+
+/* Clickable Header Link Wrappers */
+.header-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.gov-notice-badge-link, .user-profile-badge-link {
+  text-decoration: none;
+}
+
+.gov-notice-badge-link:hover .gov-notice-badge {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.user-profile-badge-link:hover .user-profile-badge {
+  background: #002252;
+  border-color: rgba(255, 255, 255, 0.3);
+}

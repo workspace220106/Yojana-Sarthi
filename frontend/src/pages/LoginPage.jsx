@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { UserCheck, Lock, ArrowRight, CheckCircle2, AlertCircle, ShieldCheck, FileText, CreditCard } from 'lucide-react';
 import emblem from '../assets/images/emblem.png';
 import './LoginPage.css';
@@ -180,15 +180,17 @@ const LoginPage = () => {
         <div className="branding-side">
           <div className="branding-content">
             <div className="branding-top">
-              <div className="branding-logo">
-                <div className="emblem-wrapper">
-                  <img src={emblem} alt="Yojana Sarthi Emblem" className="mini-emblem" />
+              <Link to="/" className="branding-logo-link" title="Back to Welcome Page">
+                <div className="branding-logo">
+                  <div className="emblem-wrapper">
+                    <img src={emblem} alt="Yojana Sarthi Emblem" className="mini-emblem" />
+                  </div>
+                  <div className="branding-text">
+                    <h1>Yojana Sarthi</h1>
+                    <span className="branding-badge">Official Portal</span>
+                  </div>
                 </div>
-                <div className="branding-text">
-                  <h1>Yojana Sarthi</h1>
-                  <span className="branding-badge">Official Portal</span>
-                </div>
-              </div>
+              </Link>
 
               <p className="branding-tagline">
                 Connecting every citizen with state and central welfare schemes. Secure, transparent, and instant eligibility matching.
