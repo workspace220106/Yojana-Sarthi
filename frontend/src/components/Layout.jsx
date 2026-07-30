@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, Search, Bell, Globe, User, Shield } from 'lucide-react';
 import Sidebar from './Sidebar';
 import emblem from '../assets/images/emblem.png';
@@ -7,9 +7,23 @@ import './Layout.css';
 const Layout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [lang, setLang] = useState('English');
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const userStr = localStorage.getItem('yojana_sarthi_current_user');
+    if (userStr) {
+      try {
+        setCurrentUser(JSON.parse(userStr));
+      } catch (err) {
+        console.error('Failed to parse user session:', err);
+      }
+    }
+  }, []);
 
   const toggleSidebar = () => setIsSidebarOpen(prev => !prev);
   const closeSidebar = () => setIsSidebarOpen(false);
+
+  const displayName = currentUser?.fullName || (currentUser?.email ? currentUser.email.split('@')[0] : 'Citizen');
 
   return (
     <div className="layout">
@@ -54,7 +68,7 @@ const Layout = ({ children }) => {
 
           <div className="user-profile-badge">
             <User size={16} />
-            <span>Rajendra A.</span>
+            <span>{displayName}</span>
           </div>
         </div>
       </header>

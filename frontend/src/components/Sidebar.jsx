@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
   Home, 
@@ -19,6 +19,64 @@ import emblem from '../assets/images/emblem.png';
 import './Sidebar.css';
 
 const Sidebar = ({ isOpen, onClose }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    // Read current user session
+    const userStr = localStorage.getItem('yojana_sarthi_current_user');
+    if (userStr) {
+      try {
+        setCurrentUser(JSON.parse(userStr));
+      } catch (err) {
+        console.error('Failed to parse user session in sidebar:', err);
+      }
+    }
+
+    // Read current user profile
+    const profileStr = localStorage.getItem('yojana_sarthi_profile');
+    if (profileStr) {
+      try {
+        setProfile(JSON.parse(profileStr));
+      } catch (err) {
+        console.error('Failed to parse profile in sidebar:', err);
+      }
+    }
+
+    // Trigger update on storage changes
+    const handleStorageChange = () => {
+      const updatedUser = localStorage.getItem('yojana_sarthi_current_user');
+      if (updatedUser) {
+        try {
+          setCurrentUser(JSON.parse(updatedUser));
+        } catch (e) {}
+      }
+      const updatedProfile = localStorage.getItem('yojana_sarthi_profile');
+      if (updatedProfile) {
+        try {
+          setProfile(JSON.parse(updatedProfile));
+        } catch (e) {}
+      }
+    };
+    window.addEventListener('storage', handleStorageChange);
+    // Custom event listener for instant updates in single-page routing context
+    window.addEventListener('profileUpdate', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('profileUpdate', handleStorageChange);
+    };
+  }, [isOpen]);
+
+  const fullName = currentUser?.fullName || (currentUser?.email ? currentUser.email.split('@')[0] : 'Citizen');
+  const initials = fullName
+    .split(' ')
+    .filter(Boolean)
+    .map(namePart => namePart[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase() || 'C';
+
   const menuItems = [
     { name: 'Portal Home & Finder', icon: <Home size={18} />, path: '/landing' },
     { name: 'Scheme Application Wizard', icon: <UserPlus size={18} />, path: '/onboarding' },
@@ -65,10 +123,12 @@ const Sidebar = ({ isOpen, onClose }) => {
 
       <div className="sidebar-footer">
         <div className="user-mini-profile">
-          <div className="avatar">RA</div>
+          <div className="avatar">{initials}</div>
           <div className="info">
-            <p className="name">Rajendra Anande</p>
-            <span className="status-pill">Verified Beneficiary</span>
+            <p className="name">{fullName}</p>
+            <span className={`status-pill ${profile?.verification_status === 'Verified' ? 'verified' : 'unverified'}`}>
+              {profile?.verification_status === 'Verified' ? 'Verified Beneficiary' : 'Unverified Beneficiary'}
+            </span>
           </div>
         </div>
       </div>

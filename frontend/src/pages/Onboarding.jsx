@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { User, DollarSign, Briefcase, Users, Award, ShieldCheck, ArrowRight, ArrowLeft } from 'lucide-react';
 import './Onboarding.css';
 
 const Onboarding = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     age: '26-40',
@@ -14,7 +16,27 @@ const Onboarding = () => {
 
   const totalSteps = 5;
 
-  const nextStep = () => setStep(s => Math.min(s + 1, totalSteps));
+  const nextStep = () => {
+    if (step === totalSteps) {
+      const savedProfile = localStorage.getItem('yojana_sarthi_profile');
+      let currentProfile = savedProfile ? JSON.parse(savedProfile) : {};
+      
+      currentProfile.age = formData.age.includes('-') ? formData.age.split('-')[0] : formData.age.replace(/\D/g,'');
+      currentProfile.income = String(parseFloat(formData.income) * 100000);
+      currentProfile.occupation = formData.occupation;
+      currentProfile.category = formData.category;
+      currentProfile.gender = formData.gender;
+      
+      localStorage.setItem('yojana_sarthi_profile', JSON.stringify(currentProfile));
+      
+      // Dispatch custom profileUpdate event
+      window.dispatchEvent(new Event('profileUpdate'));
+      
+      navigate('/landing');
+    } else {
+      setStep(s => Math.min(s + 1, totalSteps));
+    }
+  };
   const prevStep = () => setStep(s => Math.max(s - 1, 1));
 
   const renderStep = () => {

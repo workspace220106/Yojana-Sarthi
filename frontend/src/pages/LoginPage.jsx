@@ -11,6 +11,8 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [mobileNumber, setMobileNumber] = useState('');
+  const [residentialState, setResidentialState] = useState('Maharashtra');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
@@ -25,6 +27,12 @@ const LoginPage = () => {
       if (mode === 'signup') {
         if (password !== confirmPassword) {
           throw new Error("Passwords do not match");
+        }
+        if (password.length < 6) {
+          throw new Error("Password must be at least 6 characters long");
+        }
+        if (!mobileNumber.match(/^\d{10}$/)) {
+          throw new Error("Mobile number must be a valid 10-digit number");
         }
         
         // Local simulation for registration
@@ -41,6 +49,8 @@ const LoginPage = () => {
           email,
           password,
           role,
+          mobileNumber,
+          state: residentialState,
           createdAt: new Date().toISOString()
         };
         
@@ -54,15 +64,20 @@ const LoginPage = () => {
           const defaultProfile = {
             fullName: fullName || 'Citizen',
             aadhaar: '',
-            phone: '',
+            phone: mobileNumber,
+            state: residentialState,
             address: '',
             age: '',
             income: '',
             occupation: 'All',
             category: 'All',
-            gender: 'All'
+            gender: 'All',
+            verification_status: 'Unverified',
+            data_sources: ['User Input']
           };
           localStorage.setItem('yojana_sarthi_profile', JSON.stringify(defaultProfile));
+          // Dispatch custom profileUpdate event
+          window.dispatchEvent(new Event('profileUpdate'));
         }
       } else {
         // Sign In simulation
@@ -71,18 +86,8 @@ const LoginPage = () => {
         
         let user = mockUsers.find(u => u.email === email && u.password === password && u.role === role);
         
-        // Auto-create account during sign-in to prevent any user lockouts
         if (!user) {
-          user = {
-            uid: 'mock-' + Math.random().toString(36).substr(2, 9),
-            fullName: role === 'citizen' ? 'Citizen' : 'Administrator',
-            email,
-            password,
-            role,
-            createdAt: new Date().toISOString()
-          };
-          mockUsers.push(user);
-          localStorage.setItem('yojana_sarthi_mock_users', JSON.stringify(mockUsers));
+          throw new Error("Account not found. Please verify your credentials or register a new account.");
         }
 
         localStorage.setItem('yojana_sarthi_current_user', JSON.stringify(user));
@@ -91,7 +96,11 @@ const LoginPage = () => {
           const savedProfile = localStorage.getItem('yojana_sarthi_profile');
           let currentProfile = savedProfile ? JSON.parse(savedProfile) : {};
           currentProfile.fullName = user.fullName || currentProfile.fullName || 'Citizen';
+          currentProfile.phone = user.mobileNumber || currentProfile.phone || '';
+          currentProfile.state = user.state || currentProfile.state || 'Maharashtra';
           localStorage.setItem('yojana_sarthi_profile', JSON.stringify(currentProfile));
+          // Dispatch custom profileUpdate event
+          window.dispatchEvent(new Event('profileUpdate'));
         }
       }
 
@@ -219,15 +228,46 @@ const LoginPage = () => {
               )}
               
               <div className="input-group">
-                <label>Email Address</label>
+                <label>Email Address (Gmail)</label>
                 <input 
                   type="email" 
-                  placeholder="name@example.com" 
+                  placeholder="name@gmail.com" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required 
                 />
               </div>
+
+              {mode === 'signup' && (
+                <>
+                  <div className="input-group">
+                    <label>Mobile Number (10 digits)</label>
+                    <input 
+                      type="tel" 
+                      placeholder="e.g. 9876543210" 
+                      value={mobileNumber}
+                      onChange={(e) => setMobileNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                      required 
+                    />
+                  </div>
+
+                  <div className="input-group">
+                    <label>Residential State</label>
+                    <select 
+                      value={residentialState}
+                      onChange={(e) => setResidentialState(e.target.value)}
+                      required
+                    >
+                      <option value="Maharashtra">Maharashtra</option>
+                      <option value="Gujarat">Gujarat</option>
+                      <option value="Madhya Pradesh">Madhya Pradesh</option>
+                      <option value="Karnataka">Karnataka</option>
+                      <option value="Delhi">Delhi</option>
+                      <option value="Other">Other State</option>
+                    </select>
+                  </div>
+                </>
+              )}
 
               <div className="input-group">
                 <label>Password</label>
