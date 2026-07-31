@@ -1,9 +1,29 @@
-# TODO: Implement data cleaning pipeline
 import json
 from pathlib import Path
+import traceback
 
-RAW_FILE = Path("data/raw/maharashtra_schemes_complete.json")
-OUTPUT_FILE = Path("data/cleaned/schemes_cleaned.json")
+BASE_DIR = Path(__file__).resolve().parents[1]
+
+RAW_FILE = (
+    BASE_DIR
+    / "data"
+    / "raw"
+    / "maharashtra"
+    / "maharashtra_schemes_complete.json"
+)
+
+OUTPUT_FILE = (
+    BASE_DIR
+    / "data"
+    / "cleaned"
+    / "maharashtra"
+    / "schemes_cleaned.json"
+)
+
+OUTPUT_FILE.parent.mkdir(
+    parents=True,
+    exist_ok=True
+)
 
 
 def safe_get(obj, *keys, default=None):
@@ -26,6 +46,7 @@ def labels(items):
 
 
 def clean_scheme(record):
+
     data = record.get("data", {})
     en = data.get("en", {})
 
@@ -35,37 +56,86 @@ def clean_scheme(record):
     application = en.get("applicationProcess", [])
     definitions = en.get("schemeDefinitions", [])
 
-    return {
-        "slug": record.get("slug", ""),
+    metadata = {
+        "scheme_id": safe_get(data, "_id", default=""),
+
+        # MyScheme doesn't expose a separate scheme_code
+        "scheme_code": basic.get("schemeShortTitle", ""),
         "scheme_name": basic.get("schemeName", ""),
         "short_title": basic.get("schemeShortTitle", ""),
-        "implementing_agency": basic.get("implementingAgency"),
-        "ministry": safe_get(basic, "nodalMinistryName", "label"),
+        "implementing_agency": basic.get("implementingAgency", ""),
         "department": safe_get(basic, "nodalDepartmentName", "label"),
+        "ministry": safe_get(basic, "nodalMinistryName", "label"),
         "level": safe_get(basic, "level", "label"),
         "scheme_type": safe_get(basic, "schemeType", "label"),
         "categories": labels(basic.get("schemeCategory")),
         "subcategories": labels(basic.get("schemeSubCategory")),
         "beneficiaries": labels(basic.get("targetBeneficiaries")),
         "tags": basic.get("tags", []),
+        "benefit_type": safe_get(
+            content,
+            "benefitTypes",
+            "label"
+        ),
         "open_date": basic.get("schemeOpenDate"),
         "close_date": basic.get("schemeCloseDate"),
-        "description": content.get("detailedDescription_md", ""),
-        "brief_description": content.get("briefDescription", ""),
-        "benefits": content.get("benefits_md", ""),
-        "eligibility": eligibility.get("eligibilityDescription_md", ""),
-        "application": [
+        "state": safe_get(basic, "state", "label"),
+        "source": "MyScheme",
+        "source_url": f"https://www.myscheme.gov.in/schemes/{record.get('slug','')}"
+    }
+
+    sections = {
+
+        "Brief Description": content.get("briefDescription", ""),
+
+        "Description": content.get("detailedDescription_md", ""),
+
+        "Benefits": content.get("benefits_md", ""),
+
+        "Eligibility": eligibility.get("eligibilityDescription_md", ""),
+
+        "Exclusions": "\n".join(
+            str(item)
+            if not isinstance(item, dict)
+            else json.dumps(item, ensure_ascii=False)
+            for item in content.get("exclusions", [])
+        ),
+
+        "Application Process": "\n\n".join(
             step.get("process_md", "")
             for step in application
-        ],
-        "references": content.get("references", []),
-        "definitions": [
-            {
-                "term": d.get("name"),
-                "definition": d.get("definitions_md", "")
-            }
+            if step.get("process_md")
+        ),
+
+        "Application URL": "\n".join(
+            step.get("url", "")
+            for step in application
+            if step.get("url")
+        ),
+
+        "Definitions": "\n\n".join(
+            f"{d.get('name','')}\n{d.get('definitions_md','')}"
             for d in definitions
-        ]
+        ),
+
+        "References": "\n".join(
+            f"{r.get('title','')} : {r.get('url','')}"
+            for r in content.get("references", [])
+        )
+    }
+
+    # Remove empty sections
+    sections = {
+        key: value
+        for key, value in sections.items()
+        if value
+    }
+
+    return {
+        "slug": safe_get(data, "slug", default=""),
+        "title": basic.get("schemeName", ""),
+        "metadata": metadata,
+        "sections": sections
     }
 
 
@@ -78,8 +148,10 @@ def main():
     for record in raw:
         try:
             cleaned.append(clean_scheme(record))
-        except Exception as e:
-            print("Skipped:", e)
+
+        except Exception:
+
+            traceback.print_exc()
 
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
 

@@ -1,5 +1,4 @@
 from fastapi import APIRouter, HTTPException
-
 from schemas import ChatRequest, ChatResponse
 from rag.rag_pipeline import RAGPipeline
 

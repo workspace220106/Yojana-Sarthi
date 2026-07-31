@@ -1,9 +1,30 @@
 import json
 import time
 import requests
+from pathlib import Path
 
-SEARCH_FILE = "maharashtra_schemes.json"
-OUTPUT_FILE = "maharashtra_schemes_complete.json"
+BASE_DIR = Path(__file__).resolve().parents[1]
+
+SEARCH_FILE = (
+    BASE_DIR
+    / "data"
+    / "raw"
+    / "maharashtra"
+    / "maharashtra_schemes.json"
+)
+
+OUTPUT_FILE = (
+    BASE_DIR
+    / "data"
+    / "raw"
+    / "maharashtra"
+    / "maharashtra_schemes_complete.json"
+)
+
+OUTPUT_FILE.parent.mkdir(
+    parents=True,
+    exist_ok=True
+)
 
 headers = {
     "accept": "application/json, text/plain, */*",

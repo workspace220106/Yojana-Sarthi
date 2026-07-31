@@ -1,20 +1,44 @@
-# TODO: Implement data chunking for RAG pipeline
 import json
 from pathlib import Path
 from uuid import uuid4
+from pathlib import Path
 
-INPUT = Path("data/cleaned/schemes_cleaned.json")
-OUTPUT = Path("data/chunks/scheme_chunks.json")
+BASE_DIR = Path(__file__).resolve().parents[1]
+
+INPUT = (
+    BASE_DIR
+    / "data"
+    / "cleaned"
+    / "maharashtra"
+    / "schemes_cleaned.json"
+)
+
+OUTPUT = (
+    BASE_DIR
+    / "data"
+    / "chunks"
+    / "maharashtra_scheme_chunks.json"
+)
+
+OUTPUT.parent.mkdir(
+    parents=True,
+    exist_ok=True
+)
 
 
 def add_chunk(chunks, slug, title, section, text, metadata):
+    """
+    Adds a chunk if the text is valid.
+    """
+
     if not text:
         return
 
-    text = text.strip()
+    if isinstance(text, str):
+        text = text.strip()
 
-    if len(text) < 20:
-        return
+        if len(text) < 20:
+            return
 
     chunks.append({
         "id": str(uuid4()),
@@ -26,6 +50,26 @@ def add_chunk(chunks, slug, title, section, text, metadata):
     })
 
 
+def metadata_to_text(metadata):
+    """
+    Creates a searchable metadata chunk.
+    """
+
+    lines = []
+
+    for key, value in metadata.items():
+
+        if not value:
+            continue
+
+        if isinstance(value, list):
+            value = ", ".join(str(v) for v in value)
+
+        lines.append(f"{key}: {value}")
+
+    return "\n".join(lines)
+
+
 def main():
 
     with open(INPUT, "r", encoding="utf-8") as f:
@@ -35,84 +79,134 @@ def main():
 
     for scheme in schemes:
 
-        metadata = {
-            "categories": scheme["categories"],
-            "subcategories": scheme["subcategories"],
-            "beneficiaries": scheme["beneficiaries"],
-            "tags": scheme["tags"],
-            "ministry": scheme["ministry"],
-            "department": scheme["department"],
-            "level": scheme["level"]
-        }
-
         slug = scheme["slug"]
-        title = scheme["scheme_name"]
+        title = scheme["title"]
+
+        metadata = scheme["metadata"]
+        sections = scheme["sections"]
+
+        # --------------------------------------------------
+        # Metadata Chunk
+        # --------------------------------------------------
 
         add_chunk(
             chunks,
             slug,
             title,
-            "Description",
-            scheme["description"],
+            "Metadata",
+            "\n".join([
+                f"Scheme Name: {title}",
+                f"Department: {metadata.get('department', '')}",
+                f"Ministry: {metadata.get('ministry', '')}",
+                f"Categories: {', '.join(metadata.get('categories', []))}",
+                f"Subcategories: {', '.join(metadata.get('subcategories', []))}",
+                f"Beneficiaries: {', '.join(metadata.get('beneficiaries', []))}",
+                f"Benefit Type: {', '.join(metadata.get('benefit_type', []))}",
+                f"Scheme Type: {metadata.get('scheme_type', '')}",
+                f"Level: {metadata.get('level', '')}",
+                f"Open Date: {metadata.get('open_date', '')}",
+                f"Close Date: {metadata.get('close_date', '')}"
+            ]),
             metadata
         )
 
-        add_chunk(
-            chunks,
-            slug,
-            title,
-            "Benefits",
-            scheme["benefits"],
-            metadata
-        )
+        # --------------------------------------------------
+        # Dynamic Section Chunking
+        # --------------------------------------------------
 
-        add_chunk(
-            chunks,
-            slug,
-            title,
-            "Eligibility",
-            scheme["eligibility"],
-            metadata
-        )
+        for section, value in sections.items():
 
-        for process in scheme["application"]:
-            add_chunk(
-                chunks,
-                slug,
-                title,
-                "Application",
-                process,
-                metadata
-            )
+            if isinstance(value, str):
 
-        for definition in scheme["definitions"]:
+                add_chunk(
+                    chunks,
+                    slug,
+                    title,
+                    section,
+                    value,
+                    metadata
+                )
 
-            text = f"""
-Definition:
-{definition['term']}
+            elif isinstance(value, list):
 
-{definition['definition']}
-"""
+                for item in value:
 
-            add_chunk(
-                chunks,
-                slug,
-                title,
-                "Definition",
-                text,
-                metadata
-            )
+                    if isinstance(item, dict):
 
-    OUTPUT.parent.mkdir(exist_ok=True)
+                        text = "\n".join(
+                            f"{k}: {v}"
+                            for k, v in item.items()
+                            if v
+                        )
+
+                    else:
+
+                        text = str(item)
+
+                    add_chunk(
+                        chunks,
+                        slug,
+                        title,
+                        section,
+                        text,
+                        metadata
+                    )
+
+            elif isinstance(value, dict):
+
+                text = "\n".join(
+                    f"{k}: {v}"
+                    for k, v in value.items()
+                    if v
+                )
+
+                add_chunk(
+                    chunks,
+                    slug,
+                    title,
+                    section,
+                    text,
+                    metadata
+                )
+
+            # ----------------------------
+            # Dictionary section
+            # ----------------------------
+
+            elif isinstance(value, dict):
+
+                text = "\n".join(
+                    f"{k}: {v}"
+                    for k, v in value.items()
+                    if v
+                )
+
+                add_chunk(
+                    chunks,
+                    slug,
+                    title,
+                    section,
+                    text,
+                    metadata
+                )
+
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
 
     with open(OUTPUT, "w", encoding="utf-8") as f:
-        json.dump(chunks, f, indent=2, ensure_ascii=False)
+        json.dump(
+            chunks,
+            f,
+            indent=2,
+            ensure_ascii=False
+        )
 
-    print("=" * 60)
-    print("Chunking Complete")
-    print("Total Chunks :", len(chunks))
-    print("Saved :", OUTPUT)
-    print("=" * 60)
+    print("=" * 70)
+    print("Chunk Generation Complete")
+    print("=" * 70)
+    print(f"Schemes Processed : {len(schemes)}")
+    print(f"Chunks Generated  : {len(chunks)}")
+    print(f"Output File       : {OUTPUT}")
+    print("=" * 70)
 
 
 if __name__ == "__main__":

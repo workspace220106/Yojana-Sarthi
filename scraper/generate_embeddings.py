@@ -6,9 +6,23 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
 
-CHUNK_FILE = Path("data/chunks/scheme_chunks.json")
+from pathlib import Path
 
-OUTPUT_DIR = Path("data/embeddings")
+BASE_DIR = Path(__file__).resolve().parents[1]
+
+CHUNK_FILE = (
+    BASE_DIR
+    / "data"
+    / "chunks"
+    / "maharashtra_scheme_chunks.json"
+)
+
+OUTPUT_DIR = (
+    BASE_DIR
+    / "data"
+    / "embeddings"
+)
+
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 INDEX_FILE = OUTPUT_DIR / "faiss.index"

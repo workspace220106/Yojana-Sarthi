@@ -1,0 +1,2347 @@
+[
+  {
+    "id": "dBezF5gB5uF80_MGjI81",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "PMSVS-MAHARASHTRA",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Post-Matric Scholarship To VJNT Students - Maharashtra",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "pmsvs-maharashtra",
+      "briefDescription": "The Government of Maharashtra has introduced a scheme namely “Post-Matric Scholarship to VJNT students” to encourage the students of the Vimukta Jatis & Nomadic Tribes (VJNT) to undergo Post-Matric Courses.",
+      "tags": [
+        "Student",
+        "Scholarship",
+        "Post-Matric",
+        "Vimukta Jatis & Nomadic Tribes"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "eBezF5gB5uF80_MGjo_V",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "TSSAD",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Skills & Employment",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "The Scheme Of State Award For Disabled",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "tssad",
+      "briefDescription": "The \"The Scheme of State Award for Disabled\" is a scheme by the Dept. of Social Justice & Special Assistance, Govt. of Maharashtra. In this scheme, every year, the State Government felicitates awards to the Best Disabled Employees/Employers/Placement Agencies who have done outstanding work.",
+      "tags": [
+        "Persons With Disability",
+        "Employment",
+        "Award",
+        "Placement"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "pqGzF5gBXu-iUKXqi3QG",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "ORJCVSRVA",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Opening And Running Junior Colleges For VJNT Students Run By Voluntary Agencies",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "orjcvsrva",
+      "briefDescription": "The Govt. of Maharashtra vide G.R. dated 26/6/2008 launched the scheme “Opening and Running Junior Colleges for VJNT Students Run by Voluntary Agencies” for the educational and social development of Vimukta Jatis and Nomadic Tribes (VJNT) students.",
+      "tags": [
+        "Vimukta Jatis And Nomadic Tribes",
+        "Junior College",
+        "Student",
+        "Education",
+        "Ashram School"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "ZRezF5gB5uF80_MGi49M",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "LGSS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Business & Entrepreneurship",
+        "Banking,Financial Services and Insurance",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "LIDCOM Gattai Stall Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "lgss",
+      "briefDescription": "Being implemented by LIDCOM, Govt. of Maharashtra for the Roadsides Cobblers from the (Scheduled Caste) Charmakar Community, this scheme provides a 100% subsidy for the erection of a Tin Stall of Size 4’ x 5’ x 6.5’ costing ₹16367/- per stall and ₹500/- incidental charges.",
+      "tags": [
+        "Business",
+        "Subsidy",
+        "Entrepreneurship",
+        "Banking",
+        "Scheduled Caste"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "2cazF5gB0AGc0F0ikDMK",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "HIIP",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Housing & Shelter",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Homes For Intellectually Impaired Persons",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "hiip",
+      "briefDescription": "The \"Homes for Intellectually Impaired Persons\" is a scheme by the Department of Social Justice & Special Assistance, Govt. of Maharashtra. In this scheme, Mentally Deficient Children who are in need of care and protection are admitted into shelter homes through the Child Welfare Committees.",
+      "tags": [
+        "Child",
+        "Person With Disability",
+        "Shelter",
+        "Social Justice"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "ZBezF5gB5uF80_MGi49H",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "MA-MAHA",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Education & Learning"
+      ],
+      "schemeName": "Merit Awards",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "ma-maha",
+      "briefDescription": "In the \"Merit Awards\" scheme, awards are given to the students with disability who rank 1st, 2nd, and 3rd among disabled students in the Secondary School Certificate (S.S.C.) and Higher Secondary Certificate (H.S.C.)  in their respective divisional boards of education.",
+      "tags": [
+        "Education",
+        "Award",
+        "Student With Disability",
+        "School"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "ZxezF5gB5uF80_MGi49l",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "SPMSD",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "State Post-metric Scholarship For Disabled",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "spmsd",
+      "briefDescription": "The \"State Post-metric Scholarship for Disabled\" is a scheme by the Department of Social Justice & Special Assistance, Govt. of Maharashtra. The objective of this scheme is to encourage students with disability (SwDs) to pursue higher education.",
+      "tags": [
+        "Persons With Disability",
+        "Social Welfare",
+        "Financial Assistance",
+        "Post-Matric",
+        "Student",
+        "Scholarship"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "GMa1F5gB0AGc0F0iJjQD",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "MABCSTSS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Maintenance Allowance To Backward Class Students Under Training In Sainik Schools",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "mabcstss",
+      "briefDescription": "The scheme “Maintenance Allowance to Backward Class Students Under Training in Sainik School” is a Scholarship Scheme by the Social Justice and Special Assistance Department, Government of Maharashtra. ",
+      "tags": [
+        "Vimukta Jatis",
+        "Nomadic Tribes",
+        "Other Backward Class",
+        "School",
+        "Social Welfare",
+        "Allowance"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "ohfTF5gB5uF80_MGGZKA",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "VTVSCSGIT",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Vocational Training For VJNT And SBC Candidates Studying In Government Industrial Training Institute",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "vtvscsgit",
+      "briefDescription": "The State Government of Maharashtra has introduced in 2003-04 the scheme to create self-employment for unemployed youths and students of VJNT and SBC who apply for a Vocational Training.",
+      "tags": [
+        "Vocational Training",
+        "Government Industrial Training",
+        "Vimukta Jati And Nomadic Tribes",
+        "Special Backward Classes"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "zqG-F5gBXu-iUKXqYnaK",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "IGNWPSM",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Indira Gandhi National Widow Pension Scheme (Maharashtra)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "ignwpsm",
+      "briefDescription": "\"Indira Gandhi National Widow Pension Scheme (Maharashtra)\" is a scheme by the Social Justice & Special Assistance Dept, Govt of Maharashtra. In this scheme, widows aged 40 to 79 years who are from a BPL family receive a pension of ₹1500/- per month.",
+      "tags": [
+        "Widow",
+        "Woman",
+        "Pension"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "zxe-F5gB5uF80_MGY5GK",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "EACS1T7A8T10",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Educational Assistance to the Children Studying in 1st to 7th and 8th to 10th Class",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "eacs1t7a8t10",
+      "briefDescription": "Under this scheme, educational assistance is provided of ₹2,500/- to the children studying in 1st to 7th standard and ₹5,000/- for the children studying in 8th to 10th standard of the registered construction worker. The scheme covers up to two children and the wife of a registered male worker.",
+      "tags": [
+        "Building Worker",
+        "Student",
+        "Construction Worker",
+        "Educational Assistance",
+        "Labour"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "iqHoF5gBXu-iUKXq6ngH",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "MSYM",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance",
+        "Women and Child"
+      ],
+      "schemeName": "Mahila Samridhi Yojana (Maharashtra)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "msym",
+      "briefDescription": "\"Mahila Samridhi Yojana\" is administered by the Dept. of Social Justice & Special Assistance, Govt. of Maharashtra. The scheme aims to uplift economically weaker women from the Charmakar Community. Loans ranging from ₹25,000/- to ₹50,000/- are granted at a low interest rate of 4% p.a.",
+      "tags": [
+        "Woman",
+        "Charmakar",
+        "Subsidy",
+        "Widow",
+        "Divorcee"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "xKG-F5gBXu-iUKXqYnYM",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "IGOAPSM",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Indira Gandhi National Old Age Pension Scheme (Maharashtra)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "igoapsm",
+      "briefDescription": "The scheme \"Indira Gandhi National Old Age Pension\" is a social welfare scheme by the Social Justice & Special Assistance Department, Government of Maharashtra. In this scheme, ₹600 per month is provided to elderly individuals aged 65 years and above from BPL families.",
+      "tags": [
+        "Pension",
+        "Old Age",
+        "Below The Poverty Line",
+        "Senior Citizen",
+        "BPL"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "ZhfoF5gB5uF80_MG6ZO-",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "MKYM",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Skills & Employment",
+        "Women and Child"
+      ],
+      "schemeName": "Mahila Kisan Yojana (Maharashtra)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "mkym",
+      "briefDescription": "\"Mahila Kisan Yojana\" is implemented by the Dept. of Social Justice & Special Assistance, Govt. of Maharashtra. The scheme aims to uplift the lifestyle of economically disadvantaged Charmakar communities. it supports the production and sale of various types of footwear and leather articles.",
+      "tags": [
+        "Employment",
+        "Charmakar",
+        "Subsidy",
+        "Loan",
+        "Woman",
+        "Scheduled Caste",
+        "Farmer"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "mxikdZ0B5uF80_MGSGUQ",
+    "fields": {
+      "beneficiaryState": [
+        "Tamil Nadu",
+        "Gujarat",
+        "Rajasthan",
+        "Maharashtra",
+        "West Bengal"
+      ],
+      "schemeShortTitle": "SGRCSL",
+      "level": "Central",
+      "schemeFor": "Individual",
+      "nodalMinistryName": "Ministry Of Commerce And Industry",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Education & Learning"
+      ],
+      "schemeName": "Scheme For Grant Of Rewards To The Children Of Salt Labourers",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "sgrcsl",
+      "briefDescription": "The scheme “Scheme for Grant of Rewards to the Children of Salt Labourers” was launched by Department for Promotion of Industry and Internal Trade (DPIIT), Ministry of Commerce and Industry in the year 1985.",
+      "tags": [
+        "Salt Workers",
+        "Salt Labourers",
+        "Children",
+        "Rewards",
+        "Salt Industry",
+        "Students"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "3aG0F5gBXu-iUKXqKXR9",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "SPSVSGS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning",
+        "Women and Child"
+      ],
+      "schemeName": "Savitribai Phule Scholarship For V.J.N.T. And S.B.C. Girl Students Studying In 5th To 7th Standard",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "spsvsgs",
+      "briefDescription": "Savitribai Phule Scholarship is a Scholarship Scheme by the Social Justice and Special Assistance Dept., Govt. of Maharashtra, to encourage the enrollment and to decrease the dropout ratio of Girl Students of Maharashtra from Vimukta Jati and Nomadic Tribes and Special Backward Classes.",
+      "tags": [
+        "Scholarship",
+        "Special Backward Classes",
+        "SBC",
+        "Vimukta Jati And Nomadic Tribes",
+        "VJNT",
+        "Pre-Matric"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "1sazF5gB0AGc0F0ijzO3",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "FADSE",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Skills & Employment",
+        "Social welfare & Empowerment",
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": "Financial Assistance To Disabled For Self Employment",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "fadse",
+      "briefDescription": "The objective of this scheme is to facilitate the self-employment of unemployed disabled persons. Under this scheme, financial assistance is provided to persons with disabilities for self-employment, small-scale business, and agro-based project. This scheme is 100% funded by Govt. of Maharashtra.",
+      "tags": [
+        "Persons With Disability",
+        "Social Welfare",
+        "Financial Assistance",
+        "Entrepreneurship",
+        "Business"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "vcazF5gB0AGc0F0iizMO",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "SEVTGI",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning",
+        "Social welfare & Empowerment",
+        "Skills & Employment"
+      ],
+      "schemeName": "Special Education And Vocational Training Through Government Institutions",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "sevtgi",
+      "briefDescription": "In this scheme, Special Education is provided to children with disability between the age group of 6 to 18 years in the Government Special Schools and Vocational Training is provided to special children above the age of 18 years. Only citizens who are permanent residents of Maharashtra are eligible.",
+      "tags": [
+        "Persons With Disability",
+        "Education",
+        "Student",
+        "Vocational Education"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "xcazF5gB0AGc0F0ijDMI",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "FAAADP",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Financial Assistance For Aids And Appliances For Disabled Persons",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "faaadp",
+      "briefDescription": "The \"Financial Assistance for Aids and Appliances for Disabled Persons\" is a scheme by the Govt. of Maharashtra. The objective of this scheme is to provide assistance to Persons with Disabilities (PwDs) for the purchase of aids and appliances as per their age group and the type of disability.",
+      "tags": [
+        "Aids And Appliances",
+        "Person With Disability",
+        "Financial Assistance",
+        "Social Welfare"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "qsbTF5gB0AGc0F0iKTZe",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "PMAVSSSPC",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Maintenance Allowance To VJNT And SBC Students Studying In Professional Courses And Living In Hostel Attached To Professional Colleges",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "pmavssspc",
+      "briefDescription": "Government of Maharashtra introduced the scheme to complete the education of V.J.N.T and S.B.C students who are the student of professional courses.",
+      "tags": [
+        "Maintenance",
+        "Vimukta Jati And Nomadic Tribes",
+        "Special Backward Classes",
+        "Professional Courses",
+        "Education"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "7Ma-F5gB0AGc0F0iYjWq",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "IGNDPSM",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Indira Gandhi National Disability Pension Scheme (Maharashtra)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "igndpsm",
+      "briefDescription": "The \"Indira Gandhi National Disability Pension Scheme (Maharashtra)\" is implemented by the Social Justice & Special Assistance Dept., Govt. of Maharashtra. The differently-abled individuals aged 18 to 65 years with a disability of 80% and above are eligible to receive a pension of ₹600/- per month.",
+      "tags": [
+        "Disability",
+        "Pension",
+        "PwD",
+        "Handicapped"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "-Ma-F5gB0AGc0F0iZTUA",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "PTSTGK",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance",
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": "Providing Tin stalls to Gatai Kamgar",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "ptstgk",
+      "briefDescription": "\"Providing Tin Stalls to Gatai Kamgar\" is a social welfare scheme by the Department of Social Justice & Special Assistance of the Government of Maharashtra. The scheme aims to uplift Scheduled Caste individuals engaged in leather footwear production and leather goods preparation.",
+      "tags": [
+        "Scheduled Caste",
+        "Stall",
+        "Employment",
+        "Social Welfare",
+        "SC"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "kcboF5gB0AGc0F0i6jcv",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "YCMVYFVJNTS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Housing & Shelter",
+        "Transport & Infrastructure"
+      ],
+      "schemeName": "Yashwantrao Chavan Mukta Vasahat Yojana for VJNTs",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "ycmvyfvjnts",
+      "briefDescription": "The scheme \"Yashwantrao Chavan Mukta Vasahat Yojana for VJNTs,\" was launched by the Dept of Social Justice & Special Assistance, Govt of Maharashtra. Each VJNT family will receive a plot of land measuring 5 gunthas (approximately 500 square meters or about 5,382 square feet).",
+      "tags": [
+        "Vimukta Jati",
+        "Nomadic Tribe",
+        "Family",
+        "Financial Assistance",
+        "VJNT",
+        "Home",
+        "Construction",
+        "Shelter",
+        "Infrastructure"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "48a-F5gB0AGc0F0iYjUt",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "EAGRDC",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Educational Assistance for Government Recognised Diploma Courses",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "eagrdc",
+      "briefDescription": "The Educational Assistance for Government Recognised Diploma Courses scheme is designed to financially support children of registered construction workers, providing ₹20,000 per year for diploma courses and ₹25,000/- per year for postgraduate diploma courses.",
+      "tags": [
+        "Financial Assistance",
+        "Diploma",
+        "Construction Worker",
+        "Student",
+        "Scholarship"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "5ca-F5gB0AGc0F0iYjVh",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "FA",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Funeral Assistance",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "fa",
+      "briefDescription": "Under this scheme, the “Maharashtra Building & Other Construction Workers Welfare Board” (MBOCWW) provides financial assistance for funeral expenses of ₹10,000/- to the nominated heir of the deceased registered worker in the event of their death. ",
+      "tags": [
+        "Financial Assistance",
+        "Construction Worker",
+        "Labour",
+        "Funeral Expense",
+        "Nominated Heir"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "tqGzF5gBXu-iUKXqj3Qw",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "LTS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Business & Entrepreneurship",
+        "Skills & Employment",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "LIDCOM Training Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "lts",
+      "briefDescription": "Being implemented particularly for the Charmakar Community, the \"Training Scheme\" is a scheme by the Leather Industries Development Corporation (LIDCOM), Govt. of Maharashtra. This scheme is being implemented for the students to enable them to start their own businesses, trade, or get a job.",
+      "tags": [
+        "Skill",
+        "Training",
+        "Employment",
+        "Entrepreneurship",
+        "Scheduled Caste"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "saGzF5gBXu-iUKXqjXS_",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "LMMLS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "LIDCOM Margin Money Loan Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "lmmls",
+      "briefDescription": " In this scheme, for a loan limit from ₹50,001 to ₹5,00,000/-, 20% of the Project cost loan as Seed Capital is paid by the Corporation @ 4% interest per annum. A maximum of ₹10,000/- will be paid as a subsidy by Corporation. A 5% amount of project cost will have to be contributed by the beneficiary.",
+      "tags": [
+        "Loan",
+        "Subsidy",
+        "Scheduled Caste",
+        "Banking"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "hBezF5gB5uF80_MGkI8O",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "KVDGSSY",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Agriculture,Rural & Environment",
+        "Banking,Financial Services and Insurance",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Karma Veer Dadasaheb Gaikwad Sabalikaran & Swabhiman Yojana",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "kvdgssy",
+      "briefDescription": "The main objective of this scheme is to improve the financial condition of the scheduled castes and Nav-Buddhists who are landless workers and are from \"Below Poverty Line\". Only citizens who are permanent residents of Maharashtra are eligible. This scheme is 100% funded by the State Govt.",
+      "tags": [
+        "Loan",
+        "Subsidy",
+        "Below Poverty Line",
+        "Scheduled Caste",
+        "Financial Assistance"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "xsazF5gB0AGc0F0ijDMV",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "SHEAMBGOC",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Scholarships For Higher Education Abroad To Meritorious Boys And Girls From Open Category",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "sheambgoc",
+      "briefDescription": "The scheme “Scholarships for Higher Education Abroad to Meritorious Boys and Girls from open category” was launched by the Department of Higher and Technical Education, Government of Maharashtra on 4th October 2018.",
+      "tags": [
+        "Higher Education",
+        "Abroad",
+        "Open Category",
+        "Students",
+        "Scholarship"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "yMazF5gB0AGc0F0ijDM8",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "SBSSPS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Banking,Financial Services and Insurance"
+      ],
+      "schemeName": "Shravanbal Seva State Pension Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "sbssps",
+      "briefDescription": "The \"Shravanbal Seva State Pension Scheme\" is a Pension Scheme by the Department of Social Justice & Special Assistance, Govt. of Maharashtra. In this scheme, a monthly pension of ₹ 600/- is provided to destitute persons in the state of Maharashtra.",
+      "tags": [
+        "Pension",
+        "Financial Assistance",
+        "Destitute",
+        "Below Poverty Line",
+        "Senior Citizen"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "t6GzF5gBXu-iUKXqj3RY",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "GAOAH",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Housing & Shelter",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Grant In Aid To Old Age Home",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "gaoah",
+      "briefDescription": "The \"Grant in Aid to Old Age Home\" is a scheme by the Dept. of Social Justice & Special Assistance, Govt. of Maharashtra. In this scheme, grants are provided to the NGOs for accommodating old men & women, destitute, disabled victims, into Old Age Homes, and providing them with food, & accommodation.",
+      "tags": [
+        "NGO",
+        "Old Age",
+        "Senior Citizen",
+        "Shelter",
+        "Social Welfare"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "Fsa1F5gB0AGc0F0iJTT_",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "OMPS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Education & Learning",
+        "Agriculture,Rural & Environment"
+      ],
+      "schemeName": "Opening And Maintenance Of Public School (Vidya Niketan) For Vimukta Jatis And Nomadic Tribes",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "omps",
+      "briefDescription": "The Government of Maharashtra has introduced a scheme \"Opening And Maintenance Of Public School (Vidya Niketan) For Vimukta Jatis And Nomadic Tribes\" to voluntary organizations to run the Public School (Vidya Niketan) on a grant-in-aid basis.",
+      "tags": [
+        "Vidya Niketan",
+        "Education",
+        "Public School",
+        "Vimukta Jatis And Nomadic Tribes"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "ucbTF5gB0AGc0F0iLDYA",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "AWVSSSI",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Award Of Stipend To VJNT And SBC Students Studying In ITI",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "awvsssi",
+      "briefDescription": "The Government of Maharashtra launched a scheme that provides to encourage Vimukta Jati and Nomadic Tribes (V.J.N.T.) & Special Backward Class (S.B.C.) students and promote the interest in Technical education.\n",
+      "tags": [
+        "Vimukta Jati Nomadic Tribes",
+        "Special Backward Class",
+        "Technical Education",
+        "ITI"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "lqG4F5gBXu-iUKXqLnWy",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "RASSNB",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Housing & Shelter",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Ramai Awas (Gharkul) Scheme for SC & Nav-Buddha (Urban and Rural)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "rassnb",
+      "briefDescription": "The scheme \"Ramai Awas (Gharkul) Scheme for SC & Nav-Buddha (Urban and Rural)\" is a housing scheme by the Department of Social Justice & Special Assistance of the Government of Maharashtra. The scheme aims to raise the standard of living of the Scheduled Caste and Nav-Buddha communities.",
+      "tags": [
+        "Housing",
+        "Scheduled Caste",
+        "Nav Buddha",
+        "Urban",
+        "Rural"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "jRe5F5gB5uF80_MGSpCZ",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "NAMO SHETKARI MAHASANMAN NIDHI YOJANA",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Agriculture,Rural & Environment"
+      ],
+      "schemeName": "Namo Shetkari Mahasanman Nidhi Yojana",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "namo-shetkari-mahasanman-nidhi-yojana",
+      "briefDescription": "To increase the income of farmers, State government has announced \"Namo Shetkari Mahasanman Nidhi Yojana\" in which cultivable land holding farmer families of the state will get an additional amount of Rs. 6000/- per year (along with Rs. 6000/- through Pradhan Mantri Kisan Samman Nidhi Yojana",
+      "tags": [
+        "PM KISAN TOP UP",
+        "Direct Benefit Transfer",
+        "Agriculture Land Holder",
+        "Family Scheme"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "jKHoF5gBXu-iUKXq7Hh8",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "EACRWS11A12S",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Educational Assistance to the Children of the Registered Worker Studying in 11th and 12th Standard",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "eacrws11a12s",
+      "briefDescription": "The \"Educational Assistance\" scheme provides financial support of ₹10,000 per year to children of registered construction workers who are studying in the 11th or 12th standard. The benefit applies to a maximum of two children per worker and extends to the wife of a registered male worker. ",
+      "tags": [
+        "Financial Assistance",
+        "Student",
+        "Scholarship",
+        "Graduation",
+        "Construction Worker"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "j8boF5gB0AGc0F0i6Dfk",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "EAFDC",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Educational Assistance for Degree Course",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "eafdc",
+      "briefDescription": "The Educational Assistance for Degree Course scheme provides financial assistance to children of registered construction workers pursuing their undergraduate degree (1st, 2nd, 3rd, and 4th year, if applicable). This benefit is also extended to the wife of a registered male worker.",
+      "tags": [
+        "Financial Assistance",
+        "Degree",
+        "Construction Worker",
+        "Student",
+        "Scholarship"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "k8boF5gB0AGc0F0i8jfG",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "EATT10T12S",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Educational Assistance to the 10th to 12th Students",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "eatt10t12s",
+      "briefDescription": "The Educational Assistance to the 10th to 12th Students scheme was launched by the Maharashtra Building And Other Construction Workers Welfare Board (MBOCWW), Labour Department Maharashtra.",
+      "tags": [
+        "Financial Assistance",
+        "Student",
+        "Construction Worker",
+        "Scholarship",
+        "Labour"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "iKHoF5gBXu-iUKXq5ngy",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "EAFMAEC",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Educational Assistance for Medical and Engineering Courses",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "eafmaec",
+      "briefDescription": "The Maharashtra Building and Other Construction Workers Welfare Board provides educational assistance to the children and spouses of registered construction workers pursuing medical and engineering degrees.",
+      "tags": [
+        "Financial Assistance",
+        "Student",
+        "Construction Worker",
+        "Medical",
+        "Engineering Course"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "wKG-F5gBXu-iUKXqYXZ-",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "MATCI",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Health & Wellness"
+      ],
+      "schemeName": "Medical Assistance for the Treatment of Critical Illness",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "matci",
+      "briefDescription": "Under this scheme, medical assistance of ₹1,00,000/- for the treatment of serious ailments for registered worker and his/her family members. (the benefit can be availed only after 26th July 2014 as the benefit is covered under the Mediclaim & Personal Accident Insurance scheme).",
+      "tags": [
+        "Financial Assistance",
+        "Illness",
+        "Construction Worker",
+        "Medical Treatment"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "aBfoF5gB5uF80_MG7ZPV",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "TLS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Business & Entrepreneurship",
+        "Banking,Financial Services and Insurance"
+      ],
+      "schemeName": "Term Loan Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "tls",
+      "briefDescription": "The scheme aims to uplift the economically disadvantaged Charmakar community (Dhor, Chambhar, Holar, Mochi, etc.) by promoting their educational, economic, and social development, helping them gain a respectable place in society.",
+      "tags": [
+        "BPL",
+        "Loan",
+        "Below Poverty Line",
+        "Employment"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "whe-F5gB5uF80_MGYpEZ",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "FAFND",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Financial Assistance for Natural Death",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "fafnd",
+      "briefDescription": "The scheme “Financial Assistance for Natural Death” was launched by the Maharashtra Building & Other Construction Workers Welfare Board (MBOCWW), Labour Department Maharashtra. Under the scheme, the Board provides financial assistance of ₹2,00,000/- to the legal heir of a registered worker who dies.",
+      "tags": [
+        "Financial Assistance",
+        "Natural Death",
+        "Construction Worker",
+        "Legal Heir"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "18azF5gB0AGc0F0ijzPZ",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "SPREMSD",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "State Pre-metric Scholarship For Disabled",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "spremsd",
+      "briefDescription": "The \"State Pre-metric Scholarship for Disabled\" is a scheme by the Department of Social Justice & Special Assistance, Govt. of Maharashtra. The objective of this scheme is to encourage students with disability (SwDs) to pursue education. This scheme is 100% funded by the Govt. of Maharashtra.",
+      "tags": [
+        "Persons With Disability",
+        "Student",
+        "Pre-Matric",
+        "School",
+        "Scholarship"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "pKGzF5gBXu-iUKXqinSm",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "MI-MAHA",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Banking,Financial Services and Insurance"
+      ],
+      "schemeName": "Matrimonial Incentives",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "mi-maha",
+      "briefDescription": "In this scheme, if a Person with Disability (PwD) gets married to a non-disabled person, then the couple is provided a marriage incentive of up to ₹ 50,000. Only citizens who are permanent residents of the state of Maharashtra are eligible to apply for this scheme.",
+      "tags": [
+        "Person With Disability",
+        "Marriage",
+        "Incentive",
+        "Financial Assistance",
+        "Social Welfare"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "vaGzF5gBXu-iUKXqkHQb",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "L50SS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "LIDCOM 50% Subsidy Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "l50ss",
+      "briefDescription": "The \"50% Subsidy Scheme\" is a scheme by LIDCOM, Govt. of Maharashtra. In this scheme, 50% amount is being given as a subsidy on a maximum loan amount of ₹50,000/-. The subsidy is subject to the maximum limit of ₹10,000/-. The bank charge of interest is as per the existing rate.",
+      "tags": [
+        "Loan",
+        "Subsidy",
+        "Scheduled Caste",
+        "Banking"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "_Be2F5gB5uF80_MGHY-d",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "TMDVSO",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Education & Learning"
+      ],
+      "schemeName": "Training Of Motor Driving To VJNT, SBS & OBC",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "tmdvso",
+      "briefDescription": "The Government of Maharashtra launched a scheme that provides light and heavy motor driving, and conductor training to the needy Vimukta Jati, Nomadic Tribes, and Other Backward Class (VJNT, OBC & SBC) candidates. ",
+      "tags": [
+        "Motor Driving",
+        "Training",
+        "Maharashtra",
+        "School",
+        "Vimukta Jati And Nomadic Tribes",
+        "Other Backward Class",
+        "Special Backward Caste"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "n6HTF5gBXu-iUKXqKXdb",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "Vnmatv",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Vasantrao Naik Merit Awards To The Vjnt Students Who Came First In State Or First In Board Of 10th And 12th Standard Examination",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "vnmatv",
+      "briefDescription": "Vasantrao Naik Merit Awards to the VJNT students who came First in State or First in Board of 10th and 12th Standard Examination Scheme Announced by Government Of Maharashtra to Scheme to motivate VJNT students for Higher Education.",
+      "tags": [
+        "Board Exams",
+        "Vimukta Jati And Nomadic Tribes",
+        "Senior Secondary School",
+        "Higher Secondary School"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "tcbTF5gB0AGc0F0iKzY8",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "Tfefvs",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Tuition Fees And Examination Fees To Vjnt Students",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "tfefvs",
+      "briefDescription": "The Government of Maharashtra launched a scheme namely \"Tuition fees and examination fees to Vimukta Jati and Nomadic Tribes (VJNT) students.",
+      "tags": [
+        "Tuition Fees",
+        "Vimukta Jati And Nomadic Tribes",
+        "Students",
+        "Examination Fees"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "5Ma5F5gB0AGc0F0iSjQ-",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "BHAUSAHEB FUNDKAR HORTICULTURE PLANTATAION SCHEME",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Agriculture,Rural & Environment"
+      ],
+      "schemeName": "Bhausaheb Fundkar Falbag Lagvad Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "bhausaheb-fundkar-horticulture-plantataion-scheme",
+      "briefDescription": "This scheme includes, Plantation of sixteen perennial horticulture crops. Farmer from Konkan division can avail benefit of 0.10 Hector  to 10.00 Hector  and rest Of Maharashtra 0.20 Hector  to 6.00 Hector  ",
+      "tags": [
+        "Direct Benefit Transfer",
+        "Farmer",
+        "General",
+        "Horticulture",
+        "Plantation"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "6ca5F5gB0AGc0F0iSjSm",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "POCRA",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Agriculture,Rural & Environment"
+      ],
+      "schemeName": "Nanaji Deshmukh Krishi Sanjivani Prakalp",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "pocra",
+      "briefDescription": "The project aims to enhance climate-resilience and profitability of smallholder farming systems in 15 project districts of Maharashtra through promotion of climate resilient technology and commodity value chain across approximately 5,000 drought-prone and/or sodicity/salinity affected villages.",
+      "tags": [
+        "Climate Resilience",
+        "Farmers",
+        "NDKSP",
+        "Drought",
+        "Water Conservation",
+        "POCRA"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "z6G5F5gBXu-iUKXqUXWF",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "CMEGP",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Business & Entrepreneurship",
+        "Skills & Employment",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "CHIEF MINISTER  EMPLOYMENT GENERATION  PROGRAMME (CMEGP)",
+      "schemeCloseDate": "2024-07-31",
+      "priority": 1,
+      "slug": "cmegp",
+      "briefDescription": "Government of Maharashtra has approved the introduction of a new credit linked subsidy program called Chief Minister Employment Generation Program(CMEGP) for generation of employment opportunities through establishment of Micro & Small Enterprises in rural as well as urban areas in state.",
+      "tags": [
+        "Scheduled Caste",
+        "Scheduled Tribe",
+        "Female",
+        "Other Backward Class",
+        "Person With Disability",
+        "VJNT"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "Lxe7F5gB5uF80_MG0JHR",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "CTS-MAHARASHTRA",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Skills & Employment"
+      ],
+      "schemeName": "Craftsman Training Scheme - Maharashtra",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "cts-maharashtra",
+      "briefDescription": "The \"Craftsman Training Scheme\" provides vocational training to individuals, enhancing their skill & employability. This stipend aims to support the trainees financially & encourage them to pursue & complete their vocational training, thereby contributing to skilled manpower development in the state",
+      "tags": [
+        "Stipend",
+        "Craftsman",
+        "Training",
+        "Skill Development"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "WMa7F5gB0AGc0F0izzWw",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "RCSMMS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Rajarshri Chhatrapati Shahu Maharaj Merit Scholarship",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "rcsmms",
+      "briefDescription": "The \"Rajarshri Chhatrapati Shahu Maharaj Merit Scholarship\" is an initiative by the Maharashtra Government, specifically designed to encourage scheduled caste students to pursue higher secondary education.  The scholarship aims to enhance the educational standards & competitiveness of students.",
+      "tags": [
+        "Financial Assistance",
+        "Scholarship",
+        "Student",
+        "Scheduled Caste"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "06G-F5gBXu-iUKXqYnbA",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "MCF",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance",
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": "Micro Credit Finance",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "mcf",
+      "briefDescription": "Under the Micro Credit Finance Scheme, beneficiaries from the Charmkar Community receive financial assistance of up to ₹50,000 at an interest rate of 5% per annum. This assistance includes a subsidy of ₹10,000, with the remaining amount provided as a loan.",
+      "tags": [
+        "BPL",
+        "Below Poverty Line",
+        "Financial Assistance",
+        "Employment",
+        "Credit"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "ZRfoF5gB5uF80_MG5ZN_",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "IGTEICM",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Women and Child",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Incentive given to Encourage Inter caste Marriages",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "igteicm",
+      "briefDescription": "The \"Incentive for Encouraging Inter-Caste Marriages\" scheme is implemented by the Department of Social Justice & Special Assistance, Government of Maharashtra, and funded jointly by the State and Central Government (50:50). The scheme provides financial incentives to support inter-caste marriages.",
+      "tags": [
+        "Intercaste",
+        "Marriage",
+        "Financial Assistance",
+        "Bride",
+        "Groom"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "iaHoF5gBXu-iUKXq6Xjv",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "FANDSD",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Women and Child"
+      ],
+      "schemeName": "Financial Assistance for Normal Delivery and Surgical Delivery",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "fandsd",
+      "briefDescription": "The \"Financial Assistance for Normal Delivery and Surgical Delivery\" scheme was launched by the Maharashtra Building And Other Construction Workers Welfare Board (MBOCWW), Labour Department Maharashtra.",
+      "tags": [
+        "Financial Assistance",
+        "Pregnant",
+        "Construction Worker",
+        "Normal Delivery",
+        "Surgical"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "9ca-F5gB0AGc0F0iZDUZ",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "FATNUKYV",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Women and Child",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Financial Assistance to Newlyweds under Kanyadan Yojana (Vijabhaj)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "fatnukyv",
+      "briefDescription": "\"Financial Assistance to Newlyweds under Kanyadan Yojana (Vijabhaj)\" was launched by the Dept of Social Justice & Special Assistance, Govt of Maharashtra. The scheme aims to reduce the economic, social, and educational backwardness of Scheduled Castes, Freed Castes, Nomadic Tribes, etc.",
+      "tags": [
+        "Marriage",
+        "Backward Class",
+        "Nomadic Tribe",
+        "Bride",
+        "Groom"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "i6HoF5gBXu-iUKXq63jP",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "FAGCAHA18",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Women and Child"
+      ],
+      "schemeName": "Financial Assistance for Girl Child Attend Her Age of 18",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "fagcaha18",
+      "briefDescription": "The Financial Assistance for Girl Child Attend Her Age of 18 scheme provides financial assistance in the form of a fixed deposit of ₹1,00,000/- for each female child of a registered worker or spouse who has undergone a family planning operation after the birth of one female child.",
+      "tags": [
+        "Financial Assistance",
+        "Fixed Deposit",
+        "Girl Child",
+        "Construction Worker"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "SqHgF5gBXu-iUKXq6Hhu",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "DRPDHMA",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Dr. Panjabrao Deshmukh Hostel Maintenance Allowance",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "drpdhma",
+      "briefDescription": "This scheme is for the Students whose parent's annual Income is below 800000 and Students whose parents are Marginal Land Holder and registered laborers.",
+      "tags": [
+        "Dr. Panjabrao Deshmukh",
+        "Hostel Allowance",
+        "Education",
+        "Maharashtra Scheme",
+        "Student Scheme"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "wMazF5gB0AGc0F0iizNo",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "LELS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning",
+        "Banking,Financial Services and Insurance",
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "LIDCOM Education Loan Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "lels",
+      "briefDescription": "The \"Education Loan Scheme\" is a scheme by the Leather Industries Development Corporation (LIDCOM), Govt. of Maharashtra. In this scheme, finance of upto ₹ 20,00,000 is provided for post graduate students in the 18-50 years age group from Charmakar Community for studies in India and in abroad.",
+      "tags": [
+        "Loan",
+        "Education",
+        "Student",
+        "Postgraduation",
+        "Scheduled Caste"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "fxezF5gB5uF80_MGj488",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "FASETDP",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Skills & Employment"
+      ],
+      "schemeName": "Financial Assistance To Self-Employment For Trained Disabled Persons",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "fasetdp",
+      "briefDescription": "The \"Financial Assistance to Self-Employment for Trained Disabled Persons\" is a scheme by the Govt. of Maharashtra. The objective of this scheme is to provide financial assistance to facilitate the purchase of equipment for those disabled persons who are completing their vocational training.",
+      "tags": [
+        "Persons With Disability",
+        "Social Welfare",
+        "Employment",
+        "Financial Assistance"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "2MazF5gB0AGc0F0ijzPl",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "STITI",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Skills & Employment",
+        "Social welfare & Empowerment",
+        "Education & Learning"
+      ],
+      "schemeName": "Stipends To Trainees In Industrial Training Institute",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "stiti",
+      "briefDescription": "The scheme “Stipends to Trainees in Industrial Training Institute” was launched by the Department of Social Justice and Special Assistance, Government of Maharashtra for Scheduled Caste students in Industrial Training Institute.",
+      "tags": [
+        "Stipends",
+        "Trainees",
+        "ITI",
+        "Scheduled Caste",
+        "Students"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "vMazF5gB0AGc0F0iijPv",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "NGAO(SS&VT)D",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning",
+        "Social welfare & Empowerment",
+        "Skills & Employment"
+      ],
+      "schemeName": "Non-Governmental Aided Organization (Special Schools And Vocational Training Centre) For Disabled",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "ngaossandvtd",
+      "briefDescription": "In this scheme, Special Education is provided to children with disability who are below the age of 18 years. The child should be enrolled in a special school run by a Non-Governmental Aided Organization. Vocational Training is given to special children above the age of 18 years.",
+      "tags": [
+        "Persons With Disability",
+        "Special School",
+        "Vocational Education",
+        "Student"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "rRe1F5gB5uF80_MGIo-a",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "SPS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Education & Learning",
+        "Women and Child"
+      ],
+      "schemeName": "Savitribai Phule Scholarship For V.J.N.T And S.B.C Girls Students Studying In 8th To 10 Std",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "sps",
+      "briefDescription": "Savitribai Phule Scholarship is a Scholarship Scheme by the Social Justice and Special Assistance Department, Govt. of Maharashtra, to encourage enrollment and to decrease the dropout ratio of Girls in education. ",
+      "tags": [
+        "Pre-Matric",
+        "SBC",
+        "Scholarship",
+        "Special Backward Classes",
+        "Vimukta Jati And Nomadic Tribes"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "oRfTF5gB5uF80_MGGZI3",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "Tfefvssshs",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Tuition Fees And Examination Fees To Vjnt/sbc Students Studying In High Schools",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "tfefvssshs",
+      "briefDescription": "The Government of Maharashtra introduced Tuition fees and Examination fees to Vimukta Jati Nomadic Tribes (VJNT)/ Special Backward Classes (SBC) students studying in High Schools scheme to improve interest of VJNT/SBC students. \n",
+      "tags": [
+        "Vimukta Jati Nomadic Tribes",
+        "Special Backward Class",
+        "Tuition Fees",
+        "Examination Fees",
+        "High School"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "txfTF5gB5uF80_MGQpLo",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "Msvss",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Meritorious Scholarships To Vjnt And Sbc Students Studying In Secondary Schools",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "msvss",
+      "briefDescription": "The government of Maharashtra introduced the scheme of meritorious Scholarships to VJNT and SBC students studying in Secondary Schools. To motivate Backward Class students for education.",
+      "tags": [
+        "Students",
+        "Vimukta Jati And Nomadic Tribes",
+        "Special Backward Class",
+        "Scholarship"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "PBe7F5gB5uF80_MG0pHI",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "MMLBY",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Women and Child"
+      ],
+      "schemeName": "Mukhyamantri - Majhi Ladki Bahin Yojana",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "mmlby",
+      "briefDescription": "The \"Mukhyamantri - Majhi Ladki Bahin Yojana\" is for the economic freedom of women in the state age group of 21 to 65, improving their health and nutrition and strengthening their decisive role in the family. The women will receive a financial benefit through direct benefit transfer.  ",
+      "tags": [
+        "Female",
+        "Financial Assistance",
+        "Health",
+        "Nutrition"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "5sa-F5gB0AGc0F0iYjVn",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "FSME",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "First Self Marriage Expenses",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "fsme",
+      "briefDescription": "The Maharashtra Building and Other Construction Workers Welfare Board implemented the \"First Self Marriage Expenses\" scheme. Under this scheme, financial assistance of ₹30,000/- towards the first self marriage expenses to the registered worker.",
+      "tags": [
+        "Financial Assistance",
+        "Marriage",
+        "Construction Worker",
+        "Labour"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "yaG-F5gBXu-iUKXqYnZy",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "FAT75OPD",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Financial Assistance to 75% or Permanent Disability",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "fat75opd",
+      "briefDescription": "The Financial Assistance to 75% or Permanent Disability was launched by the Maharashtra Building & Other Construction Workers Welfare Board (MBOCWW), Labor Department Maharashtra. In scheme, financial assistance of ₹2,00,000/- to the registered worker in case of 75 % or more permanent disability.",
+      "tags": [
+        "Financial Assistance",
+        "Disability",
+        "Construction Worker",
+        "Medical Treatment"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "3Ma-F5gB0AGc0F0iYDXm",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "NFBSM",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "National Family Benefit Scheme (Maharashtra)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "nfbsm",
+      "briefDescription": "The scheme \"National Family Benefit Scheme (Maharashtra)\" is a social welfare scheme by the Social Justice & Special Assistance Department, Government of Maharashtra. Under this scheme, ₹20,000/-. is provided to the family in the event of the death of their primary breadwinner.",
+      "tags": [
+        "Pension",
+        "Family",
+        "BPL",
+        "Death",
+        "Below Poverty Line"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "vRe-F5gB5uF80_MGYJHX",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "FAWWRCW",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Financial Assistance for Widow or Widower of Registered Construction Worker",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "fawwrcw",
+      "briefDescription": "The scheme is implemented by the Maharashtra Building and Other Construction Workers Welfare Board. Under this scheme, financial assistance of ₹24,000/- p.a. up to 5 years to the widow or widower in case of death of a registered worker during the course of employment.",
+      "tags": [
+        "Financial Assistance",
+        "Widow",
+        "Widower",
+        "Death",
+        "Construction Worker"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "8Ma-F5gB0AGc0F0iYjW9",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "VNTBDS",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Vasantrao Naik Tanda / Basti Development Scheme",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "vntbds",
+      "briefDescription": "The scheme \"Vasantrao Naik Tanda/Basti Development\" is implemented by the Govt. of Maharashtra. The scheme provides essential amenities to the Tandas and Bastis of Vimukta Jatis and Nomadic Tribes. The scheme focuses on improving access to drinking water, electrification, latrines, drainage, etc.",
+      "tags": [
+        "Development",
+        "Water",
+        "Electrification",
+        "Latrine",
+        "Toilet",
+        "Amenities"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "2Ma-F5gB0AGc0F0iYDV3",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "RMSCITC",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Education & Learning"
+      ],
+      "schemeName": "Reimbursement of the MS-CIT Course",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "rmscitc",
+      "briefDescription": "The Reimbursement of the MS-CIT Course scheme was launched by the Maharashtra Building And Other Construction Workers Welfare Board (MBOCWW), Labour Department Maharashtra. ",
+      "tags": [
+        "Financial Assistance",
+        "Reimbursement",
+        "Construction Worker",
+        "Student",
+        "IT Courses"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "yRe-F5gB5uF80_MGYpGV",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "AABYM",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Social welfare & Empowerment",
+        "Banking,Financial Services and Insurance",
+        "Education & Learning"
+      ],
+      "schemeName": "Aam Aadmi Bima Yojana (Maharashtra)",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "aabym",
+      "briefDescription": "The \"Aam Aadmi Bima Yojana\" scheme is implemented by the Social Justice & Special Assistance Department, Government of Maharashtra. This Centrally Sponsored Scheme is aimed at providing insurance and scholarship benefits to landless labourers in rural areas, aged 18 to 59 years.",
+      "tags": [
+        "Insurance",
+        "Scholarship",
+        "Accident",
+        "Disability",
+        "Student"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "4ca-F5gB0AGc0F0iYjUa",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "SMA",
+      "level": "State",
+      "schemeFor": "Individual",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance",
+        "Women and Child"
+      ],
+      "schemeName": "Swarnima",
+      "schemeCloseDate": null,
+      "priority": 1,
+      "slug": "sma",
+      "briefDescription": "The Swarnima Scheme provides loan assistance to female beneficiaries from Other Backward Classes (OBC) residing in Maharashtra to support self-employment activities, empowering them to establish a stable livelihood.",
+      "tags": [
+        "Other Backward Class",
+        "Women",
+        "Employment",
+        "Loan",
+        "OBC"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "pBe5F5gB5uF80_MGX5A2",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "GOPINATH MUNDE SHETKARI APGHAT SURAKSHA SANUGRAH AUDHAN YOJANA",
+      "level": "State",
+      "schemeFor": "Family",
+      "schemeCategory": [
+        "Agriculture,Rural & Environment"
+      ],
+      "schemeName": "Gopinath Munde Shetkari Apghat Suraksha Sanugrah Audhan Yojana",
+      "schemeCloseDate": null,
+      "priority": 2,
+      "slug": "gopinath-munde-shetkari-apghat-suraksha-sanugrah-audhan-yojana",
+      "briefDescription": "In order to give financial support to the aggrieved family members of the ill-fated farmers the State Govt. has provided accident claim cover through Gopinath Munde Shetkari Apghat Suraksha Sanugrah Audhan Yojana in the year 2023-24.",
+      "tags": [
+        "Compensation",
+        "Person With Disability",
+        "General",
+        "Direct Benefit Transfer",
+        "Assistance",
+        "Farmer"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "qqGzF5gBXu-iUKXqi3TU",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "SGNGS",
+      "level": "State",
+      "schemeFor": "Family",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Sanjay Gandhi Niradhar Grant Scheme",
+      "schemeCloseDate": null,
+      "priority": 2,
+      "slug": "sgngs",
+      "briefDescription": "The \"Sanjay Gandhi Niradhar Grant Scheme\" is a scheme by the Dept. of Social Justice & Special Assistance, Govt. of Maharashtra. Financial assistance of ₹600/- per month is given if there is only one beneficiary in the eligible family, and ₹900/- per month if there is one beneficiary in a family.",
+      "tags": [
+        "Financial Asisstance",
+        "Widow",
+        "Transgender",
+        "Person With Disability",
+        "Orphan",
+        "Below Poverty Line",
+        "Destitute"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "acbkF5gB0AGc0F0iRDdA",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "MJPJAY",
+      "level": "State",
+      "schemeFor": "Family",
+      "schemeCategory": [
+        "Health & Wellness"
+      ],
+      "schemeName": "Mahatma Jyotirao Phule Jan Arogya Yojana",
+      "schemeCloseDate": null,
+      "priority": 2,
+      "slug": "mjpjay",
+      "briefDescription": "The Mahatma Jyotirao Phule Jan Arogya Yojana, launched by the Government of Maharashtra, offers cashless treatment for identified diseases through a network of government and private healthcare providers.",
+      "tags": [
+        "Hospital",
+        "Health Insurance",
+        "Cashless Service",
+        "Diseases",
+        "Hospital"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "fRezF5gB5uF80_MGj481",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "SPAA",
+      "level": "State",
+      "schemeFor": "Infra",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Shahu, Phule, Ambedkar Award",
+      "schemeCloseDate": null,
+      "priority": 3,
+      "slug": "spaa",
+      "briefDescription": "The \"Shahu, Phule, Ambedkar Award\" is an award by the Govt. of Maharashtra. The award is given to the Registered Organizations working in various fields of Social Justice, doing Social Reforms in the state, and taking Maharashtra forward as a social reformist State.",
+      "tags": [
+        "Award",
+        "Social Welfare",
+        "Financial Assistance"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "SKHgF5gBXu-iUKXq53jq",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "GSGOS",
+      "level": "State",
+      "schemeFor": "Infra",
+      "schemeCategory": [
+        "Business & Entrepreneurship",
+        "Skills & Employment"
+      ],
+      "schemeName": "Group Supply Of Goats And Sheep",
+      "schemeCloseDate": null,
+      "priority": 3,
+      "slug": "gsgos",
+      "briefDescription": "Group supply of goats and sheep refers to the practice of selling or distributing goats and sheep in groups, rather than as individual animals. In Maharashtra, this practice is common among farmers, livestock traders, and cooperative organizations. ",
+      "tags": [
+        "Tribal Scheme",
+        "Goat Supply",
+        "Sheep Supply",
+        "Maharashtra Scheme",
+        "State Scheme"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "paGzF5gBXu-iUKXqinT_",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "KPDGBCPD",
+      "level": "State",
+      "schemeFor": "Infra",
+      "schemeCategory": [
+        "Social welfare & Empowerment"
+      ],
+      "schemeName": "Karmaveer Padmashri Dadasaheb Gaikwad Birth Centenary And Prize Distribution",
+      "schemeCloseDate": null,
+      "priority": 3,
+      "slug": "kpdgbcpd",
+      "briefDescription": "The \"Karmaveer Padmashri Dadasaheb Gaikwad Birth Centenary and Prize Distribution\" is an award by the Govt. of Maharashtra. The award is given to individuals and organizations working for the social movement against traditional customs and untouchability and for landless farm workers.",
+      "tags": [
+        "Award",
+        "Untouchability",
+        "Social Welfare",
+        "Landless Farmer"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "YxfoF5gB5uF80_MG5ZNI",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "MMYKPY",
+      "level": "State",
+      "schemeFor": "Infra",
+      "schemeCategory": [
+        "Skills & Employment"
+      ],
+      "schemeName": "Mukhyamantri Yuva Karya Prashikshan Yojana",
+      "schemeCloseDate": null,
+      "priority": 3,
+      "slug": "mmykpy",
+      "briefDescription": "The Mukhyamantri Yuva Karya Prashikshan Yojana scheme was launched by the Department of Skill, Employment, Entrepreneurship and Innovation to enhance candidates' employability through practical training with entrepreneurs with a budget of ₹5,500 crore.",
+      "tags": [
+        "Vocational Training",
+        "Specially-Abled Person",
+        "Student",
+        "Stipend"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "yqG-F5gBXu-iUKXqYnZ5",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "PMTAISPTTSHGOSC",
+      "level": "State",
+      "schemeFor": "Infra",
+      "schemeCategory": [
+        "Business & Entrepreneurship",
+        "Banking,Financial Services and Insurance"
+      ],
+      "schemeName": "Providing Mini Tractor and its Sub Parts to the Self Help Group of Scheduled Castes",
+      "schemeCloseDate": null,
+      "priority": 3,
+      "slug": "pmtaispttshgosc",
+      "briefDescription": "The \"Providing Mini tractor and its sub parts to the Self Help Group of Scheduled Castes\" is a scheme by the Govt. of Maharashtra. This scheme aims to improve the financial condition of the scheduled castes and Nav-Buddhists Self Help Group.",
+      "tags": [
+        "Scheduled Caste",
+        "SHG",
+        "Social Welfare",
+        "Self Help Group",
+        "Subsidy",
+        "SC",
+        "Tractor"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "vBe-F5gB5uF80_MGYJHE",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "LTLTSCOSMUSCP",
+      "level": "State",
+      "schemeFor": "Infra",
+      "schemeCategory": [
+        "Banking,Financial Services and Insurance",
+        "Business & Entrepreneurship"
+      ],
+      "schemeName": "Long Term-Loan to SC Co-op Spinning Mills under Special Component Plan",
+      "schemeCloseDate": null,
+      "priority": 3,
+      "slug": "ltltscosmuscp",
+      "briefDescription": "The scheme \"Long Term-Loan to SC Co-op Spinning Mills under Special Component Plan\" was introduced by the Department of Social Justice & Special Assistance, Government of Maharashtra. The scheme aims to promote the development of spinning mills owned by scheduled caste members.",
+      "tags": [
+        "Scheduled Caste",
+        "Social Welfare",
+        "Loan",
+        "Financial Assistance",
+        "Mill",
+        "SC"
+      ]
+    },
+    "highlight": {}
+  },
+  {
+    "id": "RxeBMJgB5uF80_MGPZRJ",
+    "fields": {
+      "beneficiaryState": [
+        "Maharashtra"
+      ],
+      "schemeShortTitle": "CHIEF MINISTER SUSTAINABLE AGRICULTURE IRRIGATION SCHEME",
+      "level": "State",
+      "schemeFor": null,
+      "schemeCategory": [
+        "Agriculture,Rural & Environment"
+      ],
+      "schemeName": "Chief Minister Sustainable Agriculture Irrigation Scheme - Magel Tyala Shettale (Individual Farm Pond) ",
+      "schemeCloseDate": null,
+      "priority": null,
+      "slug": "chief-minister-sustainable-agriculture-irrigation-scheme",
+      "briefDescription": "Under this scheme subsidy payable to individual farmer is minimum Rs.14433/- and maximum Rs.75000/- depending on the size of the farm pond.",
+      "tags": [
+        "MahaDBT",
+        "Individual Farm Pond",
+        "Magel Tyala Shettale",
+        "Chatrapati Shivaji Maharaj Krishi Yojana"
+      ]
+    },
+    "highlight": {}
+  }
+]

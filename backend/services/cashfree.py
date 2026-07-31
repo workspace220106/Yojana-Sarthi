@@ -59,7 +59,7 @@ def get_digilocker_status(verification_id: str):
         raise ValueError("Cashfree Client ID or Client Secret is not configured.")
 
     # Status check is GET /verification/digilocker/status?verification_id={id}
-    endpoint = f"{BASE_URL}/verification/digilocker/status"
+    endpoint = f"{BASE_URL}/verification/digilocker"
     
     headers = {
         "x-client-id": CLIENT_ID,

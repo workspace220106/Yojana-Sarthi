@@ -2,24 +2,24 @@ class PromptBuilder:
 
     @staticmethod
     def build(user_query, schemes):
-
         context = ""
 
         for i, scheme in enumerate(schemes, start=1):
-
             context += f"\n================ SCHEME {i} ================\n"
             context += f"Title: {scheme['title']}\n"
 
             metadata = scheme.get("metadata", {})
-
             context += f"Department: {metadata.get('department', 'Information not available.')}\n"
             context += f"Ministry: {metadata.get('ministry', 'Information not available.')}\n"
             context += f"Level: {metadata.get('level', 'Information not available.')}\n"
             context += f"Categories: {metadata.get('categories', [])}\n"
             context += f"Beneficiaries: {metadata.get('beneficiaries', [])}\n"
-            context += f"Tags: {metadata.get('tags', [])}\n\n"
+            context += f"Tags: {metadata.get('tags', [])}\n"
 
-            for section, text in scheme["sections"].items():
+
+            context += "\n"
+
+            for section, text in scheme.get("sections", {}).items():
                 context += f"{section}\n"
                 context += f"{text}\n\n"
 

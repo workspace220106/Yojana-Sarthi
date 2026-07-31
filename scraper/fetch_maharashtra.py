@@ -1,10 +1,12 @@
 import requests
 import json
 import time
+from pathlib import Path
+DOWNLOAD_MODE = "maharashtra"
 
-url = "https://api.myscheme.gov.in/search/v6/schemes"
+URL = "https://api.myscheme.gov.in/search/v6/schemes"
 
-headers = {
+HEADERS = {
     "accept": "application/json, text/plain, */*",
     "origin": "https://www.myscheme.gov.in",
     "referer": "https://www.myscheme.gov.in/",
@@ -12,20 +14,30 @@ headers = {
     "x-api-key": "tYTy5eEhlu9rFjyxuCr7ra7ACp4dv1RH8gWuHTDc"
 }
 
-q = json.dumps([
-    {
-        "identifier": "beneficiaryState",
-        "value": "All"
-    },
-    {
-        "identifier": "beneficiaryState",
-        "value": "Maharashtra"
-    }
-])
+if DOWNLOAD_MODE == "maharashtra":
+
+    q = json.dumps([
+        {
+            "identifier": "beneficiaryState",
+            "value": "Maharashtra"
+        }
+    ])
+
+else:
+
+    q = json.dumps([
+        {
+            "identifier": "beneficiaryState",
+            "value": "All"
+        }
+    ])
 
 all_schemes = []
 
-for page in range(9):        # 85 schemes → 9 pages
+page = 0
+
+while True:
+
     params = {
         "lang": "en",
         "q": q,
@@ -35,20 +47,67 @@ for page in range(9):        # 85 schemes → 9 pages
         "size": 10
     }
 
-    r = requests.get(url, headers=headers, params=params)
-    r.raise_for_status()
+    try:
 
-    data = r.json()
+        r = requests.get(
+            URL,
+            headers=HEADERS,
+            params=params,
+            timeout=30
+        )
 
-    items = data["data"]["hits"]["items"]
+        r.raise_for_status()
 
-    all_schemes.extend(items)
+        data = r.json()
 
-    print(f"Downloaded {len(all_schemes)} schemes")
+        items = data["data"]["hits"]["items"]
 
-    time.sleep(0.2)
+        if not items:
+            break
 
-with open("maharashtra_schemes.json", "w", encoding="utf-8") as f:
-    json.dump(all_schemes, f, indent=2, ensure_ascii=False)
+        all_schemes.extend(items)
 
-print("Done!")
+        print(f"Downloaded {len(all_schemes)} schemes")
+
+        page += 1
+
+        time.sleep(0.25)
+
+    except Exception as e:
+
+        print(f"Error on page {page}: {e}")
+
+        break
+
+BASE_DIR = Path(__file__).resolve().parents[1]
+
+OUTPUT_FILE = (
+    BASE_DIR
+    / "data"
+    / "raw"
+    / "maharashtra"
+    / "maharashtra_schemes.json"
+)
+
+OUTPUT_FILE.parent.mkdir(
+    parents=True,
+    exist_ok=True
+)
+
+with open(
+    OUTPUT_FILE,
+    "w",
+    encoding="utf-8"
+) as f:
+
+    json.dump(
+        all_schemes,
+        f,
+        indent=2,
+        ensure_ascii=False
+    )
+
+print("\n======================================")
+print(f"Downloaded {len(all_schemes)} schemes")
+print("Saved -> maharashtra_schemes.json")
+print("======================================")
