@@ -1,0 +1,49 @@
+# .dockerignore – exclude files that should NOT go into the Docker image
+
+# Git
+.git
+.gitignore
+.github
+
+# Python virtual environments (huge – not needed, deps installed in Docker)
+.venv
+.venv-1
+.venv-2
+.venv-3
+.venv-4
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Frontend (Cloud Run only hosts backend)
+frontend/
+node_modules/
+
+# Dev/test files
+*.log
+*.test.py
+tests/
+notebooks/
+docs/
+assets/
+
+# Local env (secrets injected via Cloud Run env vars, not .env file)
+.env
+.env.*
+
+# Render/Vercel config (not needed for Cloud Run)
+render.yaml
+vercel.json
+docker-compose.yml
+
+# VS Code
+.vscode/
+
+# Misc
+*.md
+LICENSE
+scraper/
+models/
+scripts/

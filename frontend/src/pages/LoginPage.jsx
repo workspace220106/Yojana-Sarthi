@@ -150,7 +150,7 @@ const LoginPage = () => {
           // Dispatch custom profileUpdate event
           window.dispatchEvent(new Event('profileUpdate'));
 
-          // 3. Immediately launch Cashfree DigiLocker redirect flow as part of login
+          // 3. Optionally launch Cashfree DigiLocker redirect flow
           try {
             const res = await fetch('/api/verification/digilocker/url', {
               method: 'POST',
@@ -170,16 +170,12 @@ const LoginPage = () => {
               // Redirect browser to Cashfree SecureID DigiLocker Gateway
               window.location.href = data.url;
               return;
-            } else {
-              throw new Error('Verification URL not generated');
             }
           } catch (cfErr) {
-            console.error(cfErr);
-            if (window.confirm('Login successful, but unable to initialize Cashfree DigiLocker Gateway. Would you like to proceed to your dashboard anyway and link it later?')) {
-              navigate('/landing');
-            }
-            return;
+            // DigiLocker is optional — proceed to dashboard if unavailable
+            console.warn('DigiLocker gateway unavailable, proceeding without it:', cfErr.message);
           }
+          navigate('/landing');
         } else {
           // For admin, go straight to landing
           navigate('/landing');

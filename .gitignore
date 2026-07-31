@@ -21,7 +21,6 @@ venv/
 .vercel/
 
 # Data / ML artifacts
-data/embeddings/
 data/cache/
 models/
 *.pkl
