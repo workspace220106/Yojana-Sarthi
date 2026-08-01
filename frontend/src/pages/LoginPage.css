@@ -172,7 +172,12 @@
   padding: 3rem 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+.auth-card {
+  margin: auto 0;
+  width: 100%;
 }
 
 .role-selector {
