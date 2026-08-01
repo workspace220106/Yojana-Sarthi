@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import './styles/theme.css';
 
@@ -18,6 +18,22 @@ import Multilingual from './pages/Multilingual';
 
 import StartingPage from './pages/StartingPage';
 import LoginPage from './pages/LoginPage';
+
+// Admin Protected Route Component
+const AdminRoute = ({ children }) => {
+  const userStr = localStorage.getItem('yojana_sarthi_current_user');
+  let role = 'citizen';
+  if (userStr) {
+    try {
+      const userObj = JSON.parse(userStr);
+      role = userObj.role || 'citizen';
+    } catch (e) {}
+  }
+  if (role !== 'admin') {
+    return <Navigate to="/landing" replace />;
+  }
+  return children;
+};
 
 function App() {
   return (
@@ -40,7 +56,14 @@ function App() {
                 <Route path="/planner" element={<BenefitPlanner />} />
                 <Route path="/voice" element={<VoiceInterface />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/admin" element={<AdminPortal />} />
+                <Route 
+                  path="/admin" 
+                  element={
+                    <AdminRoute>
+                      <AdminPortal />
+                    </AdminRoute>
+                  } 
+                />
                 <Route path="/multilingual" element={<Multilingual />} />
               </Routes>
             </Layout>

@@ -97,7 +97,9 @@ const Sidebar = ({ isOpen, onClose }) => {
     .slice(0, 2)
     .toUpperCase() || 'C';
 
-  const menuItems = [
+  const isAdmin = currentUser?.role === 'admin';
+
+  const citizenMenuItems = [
     { name: 'Portal Home & Finder', icon: <Home size={18} />, path: '/landing' },
     { name: 'Scheme Application Wizard', icon: <UserPlus size={18} />, path: '/onboarding' },
     { name: 'Citizen Assistant', icon: <MessageSquare size={18} />, path: '/ai-assistant' },
@@ -107,21 +109,30 @@ const Sidebar = ({ isOpen, onClose }) => {
     { name: 'Rejection Risk Check', icon: <AlertTriangle size={18} />, path: '/predictor' },
     { name: 'Lifecycle Planner', icon: <Calendar size={18} />, path: '/planner' },
     { name: 'Voice Portal', icon: <Mic size={18} />, path: '/voice' },
-    { name: 'Citizen Profile', icon: <User size={18} />, path: '/profile' },
-    { name: 'Administrative Portal', icon: <ShieldCheck size={18} />, path: '/admin' },
     { name: 'Regional Languages', icon: <Languages size={18} />, path: '/multilingual' },
+    { name: 'Citizen Profile', icon: <User size={18} />, path: '/profile' },
   ];
+
+  const adminMenuItems = [
+    { name: 'Admin Operations Center', icon: <ShieldCheck size={18} />, path: '/admin' },
+    { name: 'Scheme Matrix', icon: <BarChart2 size={18} />, path: '/comparison' },
+    { name: 'Regional Languages', icon: <Languages size={18} />, path: '/multilingual' },
+    { name: 'Admin Profile', icon: <User size={18} />, path: '/profile' },
+  ];
+
+  const menuItems = isAdmin ? adminMenuItems : citizenMenuItems;
+  const defaultHomePath = isAdmin ? '/admin' : '/landing';
 
   return (
     <aside className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       <div className="sidebar-header">
-        <Link to="/landing" onClick={onClose} className="sidebar-brand-link">
+        <Link to={defaultHomePath} onClick={onClose} className="sidebar-brand-link">
           <div className="logo-container">
             <img src={emblem} alt="Government Emblem" className="sidebar-emblem" />
           </div>
           <div className="brand-titles">
             <h2>Yojana Sarthi</h2>
-            <span className="brand-subtitle">Government Scheme Navigation</span>
+            <span className="brand-subtitle">{isAdmin ? 'Administrator Portal' : 'Government Scheme Navigation'}</span>
           </div>
         </Link>
         <button className="close-sidebar-btn" onClick={onClose} title="Close Navigation">
@@ -149,8 +160,8 @@ const Sidebar = ({ isOpen, onClose }) => {
             <div className="avatar">{initials}</div>
             <div className="info">
               <p className="name">{fullName}</p>
-              <span className={`status-pill ${profile?.verification_status === 'Verified' ? 'verified' : 'unverified'}`}>
-                {profile?.verification_status === 'Verified' ? 'Verified Beneficiary' : 'Unverified Beneficiary'}
+              <span className={`status-pill ${isAdmin ? 'verified' : (profile?.verification_status === 'Verified' ? 'verified' : 'unverified')}`}>
+                {isAdmin ? 'System Administrator' : (profile?.verification_status === 'Verified' ? 'Verified Beneficiary' : 'Unverified Beneficiary')}
               </span>
             </div>
           </div>

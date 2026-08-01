@@ -11,20 +11,32 @@ const Layout = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    const userStr = localStorage.getItem('yojana_sarthi_current_user');
-    if (userStr) {
-      try {
-        setCurrentUser(JSON.parse(userStr));
-      } catch (err) {
-        console.error('Failed to parse user session:', err);
+    const handleStorageChange = () => {
+      const userStr = localStorage.getItem('yojana_sarthi_current_user');
+      if (userStr) {
+        try {
+          setCurrentUser(JSON.parse(userStr));
+        } catch (err) {
+          console.error('Failed to parse user session:', err);
+        }
       }
-    }
+    };
+    handleStorageChange();
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('profileUpdate', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('profileUpdate', handleStorageChange);
+    };
   }, []);
 
   const toggleSidebar = () => setIsSidebarOpen(prev => !prev);
   const closeSidebar = () => setIsSidebarOpen(false);
 
-  const displayName = currentUser?.fullName || (currentUser?.email ? currentUser.email.split('@')[0] : 'Citizen');
+  const isAdmin = currentUser?.role === 'admin';
+  const displayName = currentUser?.fullName || (currentUser?.email ? currentUser.email.split('@')[0] : (isAdmin ? 'Administrator' : 'Citizen'));
+  const homePath = isAdmin ? '/admin' : '/landing';
 
   return (
     <div className="layout">
@@ -43,22 +55,22 @@ const Layout = ({ children }) => {
             <span className="menu-lbl">Menu</span>
           </button>
           
-          <Link to="/landing" className="header-brand-link">
+          <Link to={homePath} className="header-brand-link">
             <div className="brand-emblem-box">
               <img src={emblem} alt="Government Emblem" className="gov-emblem" />
             </div>
             <div className="gov-title-block">
               <span className="gov-subtitle">महाराष्ट्र शासन • Government of Maharashtra</span>
-              <h1 className="portal-name">Yojana Sarthi — Scheme Portal</h1>
+              <h1 className="portal-name">Yojana Sarthi — {isAdmin ? 'Admin Operations Center' : 'Scheme Portal'}</h1>
             </div>
           </Link>
         </div>
 
         <div className="header-right-actions">
-          <Link to="/dashboard" className="gov-notice-badge-link" title="View Schemes Dashboard">
+          <Link to={isAdmin ? "/admin" : "/dashboard"} className="gov-notice-badge-link" title={isAdmin ? "Admin Operations" : "View Schemes Dashboard"}>
             <div className="gov-notice-badge">
               <Shield size={14} />
-              <span>Official DBT Service</span>
+              <span>{isAdmin ? 'Admin Operations' : 'Official DBT Service'}</span>
             </div>
           </Link>
 

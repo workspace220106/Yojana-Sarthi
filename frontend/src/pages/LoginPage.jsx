@@ -1,10 +1,17 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { UserCheck, Lock, ArrowRight, CheckCircle2, AlertCircle, ShieldCheck, FileText, CreditCard } from 'lucide-react';
+import { UserCheck, Lock, ArrowRight, CheckCircle2, AlertCircle, ShieldCheck, FileText, CreditCard, KeyRound } from 'lucide-react';
 import emblem from '../assets/images/emblem.png';
 import './LoginPage.css';
 import { auth, db } from '../firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+  EmailAuthProvider,
+  linkWithCredential
+} from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const LoginPage = () => {
@@ -18,40 +25,231 @@ const LoginPage = () => {
   const [residentialState, setResidentialState] = useState('Maharashtra');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  // New detailed profile state
+  const [aadhaar, setAadhaar] = useState('');
+  const [age, setAge] = useState('');
+  const [gender, setGender] = useState('Male');
+  const [income, setIncome] = useState('');
+  const [occupation, setOccupation] = useState('Farmer / Agriculture');
+  const [category, setCategory] = useState('General');
+
+  // OTP Verification flow state
+  const [verificationStep, setVerificationStep] = useState('signup'); // 'signup' or 'otp'
+  const [otpCode, setOtpCode] = useState('');
+  const [confirmationResult, setConfirmationResult] = useState(null);
+  const [isSimulatedOTP, setIsSimulatedOTP] = useState(true); // Default to simulated for easy local testing
+  const [otpError, setOtpError] = useState('');
   
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const setupRecaptcha = () => {
+    if (!window.recaptchaVerifier) {
+      window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+        'size': 'invisible',
+        'callback': (response) => {
+          // reCAPTCHA solved
+        }
+      });
+    }
+  };
+
+  const handleInitiateSignUp = async (e) => {
+    e.preventDefault();
+    setError('');
+    setOtpError('');
+    
+    // Validations
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      return;
+    }
+    if (!mobileNumber.match(/^\d{10}$/)) {
+      setError("Mobile number must be a valid 10-digit number");
+      return;
+    }
+    if (aadhaar && !aadhaar.match(/^\d{12}$/)) {
+      setError("Aadhaar number must be a 12-digit number");
+      return;
+    }
+    if (age && (parseInt(age) <= 0 || parseInt(age) > 120)) {
+      setError("Please enter a valid age");
+      return;
+    }
+    if (income && parseInt(income) < 0) {
+      setError("Please enter a valid annual income");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const formattedPhone = `+91${mobileNumber}`;
+      
+      if (isSimulatedOTP) {
+        // Simulated Flow
+        setVerificationStep('otp');
+      } else {
+        // Live Firebase Flow
+        setupRecaptcha();
+        const appVerifier = window.recaptchaVerifier;
+        const confirmation = await signInWithPhoneNumber(auth, formattedPhone, appVerifier);
+        setConfirmationResult(confirmation);
+        setVerificationStep('otp');
+      }
+    } catch (err) {
+      console.error(err);
+      setError(err.message || 'Failed to send OTP verification code.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleVerifyOtpAndCreateUser = async (e) => {
+    e.preventDefault();
+    setOtpError('');
+    setLoading(true);
+
+    try {
+      let user;
+
+      if (isSimulatedOTP) {
+        if (otpCode !== '123456') {
+          throw new Error("Invalid simulated OTP. Enter 123456.");
+        }
+        // 1. Create Email/Password user
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        user = userCredential.user;
+      } else {
+        // Live flow: verify OTP first (signs user in with phone number)
+        const phoneCredential = await confirmationResult.confirm(otpCode);
+        user = phoneCredential.user;
+
+        // Link email and password
+        const emailCred = EmailAuthProvider.credential(email, password);
+        await linkWithCredential(user, emailCred);
+      }
+
+      if (role === 'citizen' && user) {
+        const defaultProfile = {
+          id: user.uid,
+          full_name: fullName || 'Citizen',
+          aadhaar: aadhaar || '',
+          phone: mobileNumber,
+          state: residentialState,
+          address: '',
+          age: age ? parseInt(age) : null,
+          income: income ? parseInt(income) : null,
+          occupation: occupation,
+          category: category,
+          gender: gender,
+          verification_status: 'Unverified',
+          data_sources: ['User Input'],
+          documents: []
+        };
+        
+        // Save to Firestore
+        await setDoc(doc(db, 'citizens', user.uid), defaultProfile, { merge: true });
+        localStorage.setItem('yojana_sarthi_profile', JSON.stringify({
+          fullName: defaultProfile.full_name,
+          aadhaar: defaultProfile.aadhaar,
+          phone: defaultProfile.phone,
+          state: defaultProfile.state,
+          address: defaultProfile.address,
+          age: age,
+          income: income,
+          occupation: defaultProfile.occupation,
+          category: defaultProfile.category,
+          gender: defaultProfile.gender,
+          verification_status: defaultProfile.verification_status,
+          data_sources: defaultProfile.data_sources,
+          documents: defaultProfile.documents
+        }));
+        
+        // Sync documents
+        localStorage.setItem('yojana_sarthi_docs', JSON.stringify([]));
+      }
+
+      const userData = {
+        uid: user.uid,
+        fullName: role === 'citizen' ? (fullName || 'Citizen') : 'Administrator',
+        email,
+        role,
+        createdAt: new Date().toISOString()
+      };
+      localStorage.setItem('yojana_sarthi_current_user', JSON.stringify(userData));
+      window.dispatchEvent(new Event('profileUpdate'));
+
+      alert('Account created and verified successfully!');
+      navigate(role === 'admin' ? '/admin' : '/landing');
+    } catch (err) {
+      console.error(err);
+      let errMsg = err.message || 'OTP verification or registration failed.';
+      if (err.code === 'auth/email-already-in-use') {
+        errMsg = 'This email is already registered. Please sign in instead.';
+      } else if (err.code === 'auth/invalid-verification-code') {
+        errMsg = 'Invalid verification code. Please check and try again.';
+      }
+      setOtpError(errMsg);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSignIn = async (e) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
     try {
-      if (mode === 'signup') {
-        if (password !== confirmPassword) {
-          throw new Error("Passwords do not match");
-        }
-        if (password.length < 6) {
-          throw new Error("Password must be at least 6 characters long");
-        }
-        if (!mobileNumber.match(/^\d{10}$/)) {
-          throw new Error("Mobile number must be a valid 10-digit number");
-        }
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      
+      const userData = {
+        uid: user.uid,
+        fullName: role === 'citizen' ? 'Citizen' : 'Administrator',
+        email,
+        role,
+        createdAt: new Date().toISOString()
+      };
+
+      localStorage.setItem('yojana_sarthi_current_user', JSON.stringify(userData));
+
+      if (role === 'citizen') {
+        const docRef = doc(db, 'citizens', user.uid);
+        const docSnap = await getDoc(docRef);
         
-        // 1. Create account in Firebase Auth
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        
-        if (role === 'citizen' && user) {
-          const defaultProfile = {
-            id: user.uid,
-            full_name: fullName || 'Citizen',
+        let currentProfile = {};
+        if (docSnap.exists()) {
+          const profileData = docSnap.data();
+          currentProfile = {
+            fullName: profileData.full_name || 'Citizen',
+            aadhaar: profileData.aadhaar || '',
+            phone: profileData.phone || '',
+            state: profileData.state || 'Maharashtra',
+            address: profileData.address || '',
+            age: profileData.age ? String(profileData.age) : '',
+            income: profileData.income ? String(profileData.income) : '',
+            occupation: profileData.occupation || 'All',
+            category: profileData.category || 'All',
+            gender: profileData.gender || 'All',
+            verification_status: profileData.verification_status || 'Unverified',
+            data_sources: profileData.data_sources || ['User Input'],
+            documents: profileData.documents || []
+          };
+        } else {
+          currentProfile = {
+            fullName: user.email.split('@')[0],
             aadhaar: '',
-            phone: mobileNumber,
-            state: residentialState,
+            phone: '',
+            state: 'Maharashtra',
             address: '',
-            age: null,
-            income: null,
+            age: '',
+            income: '',
             occupation: 'All',
             category: 'All',
             gender: 'All',
@@ -59,118 +257,45 @@ const LoginPage = () => {
             data_sources: ['User Input'],
             documents: []
           };
-          
-          // 2. Save profile structure to Firestore citizens collection
-          await setDoc(doc(db, 'citizens', user.uid), defaultProfile, { merge: true });
+          await setDoc(doc(db, 'citizens', user.uid), {
+            id: user.uid,
+            full_name: currentProfile.fullName,
+            state: currentProfile.state,
+            verification_status: currentProfile.verification_status,
+            data_sources: currentProfile.data_sources,
+            documents: currentProfile.documents
+          }, { merge: true });
         }
-
-        alert('Account created successfully! Please sign in using your new credentials to link your DigiLocker.');
-        setMode('login');
-        setPassword('');
-        setConfirmPassword('');
-      } else {
-        // 1. Sign In using Firebase Auth
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
         
-        const userData = {
-          uid: user.uid,
-          fullName: role === 'citizen' ? 'Citizen' : 'Administrator',
-          email,
-          role,
-          createdAt: new Date().toISOString()
-        };
+        localStorage.setItem('yojana_sarthi_profile', JSON.stringify(currentProfile));
+        localStorage.setItem('yojana_sarthi_docs', JSON.stringify(currentProfile.documents || []));
+        window.dispatchEvent(new Event('profileUpdate'));
 
-        localStorage.setItem('yojana_sarthi_current_user', JSON.stringify(userData));
+        try {
+          const res = await fetch('/api/verification/digilocker/url', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              redirect_url: window.location.origin + '/profile'
+            })
+          });
 
-        if (role === 'citizen') {
-          // 2. Fetch profile from Firestore
-          const docRef = doc(db, 'citizens', user.uid);
-          const docSnap = await getDoc(docRef);
-          
-          let currentProfile = {};
-          if (docSnap.exists()) {
-            const profileData = docSnap.data();
-            currentProfile = {
-              fullName: profileData.full_name || 'Citizen',
-              aadhaar: profileData.aadhaar || '',
-              phone: profileData.phone || '',
-              state: profileData.state || 'Maharashtra',
-              address: profileData.address || '',
-              age: profileData.age ? String(profileData.age) : '',
-              income: profileData.income ? String(profileData.income) : '',
-              occupation: profileData.occupation || 'All',
-              category: profileData.category || 'All',
-              gender: profileData.gender || 'All',
-              verification_status: profileData.verification_status || 'Unverified',
-              data_sources: profileData.data_sources || ['User Input'],
-              documents: profileData.documents || []
-            };
-          } else {
-            // Fallback profile if document doesn't exist yet
-            currentProfile = {
-              fullName: user.email.split('@')[0],
-              aadhaar: '',
-              phone: '',
-              state: 'Maharashtra',
-              address: '',
-              age: '',
-              income: '',
-              occupation: 'All',
-              category: 'All',
-              gender: 'All',
-              verification_status: 'Unverified',
-              data_sources: ['User Input'],
-              documents: []
-            };
-            await setDoc(doc(db, 'citizens', user.uid), {
-              id: user.uid,
-              full_name: currentProfile.fullName,
-              state: currentProfile.state,
-              verification_status: currentProfile.verification_status,
-              data_sources: currentProfile.data_sources,
-              documents: currentProfile.documents
-            }, { merge: true });
+          if (!res.ok) throw new Error('API server returned error');
+          const data = await res.json();
+
+          if (data.url) {
+            localStorage.setItem('yojana_sarthi_cf_ver_id', data.verification_id);
+            window.location.href = data.url;
+            return;
           }
-          
-          localStorage.setItem('yojana_sarthi_profile', JSON.stringify(currentProfile));
-          
-          // Sync documents vault
-          localStorage.setItem('yojana_sarthi_docs', JSON.stringify(currentProfile.documents || []));
-
-          // Dispatch custom profileUpdate event
-          window.dispatchEvent(new Event('profileUpdate'));
-
-          // 3. Optionally launch Cashfree DigiLocker redirect flow
-          try {
-            const res = await fetch('/api/verification/digilocker/url', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                redirect_url: window.location.origin + '/profile'
-              })
-            });
-
-            if (!res.ok) throw new Error('API server returned error');
-            const data = await res.json();
-
-            if (data.url) {
-              localStorage.setItem('yojana_sarthi_cf_ver_id', data.verification_id);
-              // Redirect browser to Cashfree SecureID DigiLocker Gateway
-              window.location.href = data.url;
-              return;
-            }
-          } catch (cfErr) {
-            // DigiLocker is optional — proceed to dashboard if unavailable
-            console.warn('DigiLocker gateway unavailable, proceeding without it:', cfErr.message);
-          }
-          navigate('/landing');
-        } else {
-          // For admin, go straight to landing
-          navigate('/landing');
+        } catch (cfErr) {
+          console.warn('DigiLocker gateway unavailable, proceeding without it:', cfErr.message);
         }
+        navigate('/landing');
+      } else {
+        navigate('/admin');
       }
     } catch (err) {
       console.error(err);
@@ -254,31 +379,41 @@ const LoginPage = () => {
         {/* Right Auth Side */}
         <div className="auth-side">
           <div className="auth-card">
-            <div className="role-selector">
-              <button 
-                type="button"
-                className={`role-btn ${role === 'citizen' ? 'active' : ''}`}
-                onClick={() => { setRole('citizen'); setError(''); }}
-              >
-                <UserCheck size={16} />
-                <span>Citizen Portal</span>
-              </button>
-              <button 
-                type="button"
-                className={`role-btn ${role === 'admin' ? 'active' : ''}`}
-                onClick={() => { setRole('admin'); setError(''); }}
-              >
-                <Lock size={16} />
-                <span>Administrator</span>
-              </button>
-            </div>
+            {verificationStep === 'signup' && (
+              <div className="role-selector">
+                <button 
+                  type="button"
+                  className={`role-btn ${role === 'citizen' ? 'active' : ''}`}
+                  onClick={() => { setRole('citizen'); setError(''); }}
+                >
+                  <UserCheck size={16} />
+                  <span>Citizen Portal</span>
+                </button>
+                <button 
+                  type="button"
+                  className={`role-btn ${role === 'admin' ? 'active' : ''}`}
+                  onClick={() => { setRole('admin'); setError(''); }}
+                >
+                  <Lock size={16} />
+                  <span>Administrator</span>
+                </button>
+              </div>
+            )}
 
             <div className="auth-header">
-              <h2>{mode === 'login' ? 'Sign In to Yojana Sarthi' : 'Create Portal Account'}</h2>
+              <h2>
+                {verificationStep === 'otp'
+                  ? 'Verify Your Mobile'
+                  : mode === 'login'
+                    ? 'Sign In to Yojana Sarthi'
+                    : 'Create Portal Account'}
+              </h2>
               <p>
-                {mode === 'login' 
-                  ? `Access your secure ${role} account` 
-                  : `Register as a ${role} to configure credentials`}
+                {verificationStep === 'otp'
+                  ? `Enter the verification code sent to +91 ${mobileNumber}`
+                  : mode === 'login'
+                    ? `Access your secure ${role} account`
+                    : `Register as a ${role} to configure credentials`}
               </p>
             </div>
 
@@ -289,114 +424,295 @@ const LoginPage = () => {
               </div>
             )}
 
-            <form className="auth-form" onSubmit={handleSubmit}>
-              {mode === 'signup' && (
-                <div className="input-group">
-                  <label>Full Name</label>
-                  <input 
-                    type="text" 
-                    placeholder="Enter your full name" 
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    required 
-                  />
+            {verificationStep === 'otp' ? (
+              <div className="otp-verification-section">
+                <div className="otp-icon-wrapper">
+                  <KeyRound size={32} className="otp-icon" />
                 </div>
-              )}
-              
-              <div className="input-group">
-                <label>Email Address (Gmail)</label>
-                <input 
-                  type="email" 
-                  placeholder="name@gmail.com" 
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required 
-                />
-              </div>
+                
+                {isSimulatedOTP && (
+                  <div className="simulated-otp-info">
+                    <ShieldCheck size={18} />
+                    <span>Developer Mode: Use code <strong>123456</strong></span>
+                  </div>
+                )}
 
-              {mode === 'signup' && (
-                <>
+                {otpError && (
+                  <div className="auth-error-block" style={{ marginTop: '1rem' }}>
+                    <AlertCircle size={16} />
+                    <span>{otpError}</span>
+                  </div>
+                )}
+
+                <form className="auth-form" onSubmit={handleVerifyOtpAndCreateUser}>
                   <div className="input-group">
-                    <label>Mobile Number (10 digits)</label>
+                    <label>Enter 6-Digit OTP</label>
                     <input 
-                      type="tel" 
-                      placeholder="e.g. 9876543210" 
-                      value={mobileNumber}
-                      onChange={(e) => setMobileNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                      type="text" 
+                      placeholder="e.g. 123456" 
+                      maxLength={6}
+                      value={otpCode}
+                      onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                       required 
                     />
                   </div>
 
-                  <div className="input-group">
-                    <label>Residential State</label>
-                    <select 
-                      value={residentialState}
-                      onChange={(e) => setResidentialState(e.target.value)}
-                      required
-                    >
-                      <option value="Maharashtra">Maharashtra</option>
-                      <option value="Gujarat">Gujarat</option>
-                      <option value="Madhya Pradesh">Madhya Pradesh</option>
-                      <option value="Karnataka">Karnataka</option>
-                      <option value="Delhi">Delhi</option>
-                      <option value="Other">Other State</option>
-                    </select>
-                  </div>
-                </>
-              )}
+                  <button type="submit" className="submit-btn primary-btn" disabled={loading}>
+                    <span>{loading ? 'Verifying OTP...' : 'Verify & Register'}</span>
+                    <ArrowRight size={18} />
+                  </button>
 
-              <div className="input-group">
-                <label>Password</label>
-                <input 
-                  type="password" 
-                  placeholder="••••••••" 
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required 
-                />
+                  <button 
+                    type="button" 
+                    className="back-btn" 
+                    onClick={() => { setVerificationStep('signup'); setOtpError(''); }}
+                    disabled={loading}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#64748b',
+                      fontSize: '0.9rem',
+                      textDecoration: 'underline',
+                      marginTop: '1rem',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Go Back & Edit Form
+                  </button>
+                </form>
               </div>
+            ) : (
+              <form className="auth-form" onSubmit={mode === 'login' ? handleSignIn : handleInitiateSignUp}>
+                {mode === 'signup' ? (
+                  <div className="form-grid">
+                    <div className="input-group">
+                      <label>Full Name</label>
+                      <input 
+                        type="text" 
+                        placeholder="Enter full name" 
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        required 
+                      />
+                    </div>
 
-              {mode === 'signup' && (
-                <div className="input-group">
-                  <label>Confirm Password</label>
-                  <input 
-                    type="password" 
-                    placeholder="••••••••" 
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    required 
-                  />
-                </div>
-              )}
+                    <div className="input-group">
+                      <label>Email Address</label>
+                      <input 
+                        type="email" 
+                        placeholder="name@gmail.com" 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required 
+                      />
+                    </div>
 
-              {mode === 'login' && (
-                <div className="form-options">
-                  <label className="remember-me">
-                    <input type="checkbox" defaultChecked /> Remember session
-                  </label>
-                  <a href="#reset" className="forgot-password">Forgot password?</a>
-                </div>
-              )}
+                    <div className="input-group">
+                      <label>Mobile Number (10 digits)</label>
+                      <input 
+                        type="tel" 
+                        placeholder="e.g. 9876543210" 
+                        value={mobileNumber}
+                        onChange={(e) => setMobileNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                        required 
+                      />
+                    </div>
 
-              <button type="submit" className="submit-btn primary-btn" disabled={loading}>
-                <span>{loading ? 'Authenticating...' : mode === 'login' ? 'Continue to Dashboard' : 'Complete Registration'}</span>
-                <ArrowRight size={18} />
-              </button>
-            </form>
+                    <div className="input-group">
+                      <label>Aadhaar Number (12 digits)</label>
+                      <input 
+                        type="text" 
+                        placeholder="e.g. 123456789012" 
+                        value={aadhaar}
+                        onChange={(e) => setAadhaar(e.target.value.replace(/\D/g, '').slice(0, 12))}
+                        required 
+                      />
+                    </div>
+
+                    <div className="input-group">
+                      <label>Age</label>
+                      <input 
+                        type="number" 
+                        placeholder="e.g. 34" 
+                        value={age}
+                        onChange={(e) => setAge(e.target.value.slice(0, 3))}
+                        required 
+                      />
+                    </div>
+
+                    <div className="input-group">
+                      <label>Gender</label>
+                      <select 
+                        value={gender}
+                        onChange={(e) => setGender(e.target.value)}
+                        required
+                      >
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Transgender">Transgender</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+
+                    <div className="input-group">
+                      <label>Annual Income (₹)</label>
+                      <input 
+                        type="number" 
+                        placeholder="e.g. 240000" 
+                        value={income}
+                        onChange={(e) => setIncome(e.target.value)}
+                        required 
+                      />
+                    </div>
+
+                    <div className="input-group">
+                      <label>Occupation</label>
+                      <select 
+                        value={occupation}
+                        onChange={(e) => setOccupation(e.target.value)}
+                        required
+                      >
+                        <option value="Farmer / Agriculture">Farmer / Agriculture</option>
+                        <option value="Student">Student</option>
+                        <option value="Construction Worker">Construction Worker</option>
+                        <option value="Self-Employed / Business">Self-Employed / Business</option>
+                        <option value="Unemployed">Unemployed</option>
+                        <option value="Salaried">Salaried</option>
+                        <option value="Senior Citizen">Senior Citizen</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+
+                    <div className="input-group">
+                      <label>Social Category</label>
+                      <select 
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        required
+                      >
+                        <option value="General">General</option>
+                        <option value="SC">SC</option>
+                        <option value="ST">ST</option>
+                        <option value="OBC">OBC</option>
+                        <option value="EWS">EWS</option>
+                        <option value="Minorities">Minorities</option>
+                      </select>
+                    </div>
+
+                    <div className="input-group">
+                      <label>Residential State</label>
+                      <select 
+                        value={residentialState}
+                        onChange={(e) => setResidentialState(e.target.value)}
+                        required
+                      >
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Other">Other State</option>
+                      </select>
+                    </div>
+
+                    <div className="input-group">
+                      <label>Password</label>
+                      <input 
+                        type="password" 
+                        placeholder="••••••••" 
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required 
+                      />
+                    </div>
+
+                    <div className="input-group">
+                      <label>Confirm Password</label>
+                      <input 
+                        type="password" 
+                        placeholder="••••••••" 
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required 
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <div className="input-group">
+                      <label>Email Address (Gmail)</label>
+                      <input 
+                        type="email" 
+                        placeholder="name@gmail.com" 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required 
+                      />
+                    </div>
+
+                    <div className="input-group">
+                      <label>Password</label>
+                      <input 
+                        type="password" 
+                        placeholder="••••••••" 
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required 
+                      />
+                    </div>
+
+                    <div className="form-options">
+                      <label className="remember-me">
+                        <input type="checkbox" defaultChecked /> Remember session
+                      </label>
+                      <a href="#reset" className="forgot-password">Forgot password?</a>
+                    </div>
+                  </>
+                )}
+
+                {mode === 'signup' && (
+                  <div className="simulation-toggle-container">
+                    <label className="remember-me">
+                      <input 
+                        type="checkbox" 
+                        checked={isSimulatedOTP} 
+                        onChange={(e) => setIsSimulatedOTP(e.target.checked)} 
+                      />
+                      <span>Simulate OTP Verification (Recommended for tests)</span>
+                    </label>
+                  </div>
+                )}
+
+                <button type="submit" className="submit-btn primary-btn" disabled={loading}>
+                  <span>
+                    {loading 
+                      ? 'Processing...' 
+                      : mode === 'login' 
+                        ? 'Continue to Dashboard' 
+                        : 'Send Verification OTP'}
+                  </span>
+                  <ArrowRight size={18} />
+                </button>
+              </form>
+            )}
 
             <div className="mode-switch">
-              {mode === 'login' ? (
-                <>
-                  New to Yojana Sarthi? 
-                  <button type="button" onClick={() => { setMode('signup'); setError(''); }}>Register Now</button>
-                </>
-              ) : (
-                <>
-                  Already registered? 
-                  <button type="button" onClick={() => { setMode('login'); setError(''); }}>Sign In</button>
-                </>
+              {verificationStep === 'signup' && (
+                mode === 'login' ? (
+                  <>
+                    New to Yojana Sarthi? 
+                    <button type="button" onClick={() => { setMode('signup'); setError(''); }}>Register Now</button>
+                  </>
+                ) : (
+                  <>
+                    Already registered? 
+                    <button type="button" onClick={() => { setMode('login'); setError(''); }}>Sign In</button>
+                  </>
+                )
               )}
             </div>
+            
+            <div id="recaptcha-container"></div>
           </div>
         </div>
       </div>

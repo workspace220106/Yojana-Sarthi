@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './AdminPortal.css';
 
 const AdminPortal = () => {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState('citizens');
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tabParam = params.get('tab');
+    if (tabParam) {
+      setActiveTab(tabParam.toLowerCase());
+    }
+  }, [location.search]);
 
   const alerts = [
     { type: 'Fraud', user: 'User-9128', msg: 'Multiple income certificates detected.', level: 'Critical' },
