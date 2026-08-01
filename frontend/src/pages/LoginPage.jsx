@@ -3,7 +3,9 @@ import { useNavigate, Link } from 'react-router-dom';
 import { UserCheck, Lock, ArrowRight, CheckCircle2, AlertCircle, ShieldCheck, FileText, CreditCard } from 'lucide-react';
 import emblem from '../assets/images/emblem.png';
 import './LoginPage.css';
-import { supabase } from '../supabase';
+import { auth, db } from '../firebase';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const LoginPage = () => {
   const [role, setRole] = useState('citizen'); // 'citizen' or 'admin'
@@ -36,17 +38,13 @@ const LoginPage = () => {
           throw new Error("Mobile number must be a valid 10-digit number");
         }
         
-        // 1. Create account in Supabase Auth
-        const { data: authData, error: authError } = await supabase.auth.signUp({
-          email,
-          password
-        });
-        if (authError) throw authError;
-        const user = authData.user;
+        // 1. Create account in Firebase Auth
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
         
         if (role === 'citizen' && user) {
           const defaultProfile = {
-            id: user.id,
+            id: user.uid,
             full_name: fullName || 'Citizen',
             aadhaar: '',
             phone: mobileNumber,
@@ -62,9 +60,8 @@ const LoginPage = () => {
             documents: []
           };
           
-          // 2. Save profile structure to Supabase citizens table
-          const { error: dbError } = await supabase.from('citizens').upsert(defaultProfile);
-          if (dbError) throw dbError;
+          // 2. Save profile structure to Firestore citizens collection
+          await setDoc(doc(db, 'citizens', user.uid), defaultProfile, { merge: true });
         }
 
         alert('Account created successfully! Please sign in using your new credentials to link your DigiLocker.');
@@ -72,16 +69,12 @@ const LoginPage = () => {
         setPassword('');
         setConfirmPassword('');
       } else {
-        // 1. Sign In using Supabase Auth
-        const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
-          email,
-          password
-        });
-        if (authError) throw authError;
-        const user = authData.user;
+        // 1. Sign In using Firebase Auth
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
         
         const userData = {
-          uid: user.id,
+          uid: user.uid,
           fullName: role === 'citizen' ? 'Citizen' : 'Administrator',
           email,
           role,
@@ -91,15 +84,13 @@ const LoginPage = () => {
         localStorage.setItem('yojana_sarthi_current_user', JSON.stringify(userData));
 
         if (role === 'citizen') {
-          // 2. Fetch profile from Supabase
-          const { data: profileData, error: dbError } = await supabase
-            .from('citizens')
-            .select('*')
-            .eq('id', user.id)
-            .single();
+          // 2. Fetch profile from Firestore
+          const docRef = doc(db, 'citizens', user.uid);
+          const docSnap = await getDoc(docRef);
           
           let currentProfile = {};
-          if (profileData && !dbError) {
+          if (docSnap.exists()) {
+            const profileData = docSnap.data();
             currentProfile = {
               fullName: profileData.full_name || 'Citizen',
               aadhaar: profileData.aadhaar || '',
@@ -132,14 +123,14 @@ const LoginPage = () => {
               data_sources: ['User Input'],
               documents: []
             };
-            await supabase.from('citizens').upsert({
-              id: user.id,
+            await setDoc(doc(db, 'citizens', user.uid), {
+              id: user.uid,
               full_name: currentProfile.fullName,
               state: currentProfile.state,
               verification_status: currentProfile.verification_status,
               data_sources: currentProfile.data_sources,
               documents: currentProfile.documents
-            });
+            }, { merge: true });
           }
           
           localStorage.setItem('yojana_sarthi_profile', JSON.stringify(currentProfile));

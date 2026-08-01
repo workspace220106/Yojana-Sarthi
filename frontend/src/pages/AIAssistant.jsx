@@ -81,7 +81,7 @@ const AIAssistant = () => {
       setIsTyping(false);
       setMessages(prev => [...prev, { 
         type: 'ai', 
-        text: 'Sorry, I had trouble connecting to the Yojana Sarthi backend. Please verify your Python FastAPI server is active on port 5001.',
+        text: 'Sorry, I had trouble connecting to the Yojana Sarthi backend. Please verify your Python FastAPI server is active on port 8000.',
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
       }]);
     }
