@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Search, Bell, Globe, User, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Sidebar from './Sidebar';
 import ChatWidget from './ChatWidget';
 import emblem from '../assets/images/emblem.png';
@@ -13,10 +14,14 @@ const LANGS = [
 ];
 
 const Layout = ({ children }) => {
+  const { i18n } = useTranslation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [langIndex, setLangIndex] = useState(() => {
     const saved = localStorage.getItem('ys_lang_index');
-    return saved ? parseInt(saved) : 0;
+    if (saved) return parseInt(saved);
+    // fallback or default to current i18n language
+    const idx = LANGS.findIndex(l => l.code === i18n.language);
+    return idx !== -1 ? idx : 2; // Default to Marathi (idx 2)
   });
   const [currentUser, setCurrentUser] = useState(null);
   const lang = LANGS[langIndex];
@@ -89,8 +94,12 @@ const Layout = ({ children }) => {
             className="lang-select-btn"
             onClick={() => {
               const next = (langIndex + 1) % LANGS.length;
+              const nextLang = LANGS[next];
               setLangIndex(next);
               localStorage.setItem('ys_lang_index', String(next));
+              localStorage.setItem('yojana_sarthi_lang', nextLang.code);
+              i18n.changeLanguage(nextLang.code);
+              window.dispatchEvent(new CustomEvent('languageChanged', { detail: nextLang.code }));
             }}
             title={`Switch language (current: ${lang.native})`}
           >

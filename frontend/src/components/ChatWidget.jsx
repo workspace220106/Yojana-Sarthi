@@ -130,6 +130,22 @@ const ChatWidget = () => {
   useEffect(() => {
     const saved = localStorage.getItem('yojana_sarthi_profile');
     if (saved) { try { setProfile(JSON.parse(saved)); } catch (e) {} }
+
+    // Sync voiceLang with current site language
+    const currentLang = localStorage.getItem('yojana_sarthi_lang') || 'mr';
+    if (currentLang === 'hi') setVoiceLang('hi-IN');
+    else if (currentLang === 'en') setVoiceLang('en-IN');
+    else setVoiceLang('mr-IN');
+
+    const handleLangChange = (e) => {
+      const code = e.detail;
+      if (code === 'hi') setVoiceLang('hi-IN');
+      else if (code === 'en') setVoiceLang('en-IN');
+      else setVoiceLang('mr-IN');
+    };
+
+    window.addEventListener('languageChanged', handleLangChange);
+    return () => window.removeEventListener('languageChanged', handleLangChange);
   }, []);
 
   useEffect(() => {
