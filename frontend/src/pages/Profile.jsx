@@ -101,10 +101,6 @@ const Profile = () => {
       }
     }
 
-    return () => {
-      unsubscribe();
-    };
-
     function loadLocalFallback() {
       const savedProfile = localStorage.getItem('yojana_sarthi_profile');
       if (savedProfile) {
@@ -206,7 +202,9 @@ const Profile = () => {
         });
     }
 
-    return () => subscription.unsubscribe();
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   const handleInputChange = (e) => {

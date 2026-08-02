@@ -7,6 +7,10 @@
       "config": {
         "distDir": "static"
       }
+    },
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [

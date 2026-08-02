@@ -303,6 +303,11 @@ const LoginPage = () => {
         localStorage.setItem('yojana_sarthi_docs', JSON.stringify(currentProfile.documents || []));
         window.dispatchEvent(new Event('profileUpdate'));
 
+        if (currentProfile.verification_status === 'Verified') {
+          navigate('/landing');
+          return;
+        }
+
         try {
           const res = await fetch('/api/verification/digilocker/url', {
             method: 'POST',
