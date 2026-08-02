@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from routes.chat import router as chat_router
 from routes.verification import router as verification_router
+from routes.schemes import router as schemes_router
 from config import API_TITLE, API_VERSION
 
 app = FastAPI(
@@ -32,3 +33,4 @@ def health():
 # Register Routes
 app.include_router(chat_router)
 app.include_router(verification_router)
+app.include_router(schemes_router)
