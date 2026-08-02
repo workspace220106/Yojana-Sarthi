@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "package.json",
@@ -21,6 +20,46 @@
     {
       "src": "/api/verification/digilocker/status/(.*)",
       "dest": "/api/verification/digilocker/status/[verification_id].js?verification_id=$1"
+    },
+    {
+      "src": "/api/schemes/",
+      "dest": "/api/schemes/index.js"
+    },
+    {
+      "src": "/api/schemes/compare",
+      "dest": "/api/schemes/compare.js"
+    },
+    {
+      "src": "/api/chat/",
+      "dest": "/api/chat.js"
+    },
+    {
+      "src": "/api/speech/tts",
+      "dest": "/api/speech/tts.js"
+    },
+    {
+      "src": "/api/translate",
+      "dest": "/api/translate.js"
+    },
+    {
+      "src": "/api/admin/stats",
+      "dest": "/api/admin/stats.js"
+    },
+    {
+      "src": "/api/admin/citizens",
+      "dest": "/api/admin/citizens/index.js"
+    },
+    {
+      "src": "/api/admin/citizens/(.*)/status",
+      "dest": "/api/admin/citizens/status.js?user_id=$1"
+    },
+    {
+      "src": "/api/admin/fraud-alerts",
+      "dest": "/api/admin/fraud-alerts/index.js"
+    },
+    {
+      "src": "/api/admin/fraud-alerts/(.*)/status",
+      "dest": "/api/admin/fraud-alerts/status.js?fraud_id=$1"
     },
     {
       "handle": "filesystem"
