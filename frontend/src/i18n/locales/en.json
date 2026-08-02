@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "matrix": "Scheme Matrix",
+    "voice": "Voice Portal",
+    "planner": "Benefit Planner",
+    "admin": "Admin Console",
+    "language": "Languages"
+  },
+  "app": {
+    "title": "Yojana Sarthi",
+    "welcome": "Welcome back",
+    "logout": "Sign Out"
+  },
+  "multilingual": {
+    "title": "Language Settings",
+    "subtitle": "Choose your preferred language for static UI elements.",
+    "active": "Active Language",
+    "select": "Select Language",
+    "save": "Apply Settings",
+    "success": "Language settings updated successfully!"
+  }
+}

@@ -7,6 +7,7 @@ from routes.verification import router as verification_router
 from routes.schemes import router as schemes_router
 from routes.speech import router as speech_router
 from routes.admin import router as admin_router
+from routes.translate import router as translate_router
 from config import API_TITLE, API_VERSION
 
 app = FastAPI(
@@ -38,3 +39,4 @@ app.include_router(verification_router)
 app.include_router(schemes_router)
 app.include_router(speech_router)
 app.include_router(admin_router)
+app.include_router(translate_router)

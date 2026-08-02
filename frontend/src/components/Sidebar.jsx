@@ -20,8 +20,10 @@ import emblem from '../assets/images/emblem.png';
 import './Sidebar.css';
 import { auth } from '../firebase';
 import { signOut } from 'firebase/auth';
+import { useTranslation } from 'react-i18next';
 
 const Sidebar = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
   const [profile, setProfile] = useState(null);
@@ -100,24 +102,24 @@ const Sidebar = ({ isOpen, onClose }) => {
   const isAdmin = currentUser?.role === 'admin';
 
   const citizenMenuItems = [
-    { name: 'Portal Home & Finder', icon: <Home size={18} />, path: '/landing' },
-    { name: 'Scheme Application Wizard', icon: <UserPlus size={18} />, path: '/onboarding' },
-    { name: 'Citizen Assistant', icon: <MessageSquare size={18} />, path: '/ai-assistant' },
-    { name: 'Citizen Dashboard', icon: <LayoutDashboard size={18} />, path: '/dashboard' },
-    { name: 'Document Compliance', icon: <FileText size={18} />, path: '/docs' },
-    { name: 'Scheme Matrix', icon: <BarChart2 size={18} />, path: '/comparison' },
-    { name: 'Rejection Risk Check', icon: <AlertTriangle size={18} />, path: '/predictor' },
-    { name: 'Lifecycle Planner', icon: <Calendar size={18} />, path: '/planner' },
-    { name: 'Voice Portal', icon: <Mic size={18} />, path: '/voice' },
-    { name: 'Regional Languages', icon: <Languages size={18} />, path: '/multilingual' },
-    { name: 'Citizen Profile', icon: <User size={18} />, path: '/profile' },
+    { name: t('nav.home', 'Portal Home & Finder'), icon: <Home size={18} />, path: '/landing' },
+    { name: t('nav.wizard', 'Scheme Application Wizard'), icon: <UserPlus size={18} />, path: '/onboarding' },
+    { name: t('nav.assistant', 'Citizen Assistant'), icon: <MessageSquare size={18} />, path: '/ai-assistant' },
+    { name: t('nav.dashboard', 'Citizen Dashboard'), icon: <LayoutDashboard size={18} />, path: '/dashboard' },
+    { name: t('nav.docs', 'Document Compliance'), icon: <FileText size={18} />, path: '/docs' },
+    { name: t('nav.matrix', 'Scheme Matrix'), icon: <BarChart2 size={18} />, path: '/comparison' },
+    { name: t('nav.predictor', 'Rejection Risk Check'), icon: <AlertTriangle size={18} />, path: '/predictor' },
+    { name: t('nav.planner', 'Lifecycle Planner'), icon: <Calendar size={18} />, path: '/planner' },
+    { name: t('nav.voice', 'Voice Portal'), icon: <Mic size={18} />, path: '/voice' },
+    { name: t('nav.language', 'Regional Languages'), icon: <Languages size={18} />, path: '/multilingual' },
+    { name: t('nav.profile', 'Citizen Profile'), icon: <User size={18} />, path: '/profile' },
   ];
 
   const adminMenuItems = [
-    { name: 'Admin Operations Center', icon: <ShieldCheck size={18} />, path: '/admin' },
-    { name: 'Scheme Matrix', icon: <BarChart2 size={18} />, path: '/comparison' },
-    { name: 'Regional Languages', icon: <Languages size={18} />, path: '/multilingual' },
-    { name: 'Admin Profile', icon: <User size={18} />, path: '/profile' },
+    { name: t('nav.admin', 'Admin Operations Center'), icon: <ShieldCheck size={18} />, path: '/admin' },
+    { name: t('nav.matrix', 'Scheme Matrix'), icon: <BarChart2 size={18} />, path: '/comparison' },
+    { name: t('nav.language', 'Regional Languages'), icon: <Languages size={18} />, path: '/multilingual' },
+    { name: t('nav.profile', 'Admin Profile'), icon: <User size={18} />, path: '/profile' },
   ];
 
   const menuItems = isAdmin ? adminMenuItems : citizenMenuItems;
