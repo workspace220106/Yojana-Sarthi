@@ -1,39 +1,13 @@
-# Yojana Sarthi — 4-Feature Implementation Plan (Refined with Python Libs)
+# Yojana Sarthi — Removal of Supabase, Docker, and Cloud Run
 
-## Overview
-
-This plan details the implementation of four major features on top of the existing Yojana Sarthi codebase:
-1. **Scheme Matrix & Lifecycle Planner** — Dynamic comparison dashboard and age-based eligibility roadmap linked to the backend scheme catalog.
-2. **Voice Interface** — Speech-to-text (STT) and text-to-speech (TTS) in English, Hindi, and Marathi using the Web Speech API and a FastAPI backend fallback driven by the **`gTTS`** Python library.
-3. **Admin Portal** — A management panel connected to FastAPI backend routes, fetching and displaying real citizen profiles, fraud logs, and statistics using **Firebase / Firestore**.
-4. **Platform Multilingual Support** — Global internalization (i18n) using `i18next` for all static UI, with backend dynamic translations powered by the **`deep-translator`** Python library.
-
-> [!NOTE]
-> **Python Library Integrations**: As requested, we are utilizing free, offline-compatible Python libraries for our backend services:
-> - **TTS Service**: Powered by the `gtts` (Google Text-to-Speech) Python library.
-> - **Translation Service**: Powered by the `deep-translator` Python library (integrates Google Translate and MyMemory translation APIs out-of-the-box without requiring API keys).
+This plan details the steps to completely purge all references to Supabase, Docker configurations, and Google Cloud Run deployment pipelines from the project.
 
 ---
 
 ## User Review Required
 
-> [!IMPORTANT]
-> **Q1 — Local Firebase Admin Access**
-> Since the backend needs to read citizen profiles from Firestore for the Admin Portal, local development will require either:
-> - Application Default Credentials (ADC) configured locally, OR
-> - A local fallback mock database if Firebase Admin initialization fails.
-> **We have configured the backend to automatically fall back to mock data if Firebase Admin is not authenticated locally**, ensuring local testing is seamless without requiring private key configurations.
->
-> **Q2 — Voice API Integration**
-> We are using the **Web Speech API** for browser-based speech recognition and synthesis. This keeps the implementation free and fully client-side. We also provide a backend fallback endpoint using the `gTTS` library to render text-to-speech on demand.
-
----
-
-## Open Questions
-
-> [!NOTE]
-> **No API Key Dependency**
-> By switching dynamic translation to `deep-translator` and TTS to `gTTS`, our translation and voice synthesis services are entirely free and do not consume Gemini API tokens or require GCP billing configurations.
+> [!WARNING]
+> This change will permanently delete all cloud deployment scripts (`deploy-cloudrun.sh`, `cloudbuild.yaml`) and Docker image builds (`Dockerfile`, `.dockerignore`, `docker-compose.yml`) from the local workspace. Please approve to proceed with the deletions and cleanups.
 
 ---
 
@@ -41,78 +15,37 @@ This plan details the implementation of four major features on top of the existi
 
 ---
 
-### Backend Component (FastAPI)
+### File Deletions
 
-#### [MODIFY] [requirements.txt](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/requirements.txt)
-- Add `firebase-admin`, `gtts`, and `deep-translator` to backend dependencies.
+#### [DELETE] [Dockerfile](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/Dockerfile)
+- Remove Docker containerization instructions.
 
-#### [MODIFY] [backend/database/db.py](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/backend/database/db.py)
-- Initialize the Firebase Admin SDK using Application Default Credentials (ADC) or the project ID `yojana-sarthi`.
-- Add a try-except fallback to return a Mock Firestore client wrapper if credentials are not configured (enabling local debugging).
+#### [DELETE] [.dockerignore](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/.dockerignore)
+- Remove Docker build ignore list.
 
-#### [NEW] [backend/routes/schemes.py](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/backend/routes/schemes.py)
-- Create `GET /api/schemes` to return the complete catalog of welfare schemes.
-- Create `POST /api/schemes/compare` to accept multiple scheme IDs and return structured comparison parameters.
+#### [DELETE] [docker-compose.yml](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/docker-compose.yml)
+- Remove multi-container docker services configuration.
 
-#### [NEW] [backend/routes/admin.py](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/backend/routes/admin.py)
-- Create `GET /api/admin/stats` returning aggregate metrics (total users, verified vs. unverified, and unresolved fraud logs).
-- Create `GET /api/admin/citizens` to fetch the paginated list of citizens directly from Firestore.
-- Create `PATCH /api/admin/citizens/{id}/status` to update citizen verification statuses.
-- Create `GET /api/admin/fraud-alerts` and `PATCH /api/admin/fraud-alerts/{id}` to view and resolve security flags.
+#### [DELETE] [deploy-cloudrun.sh](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/deploy-cloudrun.sh)
+- Remove manual Google Cloud Run deployment script.
 
-#### [NEW] [backend/routes/speech.py](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/backend/routes/speech.py)
-- Create `POST /api/speech/tts` accepting text and language code, returning synthesized MP3 audio bytes using the **`gTTS`** library.
-
-#### [NEW] [backend/routes/translate.py](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/backend/routes/translate.py)
-- Create `POST /api/translate` mapping input text to target languages (`en`, `hi`, `mr`) using the **`deep-translator`** Python library.
-
-#### [MODIFY] [backend/app.py](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/backend/app.py)
-- Register the new routes (`schemes`, `admin`, `speech`, and `translate`) and verify middleware configurations.
+#### [DELETE] [cloudbuild.yaml](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/cloudbuild.yaml)
+- Remove continuous integration / deployment trigger pipeline definition.
 
 ---
 
-### Frontend Component (React + Vite)
+### Dependency Updates
 
-#### [MODIFY] [frontend/src/pages/SchemeComparison.jsx](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/frontend/src/pages/SchemeComparison.jsx)
-- Build the **Scheme Matrix** allowing interactive selection of 2-4 schemes.
-- Implement side-by-side comparison tables containing: Benefits, eligibility rules, priority guidelines, and required documents.
-- Add an Allocation Summary block showing total potential benefits.
+#### [MODIFY] [requirements.txt](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/requirements.txt)
+- Remove the `supabase` package from root dependencies.
 
-#### [MODIFY] [frontend/src/pages/BenefitPlanner.jsx](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/frontend/src/pages/BenefitPlanner.jsx)
-- Retrieve the user's age from their profile and display an active timeline containing 6 lifecycle phases: Birth, School, Higher Education, Employment, Family, and Senior/Retirement.
-- Display applicable schemes dynamically in each category.
-
-#### [MODIFY] [frontend/src/pages/VoiceInterface.jsx](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/frontend/src/pages/VoiceInterface.jsx)
-- Implement real **Web Speech API** integration.
-- Add a language dropdown switcher for English (`en-IN`), Hindi (`hi-IN`), and Marathi (`mr-IN`).
-- Wire the transcript output to trigger chat assistant queries, and play back responses aloud using the browser's speech synthesis or the backend `/tts` endpoint.
-
-#### [MODIFY] [frontend/src/pages/AdminPortal.jsx](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/frontend/src/pages/AdminPortal.jsx)
-- Connect all tabs to the backend `/api/admin` endpoints.
-- Allow full management of user verifications, viewing system log summaries, and auditing flagged fraud logs.
-
-#### [MODIFY] [frontend/src/pages/Multilingual.jsx](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/frontend/src/pages/Multilingual.jsx)
-- Update language selections to focus on English, Hindi, and Marathi.
-- Connect buttons to `i18n.changeLanguage()` and save preferences to local storage.
-
-#### [NEW] [frontend/src/i18n/index.js](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/frontend/src/i18n/index.js)
-- Configure `i18next` with `react-i18next`, importing locale translations and defaulting to English.
-
-#### [NEW] translation packages:
-- [en.json](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/frontend/src/i18n/locales/en.json) (English)
-- [hi.json](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/frontend/src/i18n/locales/hi.json) (Hindi)
-- [mr.json](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/frontend/src/i18n/locales/mr.json) (Marathi)
+#### [MODIFY] [backend/requirements.txt](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/backend/requirements.txt)
+- Remove the `supabase` package from backend dependencies.
 
 ---
 
 ## Verification Plan
 
-### Automated Tests
-- Execute `/api/schemes` and `/api/schemes/compare` queries to verify database connectivity.
-- Verify translation API using requests to `/api/translate`.
-
-### Manual Verification
-- Open the `/comparison` page and verify that selected schemes update the allocation calculator.
-- Open `/voice`, record questions in Hindi or Marathi, and confirm correct transcript creation and audio playback.
-- Toggle between English, Hindi, and Marathi in `/multilingual` and verify immediate static text updates.
-- Verify Admin Portal gates access based on the user's logged-in Firebase role.
+### Automated Verification
+- Verify that python files build and compile successfully without `supabase` in the requirements.
+- Run frontend build checks to ensure no references are broken.
