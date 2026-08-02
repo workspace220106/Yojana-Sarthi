@@ -38,7 +38,7 @@ const LoginPage = () => {
   const [verificationStep, setVerificationStep] = useState('signup'); // 'signup' or 'otp'
   const [otpCode, setOtpCode] = useState('');
   const [confirmationResult, setConfirmationResult] = useState(null);
-  const [isSimulatedOTP, setIsSimulatedOTP] = useState(true); // Default to simulated for easy local testing
+  const [isSimulatedOTP, setIsSimulatedOTP] = useState(false); // Default to live OTP flow for users
   const [otpError, setOtpError] = useState('');
   
   const navigate = useNavigate();
@@ -185,6 +185,30 @@ const LoginPage = () => {
       window.dispatchEvent(new Event('profileUpdate'));
 
       alert('Account created and verified successfully!');
+      if (role === 'citizen') {
+        try {
+          const res = await fetch('/api/verification/digilocker/url', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              redirect_url: window.location.origin + '/profile'
+            })
+          });
+
+          if (!res.ok) throw new Error('API server returned error');
+          const data = await res.json();
+
+          if (data.url) {
+            localStorage.setItem('yojana_sarthi_cf_ver_id', data.verification_id);
+            window.location.href = data.url;
+            return;
+          }
+        } catch (cfErr) {
+          console.warn('DigiLocker gateway unavailable, proceeding without it:', cfErr.message);
+        }
+      }
       navigate(role === 'admin' ? '/admin' : '/landing');
     } catch (err) {
       console.error(err);
@@ -668,19 +692,6 @@ const LoginPage = () => {
                       <a href="#reset" className="forgot-password">Forgot password?</a>
                     </div>
                   </>
-                )}
-
-                {mode === 'signup' && (
-                  <div className="simulation-toggle-container">
-                    <label className="remember-me">
-                      <input 
-                        type="checkbox" 
-                        checked={isSimulatedOTP} 
-                        onChange={(e) => setIsSimulatedOTP(e.target.checked)} 
-                      />
-                      <span>Simulate OTP Verification (Recommended for tests)</span>
-                    </label>
-                  </div>
                 )}
 
                 <button type="submit" className="submit-btn primary-btn" disabled={loading}>
