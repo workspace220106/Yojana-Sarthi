@@ -41,9 +41,9 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Gemini API key is not configured.' });
   }
 
-  // Normalize model name (fallback deprecated or placeholder models to gemini-2.0-flash)
-  if (!llmModel || llmModel.includes('gemini-2.5-flash') || llmModel.includes('gemini-3.6-flash')) {
-    llmModel = 'gemini-2.0-flash';
+  // Normalize model name (fallback deprecated models to gemini-3.6-flash)
+  if (!llmModel || llmModel.includes('gemini-2.5-flash')) {
+    llmModel = 'gemini-3.6-flash';
   }
 
   try {
