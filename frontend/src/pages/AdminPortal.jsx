@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Shield, Users, CheckCircle, AlertTriangle, Search, Check, X, RefreshCw, Eye, FileText, LayoutDashboard } from 'lucide-react';
+import { Shield, Users, CheckCircle, AlertTriangle, Search, Check, X, RefreshCw, Eye, FileText, LayoutDashboard, HelpCircle, Send } from 'lucide-react';
 import './AdminPortal.css';
 import { db } from '../firebase';
 import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
@@ -11,6 +11,9 @@ const AdminPortal = () => {
   const [stats, setStats] = useState(null);
   const [citizens, setCitizens] = useState([]);
   const [fraudAlerts, setFraudAlerts] = useState([]);
+  const [complaints, setComplaints] = useState([]);
+  const [respondingTo, setRespondingTo] = useState(null);
+  const [responseText, setResponseText] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(null); // track user id being updated
@@ -93,9 +96,39 @@ const AdminPortal = () => {
     }
   };
 
+  const fetchComplaints = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "support_queries"));
+      const results = [];
+      querySnapshot.forEach((doc) => {
+        results.push({ id: doc.id, ...doc.data() });
+      });
+      results.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      setComplaints(results);
+    } catch (e) {
+      console.error("Error fetching complaints:", e);
+    }
+  };
+
+  const handleResolveComplaint = async (complaintId, responseMsg) => {
+    try {
+      const docRef = doc(db, 'support_queries', complaintId);
+      await updateDoc(docRef, { 
+        response: responseMsg,
+        status: 'Resolved' 
+      });
+      setRespondingTo(null);
+      setResponseText('');
+      await Promise.all([fetchStats(), fetchComplaints()]);
+      alert("Response submitted and complaint marked as Resolved!");
+    } catch (e) {
+      alert(`Error updating complaint: ${e.message}`);
+    }
+  };
+
   const loadAllData = async () => {
     setLoading(true);
-    await Promise.all([fetchStats(), fetchCitizens(), fetchFraudAlerts()]);
+    await Promise.all([fetchStats(), fetchCitizens(), fetchFraudAlerts(), fetchComplaints()]);
     setLoading(false);
   };
 
@@ -339,6 +372,130 @@ const AdminPortal = () => {
           </div>
         );
 
+      case 'complaints':
+        return (
+          <div className="admin-complaints-view">
+            <div className="table-controls-row">
+              <h3>Citizens Grievances & Queries</h3>
+              <button className="sync-btn-ref" onClick={loadAllData}>
+                <RefreshCw size={14} /> Refresh Data
+              </button>
+            </div>
+
+            <div className="complaints-list" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginTop: '1rem' }}>
+              {complaints.length > 0 ? (
+                complaints.map(item => (
+                  <div key={item.id} className="complaint-card-item" style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', borderBottom: '1px solid #edf2f7', paddingBottom: '8px' }}>
+                      <div>
+                        <strong style={{ fontSize: '1rem', color: '#003580' }}>{item.citizen_name}</strong>
+                        <span style={{ fontSize: '0.8rem', color: '#718096', marginLeft: '10px' }}>ID: {item.citizen_id}</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <span style={{ fontSize: '0.8rem', color: '#a0aec0' }}>{new Date(item.timestamp).toLocaleString()}</span>
+                        <span style={{
+                          padding: '3px 10px',
+                          borderRadius: '12px',
+                          fontSize: '0.75rem',
+                          fontWeight: '700',
+                          background: item.status === 'Resolved' ? '#c6f6d5' : '#feebc8',
+                          color: item.status === 'Resolved' ? '#22543d' : '#744210'
+                        }}>{item.status}</span>
+                      </div>
+                    </div>
+
+                    <p style={{ fontSize: '0.95rem', color: '#2d3748', lineHeight: '1.5', margin: '0 0 1rem 0' }}>
+                      <strong>Complaint:</strong> {item.message}
+                    </p>
+
+                    {item.response ? (
+                      <div style={{ background: '#ebf8ff', borderLeft: '4px solid #3182ce', padding: '10px 15px', borderRadius: '4px', fontSize: '0.9rem', color: '#2b6cb0' }}>
+                        <strong>Response:</strong> {item.response}
+                      </div>
+                    ) : (
+                      <div style={{ borderTop: '1px dashed #e2e8f0', paddingTop: '1rem' }}>
+                        {respondingTo === item.id ? (
+                          <div>
+                            <textarea
+                              placeholder="Type your response here..."
+                              value={responseText}
+                              onChange={(e) => setResponseText(e.target.value)}
+                              style={{
+                                width: '100%',
+                                minHeight: '80px',
+                                padding: '10px',
+                                borderRadius: '6px',
+                                border: '1px solid #cbd5e0',
+                                fontSize: '0.9rem',
+                                marginBottom: '10px',
+                                fontFamily: 'inherit'
+                              }}
+                            />
+                            <div style={{ display: 'flex', gap: '10px' }}>
+                              <button
+                                onClick={() => handleResolveComplaint(item.id, responseText)}
+                                style={{
+                                  background: '#48bb78',
+                                  color: '#ffffff',
+                                  border: 'none',
+                                  padding: '6px 16px',
+                                  borderRadius: '6px',
+                                  fontWeight: '700',
+                                  fontSize: '0.85rem',
+                                  cursor: 'pointer'
+                                }}
+                              >
+                                Submit Response & Mark Resolved
+                              </button>
+                              <button
+                                onClick={() => { setRespondingTo(null); setResponseText(''); }}
+                                style={{
+                                  background: '#e2e8f0',
+                                  color: '#4a5568',
+                                  border: 'none',
+                                  padding: '6px 16px',
+                                  borderRadius: '6px',
+                                  fontWeight: '600',
+                                  fontSize: '0.85rem',
+                                  cursor: 'pointer'
+                                }}
+                              >
+                                Cancel
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <button
+                            onClick={() => { setRespondingTo(item.id); setResponseText(''); }}
+                            style={{
+                              background: '#003580',
+                              color: '#ffffff',
+                              border: 'none',
+                              padding: '6px 16px',
+                              borderRadius: '6px',
+                              fontWeight: '700',
+                              fontSize: '0.85rem',
+                              cursor: 'pointer'
+                            }}
+                          >
+                            Reply to Grievance / Answer FAQ
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <div style={{ textAlign: 'center', color: '#a0aec0', padding: '3rem', border: '1px dashed #cbd5e0', borderRadius: '10px' }}>
+                  <HelpCircle size={48} style={{ margin: '0 auto 10px auto', display: 'block' }} />
+                  <h4>No Complaints</h4>
+                  <p>All citizen query and grievance channels are currently quiet.</p>
+                </div>
+              )}
+            </div>
+          </div>
+        );
+
       default:
         return <div className="admin-tab"><p>{activeTab} view coming soon.</p></div>;
     }
@@ -369,6 +526,12 @@ const AdminPortal = () => {
             onClick={() => setActiveTab('fraudalerts')}
           >
             <AlertTriangle size={16} /> Fraud Alerts
+          </button>
+          <button 
+            className={activeTab === 'complaints' ? 'active' : ''}
+            onClick={() => setActiveTab('complaints')}
+          >
+            <HelpCircle size={16} /> Citizens Complaints
           </button>
         </div>
       </div>
