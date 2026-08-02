@@ -503,39 +503,6 @@ const AdminPortal = () => {
 
   return (
     <div className="admin-portal-page">
-      <div className="admin-sidebar-alt">
-        <div className="sidebar-brand">
-          <Shield size={20} className="shield-icon" />
-          <span>Sarthi Console</span>
-        </div>
-        <div className="sidebar-nav-btns">
-          <button 
-            className={activeTab === 'summary' ? 'active' : ''}
-            onClick={() => setActiveTab('summary')}
-          >
-            <LayoutDashboard size={16} /> Summary
-          </button>
-          <button 
-            className={activeTab === 'citizens' ? 'active' : ''}
-            onClick={() => setActiveTab('citizens')}
-          >
-            <Users size={16} /> Citizens
-          </button>
-          <button 
-            className={(activeTab === 'fraudalerts' || activeTab === 'fraud') ? 'active' : ''}
-            onClick={() => setActiveTab('fraudalerts')}
-          >
-            <AlertTriangle size={16} /> Fraud Alerts
-          </button>
-          <button 
-            className={activeTab === 'complaints' ? 'active' : ''}
-            onClick={() => setActiveTab('complaints')}
-          >
-            <HelpCircle size={16} /> Citizens Complaints
-          </button>
-        </div>
-      </div>
-
       <div className="admin-content-area">
         <div className="admin-main-header">
           <h1>Operations Center</h1>

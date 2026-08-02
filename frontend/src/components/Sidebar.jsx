@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useNavigate, Link } from 'react-router-dom';
+import { NavLink, useNavigate, Link, useLocation } from 'react-router-dom';
 import { 
   Home, 
   UserPlus, 
@@ -14,7 +14,9 @@ import {
   ShieldCheck, 
   Languages,
   X,
-  LogOut
+  LogOut,
+  Users,
+  HelpCircle
 } from 'lucide-react';
 import emblem from '../assets/images/emblem.png';
 import './Sidebar.css';
@@ -25,6 +27,7 @@ import { useTranslation } from 'react-i18next';
 const Sidebar = ({ isOpen, onClose }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
   const [currentUser, setCurrentUser] = useState(null);
   const [profile, setProfile] = useState(null);
 
@@ -113,13 +116,14 @@ const Sidebar = ({ isOpen, onClose }) => {
   ];
 
   const adminMenuItems = [
-    { name: t('nav.admin', 'Admin Operations Center'), icon: <ShieldCheck size={18} />, path: '/admin' },
-    { name: t('nav.matrix', 'Scheme Matrix'), icon: <BarChart2 size={18} />, path: '/comparison' },
-    { name: t('nav.profile', 'Admin Profile'), icon: <User size={18} />, path: '/profile' },
+    { name: 'Summary', icon: <LayoutDashboard size={18} />, path: '/admin?tab=summary' },
+    { name: 'Citizens', icon: <Users size={18} />, path: '/admin?tab=citizens' },
+    { name: 'Fraud Alerts', icon: <AlertTriangle size={18} />, path: '/admin?tab=fraudalerts' },
+    { name: 'Citizens Complaints', icon: <HelpCircle size={18} />, path: '/admin?tab=complaints' },
   ];
 
   const menuItems = isAdmin ? adminMenuItems : citizenMenuItems;
-  const defaultHomePath = isAdmin ? '/admin' : '/landing';
+  const defaultHomePath = isAdmin ? '/admin?tab=summary' : '/landing';
 
   return (
     <aside className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
@@ -139,17 +143,22 @@ const Sidebar = ({ isOpen, onClose }) => {
       </div>
 
       <nav className="sidebar-nav">
-        {menuItems.map((item) => (
-          <NavLink 
-            key={item.path} 
-            to={item.path} 
-            onClick={onClose}
-            className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-          >
-            <span className="icon">{item.icon}</span>
-            <span className="label">{item.name}</span>
-          </NavLink>
-        ))}
+        {menuItems.map((item) => {
+          const isTabActive = item.path.includes('?') 
+            ? (location.pathname + location.search) === item.path
+            : location.pathname === item.path && !location.search;
+          return (
+            <NavLink 
+              key={item.path} 
+              to={item.path} 
+              onClick={onClose}
+              className={`nav-item ${isTabActive ? 'active' : ''}`}
+            >
+              <span className="icon">{item.icon}</span>
+              <span className="label">{item.name}</span>
+            </NavLink>
+          );
+        })}
       </nav>
 
       <div className="sidebar-footer">
