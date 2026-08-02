@@ -38,7 +38,7 @@ const LoginPage = () => {
   const [verificationStep, setVerificationStep] = useState('signup'); // 'signup' or 'otp'
   const [otpCode, setOtpCode] = useState('');
   const [confirmationResult, setConfirmationResult] = useState(null);
-  const [isSimulatedOTP, setIsSimulatedOTP] = useState(false); // Default to live OTP flow for users
+  const [isSimulatedOTP, setIsSimulatedOTP] = useState(true); // Default to live OTP flow for users
   const [otpError, setOtpError] = useState('');
   
   const navigate = useNavigate();
