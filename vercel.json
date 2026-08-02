@@ -22,7 +22,11 @@
       "dest": "/api/verification/digilocker/status/[verification_id].js?verification_id=$1"
     },
     {
-      "src": "/api/schemes/",
+      "src": "/api/schemes/?",
+      "dest": "/api/schemes/index.js"
+    },
+    {
+      "src": "/api/schemes",
       "dest": "/api/schemes/index.js"
     },
     {
@@ -30,7 +34,11 @@
       "dest": "/api/schemes/compare.js"
     },
     {
-      "src": "/api/chat/",
+      "src": "/api/chat/?",
+      "dest": "/api/chat.js"
+    },
+    {
+      "src": "/api/chat",
       "dest": "/api/chat.js"
     },
     {

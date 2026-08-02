@@ -58,15 +58,12 @@ const AIAssistant = () => {
         body: JSON.stringify({ query: fullQuery })
       });
 
-      if (!res.ok) throw new Error('API server returned error');
-      const data = await res.json();
-
-      setIsTyping(false);
-      
-      let replyText = data.raw_response || '';
-      if (!replyText && data.eligible?.length === 0 && data.ineligible?.length === 0) {
-        replyText = "I couldn't find any schemes in our database matching your request.";
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || `Server error ${res.status}`);
       }
+      const data = await res.json();
+      const replyText = data.response || data.raw_response || "I couldn't find any schemes in our database matching your request.";
 
       setMessages(prev => [...prev, { 
         type: 'ai', 
@@ -79,9 +76,10 @@ const AIAssistant = () => {
     } catch (err) {
       console.error(err);
       setIsTyping(false);
+      const errorDetail = err.message || 'Unknown error';
       setMessages(prev => [...prev, { 
         type: 'ai', 
-        text: 'Sorry, I had trouble connecting to the Yojana Sarthi backend. Please verify your Python FastAPI server is active on port 8000.',
+        text: `Sorry, I could not connect to the Yojana Sarthi AI service. Please try again in a moment. (${errorDetail})`,
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
       }]);
     }
