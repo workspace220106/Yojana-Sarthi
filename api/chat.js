@@ -12,23 +12,38 @@ export default async function handler(req, res) {
   }
 
   let geminiApiKey = process.env.GEMINI_API_KEY;
-  if (!geminiApiKey) {
-    try {
-      const envPath = path.join(process.cwd(), '.env');
-      if (fs.existsSync(envPath)) {
-        const envContent = fs.readFileSync(envPath, 'utf8');
-        const match = envContent.match(/GEMINI_API_KEY\s*=\s*["']?([^"'\r\n]+)/);
-        if (match && match[1]) {
-          geminiApiKey = match[1].trim();
+  let llmModel = process.env.LLM_MODEL;
+
+  try {
+    const envPath = path.join(process.cwd(), '.env');
+    if (fs.existsSync(envPath)) {
+      const envContent = fs.readFileSync(envPath, 'utf8');
+      
+      if (!geminiApiKey) {
+        const keyMatch = envContent.match(/GEMINI_API_KEY\s*=\s*["']?([^"'\r\n]+)/);
+        if (keyMatch && keyMatch[1]) {
+          geminiApiKey = keyMatch[1].trim();
         }
       }
-    } catch (err) {
-      console.error("Failed to read fallback API key from .env:", err);
+      
+      if (!llmModel) {
+        const modelMatch = envContent.match(/LLM_MODEL\s*=\s*["']?([^"'\r\n]+)/);
+        if (modelMatch && modelMatch[1]) {
+          llmModel = modelMatch[1].trim();
+        }
+      }
     }
+  } catch (err) {
+    console.error("Failed to read fallback variables from .env:", err);
   }
 
   if (!geminiApiKey) {
     return res.status(500).json({ error: 'Gemini API key is not configured.' });
+  }
+
+  // Normalize model name (fallback deprecated or placeholder models to gemini-2.0-flash)
+  if (!llmModel || llmModel.includes('gemini-2.5-flash') || llmModel.includes('gemini-3.6-flash')) {
+    llmModel = 'gemini-2.0-flash';
   }
 
   try {
@@ -84,8 +99,8 @@ Answer in clean markdown format. If the user asks in Hindi or Marathi, respond i
 
     const userPrompt = `${context}\n\nUser Question: ${query}`;
 
-    // 3. Call Gemini API (using gemini-2.5-flash)
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey}`, {
+    // 3. Call Gemini API (using dynamic llmModel)
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${llmModel}:generateContent?key=${geminiApiKey}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
