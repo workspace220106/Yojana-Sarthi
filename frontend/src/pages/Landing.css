@@ -5,9 +5,8 @@
   padding-bottom: 2rem;
 }
 
-/* Official Government Hero Banner */
 .hero-banner {
-  background: linear-gradient(135deg, #003580 0%, #002252 100%);
+  background: var(--blue-gradient);
   color: #FFFFFF;
   padding: 2.5rem 2.5rem;
   border-radius: 12px;

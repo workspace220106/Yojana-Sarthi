@@ -1,34 +1,27 @@
 :root {
-  /* Government Portal Color Palette (Official Orange & Navy Blue) */
-  --primary: #003580;           /* Deep Navy Blue */
+  --primary: #003580;
   --primary-rgb: 0, 53, 128;
-  --secondary: #004AAD;         /* Royal Navy Blue */
-  --action: #FF6B00;            /* Government Saffron / Orange */
+  --secondary: #004AAD;
+  --action: #FF6B00;
   --saffron: #FF6B00;
   --saffron-hover: #E66000;
-  --success: #138808;           /* India Green */
+  --success: #138808;
   --emerald: #138808;
   --emerald-bg: #E8F5E9;
-  --danger: #D0021B;            /* Red */
+  --danger: #D0021B;
   --danger-bg: #FFEBEE;
   --warning: #F5A623;
   --warning-bg: #FFF8E1;
-  
-  /* Backgrounds & Surfaces */
-  --bg-main: #0e1f3d;
-  --bg-gradient: linear-gradient(135deg, #0e1f3d 0%, #1a3c6e 30%, #1d5ea8 60%, #0d9fbf 100%);
-  --bg-surface: rgba(255, 255, 255, 0.06);
-  --bg-card: rgba(255, 255, 255, 0.08);
-  --bg-sidebar: #0b1829;        /* Deep Navy Sidebar */
-  
-  /* Text */
+  --bg-main: #F4F6FA;
+  --bg-surface: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-sidebar: #002B66;
+  --blue-gradient: linear-gradient(135deg, #0e1f3d 0%, #1a3c6e 30%, #1d5ea8 60%, #0d9fbf 100%);
   --text-primary: #1A1A2E;
   --text-secondary: #4A5568;
   --text-muted: #718096;
   --text-on-dark: #FFFFFF;
   --text-on-saffron: #FFFFFF;
-  
-  /* Sizing & Borders */
   --sidebar-width: 260px;
   --header-height: 70px;
   --border-light: #E2E8F0;
@@ -37,126 +30,31 @@
   --radius-md: 10px;
   --radius-lg: 14px;
   --radius-full: 9999px;
-  
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
-  
-  /* Transitions */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
   --transition: all 0.2s ease-in-out;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background: linear-gradient(135deg, #0e1f3d 0%, #1a3c6e 30%, #1d5ea8 60%, #0d9fbf 100%);
-  background-attachment: fixed;
+  background-color: var(--bg-main);
   color: var(--text-primary);
   line-height: 1.5;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
+a { text-decoration: none; color: inherit; }
 
-button {
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-family: inherit;
-  transition: var(--transition);
-}
+button { cursor: pointer; border: none; background: none; font-family: inherit; transition: var(--transition); }
 
-input, select, textarea {
-  font-family: inherit;
-  font-size: 0.95rem;
-}
+input, select, textarea { font-family: inherit; font-size: 0.95rem; }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
-::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.05);
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.25);
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,0.4);
-}
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: #E2E8F0; }
+::-webkit-scrollbar-thumb { background: #A0AEC0; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #718096; }
 
-/* =============================================
-   GLOBAL GLASSMORPHIC CARD OVERRIDES
-   All page cards and panels get glass styling
-   over the site-wide gradient background.
-   ============================================= */
-
-/* Cards */
-.card, [class*="-card"], [class*="card-"],
-.stat-card, .scheme-card, .info-card,
-.section-card, .page-card, .grid-card,
-.metric-card, .feature-card, .benefit-card,
-.detail-card, .action-card, .summary-card {
-  background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  color: #e8edf8 !important;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18) !important;
-}
-
-/* Panels and sections */
-.panel, [class*="-panel"], [class*="panel-"],
-.section, [class*="-section"]:not(.official-tricolor-strip *),
-.box, [class*="-box"]:not(.logo-container):not(.brand-emblem-box),
-.container, [class*="-container"] {
-  background: transparent;
-}
-
-/* Page-level wrappers */
-[class*="-page"], [class*="page-"] {
-  background: transparent !important;
-}
-
-/* White surfaces → glass */
-.bg-white, [style*="background: #fff"],
-[style*="background: white"], [style*="background-color: white"],
-[style*="background-color: #fff"] {
-  background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(12px) !important;
-}
-
-/* Text contrast fixes for dark gradient background */
-h1, h2, h3, h4, h5, h6 {
-  color: #f0f4ff;
-}
-
-p, li, label, span:not([class*="badge"]):not([class*="tag"]):not(.strip-saffron):not(.strip-white):not(.strip-green) {
-  color: #c8d6f0;
-}
-
-/* Input fields stay legible */
-input, select, textarea {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  color: #fff !important;
-}
-input::placeholder, textarea::placeholder {
-  color: rgba(255, 255, 255, 0.45) !important;
-}
-input:focus, select:focus, textarea:focus {
-  background: rgba(255, 255, 255, 0.16) !important;
-  border-color: rgba(100, 160, 255, 0.6) !important;
-  outline: none;
-}
