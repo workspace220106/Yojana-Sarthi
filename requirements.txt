@@ -42,6 +42,5 @@ langchain
 langchain-community
 
 pydantic
-supabase
 gtts
 deep-translator

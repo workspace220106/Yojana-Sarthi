@@ -15,7 +15,7 @@ pandas
 
 # Database
 firebase-admin
-supabase
+
 
 # Scraping
 requests
