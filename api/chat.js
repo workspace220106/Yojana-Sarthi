@@ -11,7 +11,22 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'query is required' });
   }
 
-  const geminiApiKey = process.env.GEMINI_API_KEY;
+  let geminiApiKey = process.env.GEMINI_API_KEY;
+  if (!geminiApiKey) {
+    try {
+      const envPath = path.join(process.cwd(), '.env');
+      if (fs.existsSync(envPath)) {
+        const envContent = fs.readFileSync(envPath, 'utf8');
+        const match = envContent.match(/GEMINI_API_KEY\s*=\s*["']?([^"'\r\n]+)/);
+        if (match && match[1]) {
+          geminiApiKey = match[1].trim();
+        }
+      }
+    } catch (err) {
+      console.error("Failed to read fallback API key from .env:", err);
+    }
+  }
+
   if (!geminiApiKey) {
     return res.status(500).json({ error: 'Gemini API key is not configured.' });
   }
