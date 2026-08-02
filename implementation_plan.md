@@ -1,15 +1,17 @@
-# Yojana Sarthi — 4-Feature Implementation Plan (Refined)
+# Yojana Sarthi — 4-Feature Implementation Plan (Refined with Python Libs)
 
 ## Overview
 
 This plan details the implementation of four major features on top of the existing Yojana Sarthi codebase:
 1. **Scheme Matrix & Lifecycle Planner** — Dynamic comparison dashboard and age-based eligibility roadmap linked to the backend scheme catalog.
-2. **Voice Interface** — Speech-to-text (STT) and text-to-speech (TTS) in English, Hindi, and Marathi using the Web Speech API and backend fallbacks.
+2. **Voice Interface** — Speech-to-text (STT) and text-to-speech (TTS) in English, Hindi, and Marathi using the Web Speech API and a FastAPI backend fallback driven by the **`gTTS`** Python library.
 3. **Admin Portal** — A management panel connected to FastAPI backend routes, fetching and displaying real citizen profiles, fraud logs, and statistics using **Firebase / Firestore**.
-4. **Platform Multilingual Support** — Global internalization (i18n) using `i18next` for all static UI, with Gemini-driven dynamic translations for chat outputs.
+4. **Platform Multilingual Support** — Global internalization (i18n) using `i18next` for all static UI, with backend dynamic translations powered by the **`deep-translator`** Python library.
 
 > [!NOTE]
-> **Database Correction**: The original draft of the plan referenced using Supabase. However, since the existing citizen dashboard and login system are fully integrated with **Firebase (Authentication & Firestore)**, this refined plan corrects the database backing to **Firebase Admin SDK** for the backend routes and **Firestore** for the frontend admin queries.
+> **Python Library Integrations**: As requested, we are utilizing free, offline-compatible Python libraries for our backend services:
+> - **TTS Service**: Powered by the `gtts` (Google Text-to-Speech) Python library.
+> - **Translation Service**: Powered by the `deep-translator` Python library (integrates Google Translate and MyMemory translation APIs out-of-the-box without requiring API keys).
 
 ---
 
@@ -30,8 +32,8 @@ This plan details the implementation of four major features on top of the existi
 ## Open Questions
 
 > [!NOTE]
-> **Dynamic Translation Optimization**
-> Dynamic chat translations (`/api/translate`) will be powered by the Gemini client. To control costs, dynamic translation will only be invoked on AI assistant outputs, while all static UI copy will use pre-translated i18n JSON packages.
+> **No API Key Dependency**
+> By switching dynamic translation to `deep-translator` and TTS to `gTTS`, our translation and voice synthesis services are entirely free and do not consume Gemini API tokens or require GCP billing configurations.
 
 ---
 
@@ -42,8 +44,7 @@ This plan details the implementation of four major features on top of the existi
 ### Backend Component (FastAPI)
 
 #### [MODIFY] [requirements.txt](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/requirements.txt)
-- Ensure both `firebase-admin` and `gtts` are configured for installation.
-- Clean up unused or duplicate libraries.
+- Add `firebase-admin`, `gtts`, and `deep-translator` to backend dependencies.
 
 #### [MODIFY] [backend/database/db.py](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/backend/database/db.py)
 - Initialize the Firebase Admin SDK using Application Default Credentials (ADC) or the project ID `yojana-sarthi`.
@@ -60,10 +61,10 @@ This plan details the implementation of four major features on top of the existi
 - Create `GET /api/admin/fraud-alerts` and `PATCH /api/admin/fraud-alerts/{id}` to view and resolve security flags.
 
 #### [NEW] [backend/routes/speech.py](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/backend/routes/speech.py)
-- Create `POST /api/speech/tts` accepting text and language code, returning synthesized MP3 audio bytes using the `gTTS` service.
+- Create `POST /api/speech/tts` accepting text and language code, returning synthesized MP3 audio bytes using the **`gTTS`** library.
 
 #### [NEW] [backend/routes/translate.py](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/backend/routes/translate.py)
-- Create `POST /api/translate` mapping input text to target languages (`en`, `hi`, `mr`) using the Gemini API client.
+- Create `POST /api/translate` mapping input text to target languages (`en`, `hi`, `mr`) using the **`deep-translator`** Python library.
 
 #### [MODIFY] [backend/app.py](file:///c:/Users/araji/Downloads/Yojana%20Sarthi/backend/app.py)
 - Register the new routes (`schemes`, `admin`, `speech`, and `translate`) and verify middleware configurations.
