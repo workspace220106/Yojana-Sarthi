@@ -100,6 +100,9 @@ const Layout = ({ children }) => {
               localStorage.setItem('yojana_sarthi_lang', nextLang.code);
               i18n.changeLanguage(nextLang.code);
               window.dispatchEvent(new CustomEvent('languageChanged', { detail: nextLang.code }));
+              if (typeof window.changeSiteLanguage === 'function') {
+                window.changeSiteLanguage(nextLang.code);
+              }
             }}
             title={`Switch language (current: ${lang.native})`}
           >

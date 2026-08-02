@@ -5,9 +5,48 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yojana Sarthi</title>
+    <style>
+      /* Hide Google Translate top bar and branding UI */
+      .skiptranslate, .goog-te-banner-frame, #goog-gt-tt, .goog-te-balloon-frame {
+        display: none !important;
+      }
+      body {
+        top: 0px !important;
+      }
+    </style>
   </head>
   <body>
+    <!-- Hidden element for Google Translate to attach to -->
+    <div id="google_translate_element" style="display:none"></div>
+
     <div id="root"></div>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'en,hi,mr',
+          autoDisplay: false
+        }, 'google_translate_element');
+      }
+
+      // Programmatic translator trigger using googtrans cookie
+      window.changeSiteLanguage = function(langCode) {
+        const domain = window.location.hostname;
+        const cookieVal = "/en/" + langCode;
+        
+        // Write cookie for current path and root path, with and without domain dot
+        document.cookie = "googtrans=" + cookieVal + "; path=/";
+        document.cookie = "googtrans=" + cookieVal + "; path=/; domain=" + domain;
+        if (domain.includes('.')) {
+          document.cookie = "googtrans=" + cookieVal + "; path=/; domain=." + domain;
+        }
+        
+        // Reload to let Google Translate script apply the translation
+        window.location.reload();
+      };
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
