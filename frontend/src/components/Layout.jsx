@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Search, Bell, Globe, User, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
+import ChatWidget from './ChatWidget';
 import emblem from '../assets/images/emblem.png';
 import './Layout.css';
 
@@ -113,6 +114,9 @@ const Layout = ({ children }) => {
           <p className="footer-sub">Designed & Maintained for Transparent Public Service Delivery</p>
         </div>
       </footer>
+
+      {/* Floating AI Chat Widget */}
+      <ChatWidget />
     </div>
   );
 };

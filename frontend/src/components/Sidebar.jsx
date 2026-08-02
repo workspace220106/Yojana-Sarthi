@@ -104,7 +104,6 @@ const Sidebar = ({ isOpen, onClose }) => {
   const citizenMenuItems = [
     { name: t('nav.home', 'Portal Home & Finder'), icon: <Home size={18} />, path: '/landing' },
     { name: t('nav.wizard', 'Scheme Application Wizard'), icon: <UserPlus size={18} />, path: '/onboarding' },
-    { name: t('nav.assistant', 'Citizen Assistant'), icon: <MessageSquare size={18} />, path: '/ai-assistant' },
     { name: t('nav.dashboard', 'Citizen Dashboard'), icon: <LayoutDashboard size={18} />, path: '/dashboard' },
     { name: t('nav.docs', 'Document Compliance'), icon: <FileText size={18} />, path: '/docs' },
     { name: t('nav.matrix', 'Scheme Matrix'), icon: <BarChart2 size={18} />, path: '/comparison' },
