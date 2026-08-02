@@ -206,7 +206,8 @@ const LoginPage = () => {
             return;
           }
         } catch (cfErr) {
-          console.warn('DigiLocker gateway unavailable, proceeding without it:', cfErr.message);
+          console.error('DigiLocker gateway error:', cfErr);
+          alert(`DigiLocker verification failed to start: ${cfErr.message}. Proceeding to dashboard.`);
         }
       }
       navigate(role === 'admin' ? '/admin' : '/landing');
@@ -315,7 +316,8 @@ const LoginPage = () => {
             return;
           }
         } catch (cfErr) {
-          console.warn('DigiLocker gateway unavailable, proceeding without it:', cfErr.message);
+          console.error('DigiLocker gateway error:', cfErr);
+          alert(`DigiLocker verification failed to start: ${cfErr.message}. Proceeding to dashboard.`);
         }
         navigate('/landing');
       } else {
