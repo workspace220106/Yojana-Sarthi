@@ -15,6 +15,14 @@
   ],
   "routes": [
     {
+      "src": "/api/verification/digilocker/url",
+      "dest": "/api/verification/digilocker/url.js"
+    },
+    {
+      "src": "/api/verification/digilocker/status/(.*)",
+      "dest": "/api/verification/digilocker/status/[verification_id].js?verification_id=$1"
+    },
+    {
       "handle": "filesystem"
     },
     {
