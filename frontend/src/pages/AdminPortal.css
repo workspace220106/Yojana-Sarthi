@@ -1,169 +1,462 @@
 .admin-portal-page {
   display: flex;
-  gap: 2rem;
+  min-height: calc(100vh - 64px);
+  background-color: #f8fafc;
   animation: fadeIn 0.4s ease-out;
 }
 
+/* Sidebar */
 .admin-sidebar-alt {
-  width: 200px;
+  width: 240px;
+  background-color: #0f172a;
+  color: #94a3b8;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  gap: 2rem;
+  border-right: 1px solid #1e293b;
 }
 
-.admin-sidebar-alt button {
-  padding: 1rem;
-  text-align: left;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  color: var(--text-muted);
-  transition: var(--transition);
-}
-
-.admin-sidebar-alt button.active {
-  background-color: var(--secondary);
-  color: white;
-}
-
-.admin-sidebar-alt button:hover:not(.active) {
-  background-color: #E5E7EB;
-}
-
-.admin-content-area {
-  flex: 1;
-}
-
-.admin-content-area h1 {
-  margin-bottom: 2rem;
-  color: var(--primary);
-}
-
-.admin-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-}
-
-.stat-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-}
-
-.stat-card label {
-  display: block;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-bottom: 0.5rem;
-}
-
-.stat-card span {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--primary);
-}
-
-.stat-card span.success { color: var(--success); }
-
-.admin-tab {
-  background: white;
-  padding: 2rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-}
-
-.search-controls {
+.sidebar-brand {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 800;
+  color: white;
+  font-size: 1.15rem;
+  padding-left: 0.5rem;
 }
 
-.search-controls input {
-  flex: 1;
-  padding: 0.75rem;
-  border: 1px solid #E5E7EB;
-  border-radius: var(--radius-sm);
+.sidebar-brand .shield-icon {
+  color: #6366f1;
 }
 
-.citizen-table {
-  width: 100%;
-  border-collapse: collapse;
+.sidebar-nav-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
-.citizen-table th {
+.sidebar-nav-btns button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: none;
+  border: none;
+  padding: 0.75rem 1rem;
+  color: #94a3b8;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
   text-align: left;
-  padding: 1rem;
-  background-color: #F9FAFB;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.citizen-table td {
-  padding: 1rem;
-  border-bottom: 1px solid #F3F4F6;
+  transition: all 0.2s ease;
   font-size: 0.9rem;
 }
 
-.dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 0.5rem;
+.sidebar-nav-btns button:hover {
+  background-color: #1e293b;
+  color: white;
 }
 
-.dot.active { background-color: var(--success); }
+.sidebar-nav-btns button.active {
+  background-color: #6366f1;
+  color: white;
+}
 
-.btn-view {
-  color: var(--secondary);
+/* Content Area */
+.admin-content-area {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow-y: auto;
+}
+
+.admin-main-header h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.admin-main-header p {
+  color: #64748b;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+/* Dashboard Summary stats */
+.summary-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.sum-card {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.sum-card .icon-users { color: #6366f1; }
+.sum-card .icon-check { color: #10b981; }
+.sum-card .icon-alert { color: #f59e0b; }
+
+.sum-details h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #64748b;
+  margin: 0;
+  letter-spacing: 0.5px;
   font-weight: 700;
 }
 
-.alerts-list {
+.sum-details p {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0.25rem 0 0 0;
+}
+
+.summary-recent-section {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.summary-recent-section h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.ops-overview-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.ops-overview-card p {
+  margin: 0;
+  color: #475569;
+}
+
+/* Citizens Tab controls */
+.admin-tab-table-wrapper {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.table-controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.table-controls-row h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.4rem 0.75rem;
+  background-color: #f8fafc;
+  width: 100%;
+  max-width: 320px;
+}
+
+.search-bar input {
+  border: none;
+  background: none;
+  font-size: 0.9rem;
+  outline: none;
+  width: 100%;
+}
+
+.sync-btn-ref {
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.sync-btn-ref:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+/* Custom Table styling */
+.admin-custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.admin-custom-table th, 
+.admin-custom-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-custom-table th {
+  background-color: #f8fafc;
+  font-weight: 700;
+  color: #475569;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-custom-table td {
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.cit-name-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.cit-sub {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.status-v-pill {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.status-v-pill.v-verified { background-color: #d1fae5; color: #065f46; }
+.status-v-pill.v-failed { background-color: #fee2e2; color: #991b1b; }
+.status-v-pill.v-pending { background-color: #fef3c7; color: #92400e; }
+
+.table-actions-row {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.act-btn {
+  background: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.act-btn.approve { color: #10b981; }
+.act-btn.approve:hover { background-color: #d1fae5; border-color: #10b981; }
+
+.act-btn.reject { color: #ef4444; }
+.act-btn.reject:hover { background-color: #fee2e2; border-color: #ef4444; }
+
+.no-data-td {
+  text-align: center;
+  padding: 2rem;
+  color: #64748b;
+}
+
+/* Fraud Alerts List */
+.fraud-alerts-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.alert-card {
+.fraud-alert-item {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  border-left: 4px solid #f59e0b;
+}
+
+.fraud-alert-item.resolved {
+  border-left-color: #10b981;
+  opacity: 0.8;
+}
+
+.fraud-alert-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 2rem;
-  padding: 1.5rem;
-  border-radius: var(--radius-md);
-  border: 1px solid #E5E7EB;
+  margin-bottom: 0.5rem;
 }
-
-.alert-card.critical { border-left: 6px solid var(--danger); background-color: rgba(208, 2, 27, 0.05); }
-
-.alert-badge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  background-color: #333;
-  color: white;
-}
-
-.critical .alert-badge { background-color: var(--danger); }
 
 .alert-meta {
   display: flex;
-  flex-direction: column;
-  width: 150px;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
-.alert-card p {
-  flex: 1;
-  font-size: 0.95rem;
+.alert-meta .icon-warning {
+  color: #f59e0b;
 }
 
-.btn-audit {
-  border: 1px solid var(--primary);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
+.fraud-alert-item.resolved .icon-warning {
+  color: #10b981;
+}
+
+.alert-meta h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.alert-meta .user-id {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.fraud-status-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+}
+
+.fraud-status-badge.unresolved { background-color: #fef3c7; color: #92400e; }
+.fraud-status-badge.resolved { background-color: #d1fae5; color: #065f46; }
+
+.fraud-desc {
+  font-size: 0.9rem;
+  color: #334155;
+  margin: 0 0 1rem 0;
+  line-height: 1.45;
+}
+
+.fraud-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 0.75rem;
+}
+
+.fraud-footer .timestamp {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.resolve-fraud-btn {
+  background-color: #10b981;
+  border: none;
+  color: white;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: var(--primary);
+  cursor: pointer;
+}
+
+.resolve-fraud-btn:hover { background-color: #059669; }
+
+.unresolve-fraud-btn {
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.unresolve-fraud-btn:hover { background-color: #e2e8f0; }
+
+.empty-fraud-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.empty-fraud-state .success-icon {
+  color: #10b981;
+  margin-bottom: 1rem;
+}
+
+.empty-fraud-state h4 {
+  font-size: 1.15rem;
+  color: #0f172a;
+  margin: 0 0 0.25rem 0;
+}
+
+.empty-fraud-state p {
+  color: #64748b;
+  margin: 0;
+}
+
+/* Loading state row */
+.admin-loading-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 3rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
