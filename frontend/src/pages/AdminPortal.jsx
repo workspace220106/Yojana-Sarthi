@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Shield, Users, CheckCircle, AlertTriangle, Search, Check, X, RefreshCw, Eye, FileText, LayoutDashboard } from 'lucide-react';
 import './AdminPortal.css';
+import { db } from '../firebase';
+import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
 
 const AdminPortal = () => {
   const location = useLocation();
@@ -15,34 +17,79 @@ const AdminPortal = () => {
 
   const fetchStats = async () => {
     try {
-      const res = await fetch('/api/admin/stats');
-      if (!res.ok) throw new Error('Failed to fetch stats');
-      const data = await res.json();
-      setStats(data);
+      const citizensSnapshot = await getDocs(collection(db, "citizens"));
+      const fraudSnapshot = await getDocs(collection(db, "fraud_logs"));
+
+      let total = 0, verified = 0, pending = 0, failed = 0;
+      citizensSnapshot.forEach(doc => {
+        total++;
+        const status = doc.data().verification_status || "Pending";
+        if (status === "Verified") verified++;
+        else if (status === "Failed") failed++;
+        else pending++;
+      });
+
+      let unresolvedFraud = 0;
+      fraudSnapshot.forEach(doc => {
+        if (doc.data().status === "Unresolved") unresolvedFraud++;
+      });
+
+      setStats({
+        total_users: total,
+        verified_users: verified,
+        pending_verifications: pending,
+        failed_verifications: failed,
+        unresolved_fraud_alerts: unresolvedFraud
+      });
     } catch (e) {
-      console.error(e);
+      console.error("Error fetching stats:", e);
     }
   };
 
   const fetchCitizens = async () => {
     try {
-      const res = await fetch('/api/admin/citizens');
-      if (!res.ok) throw new Error('Failed to fetch citizens');
-      const data = await res.json();
-      setCitizens(data);
+      const querySnapshot = await getDocs(collection(db, "citizens"));
+      const results = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        results.push({
+          id: doc.id,
+          name: data.full_name || data.name || 'Citizen',
+          age: data.age || '',
+          gender: data.gender || '',
+          state: data.state || '',
+          occupation: data.occupation || '',
+          annual_income: data.income || data.annual_income || 0,
+          verification_status: data.verification_status || 'Pending',
+          category: data.category || '',
+          aadhaar: data.aadhaar || ''
+        });
+      });
+      setCitizens(results);
     } catch (e) {
-      console.error(e);
+      console.error("Error fetching citizens:", e);
     }
   };
 
   const fetchFraudAlerts = async () => {
     try {
-      const res = await fetch('/api/admin/fraud-alerts');
-      if (!res.ok) throw new Error('Failed to fetch fraud alerts');
-      const data = await res.json();
-      setFraudAlerts(data);
+      const querySnapshot = await getDocs(collection(db, "fraud_logs"));
+      const results = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        results.push({
+          id: doc.id,
+          user_id: data.user_id || data.citizen_id || '',
+          name: data.name || data.citizen_name || 'Citizen',
+          alert_type: data.alert_type || 'Discrepancy',
+          description: data.description || data.details || '',
+          status: data.status || 'Unresolved',
+          timestamp: data.timestamp || new Date().toISOString()
+        });
+      });
+      setFraudAlerts(results);
     } catch (e) {
-      console.error(e);
+      console.error("Error fetching fraud alerts:", e);
     }
   };
 
@@ -68,12 +115,8 @@ const AdminPortal = () => {
   const handleUpdateStatus = async (userId, newStatus) => {
     setUpdating(userId);
     try {
-      const res = await fetch(`/api/admin/citizens/${userId}/status`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: newStatus })
-      });
-      if (!res.ok) throw new Error('Failed to update citizen status');
+      const docRef = doc(db, 'citizens', userId);
+      await updateDoc(docRef, { verification_status: newStatus });
       await Promise.all([fetchStats(), fetchCitizens()]);
     } catch (e) {
       alert(`Error updating status: ${e.message}`);
@@ -84,12 +127,8 @@ const AdminPortal = () => {
 
   const handleResolveFraud = async (fraudId, newStatus) => {
     try {
-      const res = await fetch(`/api/admin/fraud-alerts/${fraudId}/status`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: newStatus })
-      });
-      if (!res.ok) throw new Error('Failed to update fraud log');
+      const docRef = doc(db, 'fraud_logs', fraudId);
+      await updateDoc(docRef, { status: newStatus });
       await Promise.all([fetchStats(), fetchFraudAlerts()]);
     } catch (e) {
       alert(`Error updating fraud alert: ${e.message}`);
