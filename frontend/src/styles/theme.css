@@ -15,10 +15,11 @@
   --warning-bg: #FFF8E1;
   
   /* Backgrounds & Surfaces */
-  --bg-main: #F4F6FA;
-  --bg-surface: #FFFFFF;
-  --bg-card: #FFFFFF;
-  --bg-sidebar: #002B66;        /* Official Navy Sidebar */
+  --bg-main: #0e1f3d;
+  --bg-gradient: linear-gradient(135deg, #0e1f3d 0%, #1a3c6e 30%, #1d5ea8 60%, #0d9fbf 100%);
+  --bg-surface: rgba(255, 255, 255, 0.06);
+  --bg-card: rgba(255, 255, 255, 0.08);
+  --bg-sidebar: #0b1829;        /* Deep Navy Sidebar */
   
   /* Text */
   --text-primary: #1A1A2E;
@@ -53,7 +54,8 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--bg-main);
+  background: linear-gradient(135deg, #0e1f3d 0%, #1a3c6e 30%, #1d5ea8 60%, #0d9fbf 100%);
+  background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.5;
   overflow-x: hidden;
@@ -84,12 +86,77 @@ input, select, textarea {
   height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #E2E8F0;
+  background: rgba(255,255,255,0.05);
 }
 ::-webkit-scrollbar-thumb {
-  background: #A0AEC0;
+  background: rgba(255,255,255,0.25);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #718096;
+  background: rgba(255,255,255,0.4);
+}
+
+/* =============================================
+   GLOBAL GLASSMORPHIC CARD OVERRIDES
+   All page cards and panels get glass styling
+   over the site-wide gradient background.
+   ============================================= */
+
+/* Cards */
+.card, [class*="-card"], [class*="card-"],
+.stat-card, .scheme-card, .info-card,
+.section-card, .page-card, .grid-card,
+.metric-card, .feature-card, .benefit-card,
+.detail-card, .action-card, .summary-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #e8edf8 !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* Panels and sections */
+.panel, [class*="-panel"], [class*="panel-"],
+.section, [class*="-section"]:not(.official-tricolor-strip *),
+.box, [class*="-box"]:not(.logo-container):not(.brand-emblem-box),
+.container, [class*="-container"] {
+  background: transparent;
+}
+
+/* Page-level wrappers */
+[class*="-page"], [class*="page-"] {
+  background: transparent !important;
+}
+
+/* White surfaces → glass */
+.bg-white, [style*="background: #fff"],
+[style*="background: white"], [style*="background-color: white"],
+[style*="background-color: #fff"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* Text contrast fixes for dark gradient background */
+h1, h2, h3, h4, h5, h6 {
+  color: #f0f4ff;
+}
+
+p, li, label, span:not([class*="badge"]):not([class*="tag"]):not(.strip-saffron):not(.strip-white):not(.strip-green) {
+  color: #c8d6f0;
+}
+
+/* Input fields stay legible */
+input, select, textarea {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+}
+input::placeholder, textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+input:focus, select:focus, textarea:focus {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(100, 160, 255, 0.6) !important;
+  outline: none;
 }
