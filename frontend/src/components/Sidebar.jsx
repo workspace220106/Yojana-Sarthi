@@ -109,15 +109,12 @@ const Sidebar = ({ isOpen, onClose }) => {
     { name: t('nav.matrix', 'Scheme Matrix'), icon: <BarChart2 size={18} />, path: '/comparison' },
     { name: t('nav.predictor', 'Rejection Risk Check'), icon: <AlertTriangle size={18} />, path: '/predictor' },
     { name: t('nav.planner', 'Lifecycle Planner'), icon: <Calendar size={18} />, path: '/planner' },
-    { name: t('nav.voice', 'Voice Portal'), icon: <Mic size={18} />, path: '/voice' },
-    { name: t('nav.language', 'Regional Languages'), icon: <Languages size={18} />, path: '/multilingual' },
     { name: t('nav.profile', 'Citizen Profile'), icon: <User size={18} />, path: '/profile' },
   ];
 
   const adminMenuItems = [
     { name: t('nav.admin', 'Admin Operations Center'), icon: <ShieldCheck size={18} />, path: '/admin' },
     { name: t('nav.matrix', 'Scheme Matrix'), icon: <BarChart2 size={18} />, path: '/comparison' },
-    { name: t('nav.language', 'Regional Languages'), icon: <Languages size={18} />, path: '/multilingual' },
     { name: t('nav.profile', 'Admin Profile'), icon: <User size={18} />, path: '/profile' },
   ];
 

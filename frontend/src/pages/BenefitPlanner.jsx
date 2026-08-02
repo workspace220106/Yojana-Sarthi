@@ -181,44 +181,34 @@ const BenefitPlanner = () => {
               <div className="stage-card-body">
                 <div className="card-top-header">
                   <span className="stage-age-range">{stage.ageRange}</span>
-                  <span className={`status-tag-badge ${status}`}>{status}</span>
+                  {/* Only show badge for 'current' and 'future' — not completed */}
+                  {status !== 'completed' && (
+                    <span className={`status-tag-badge ${status}`}>{status}</span>
+                  )}
                 </div>
                 
                 <h3>{stage.name}</h3>
                 <p className="stage-desc">{stage.description}</p>
 
-                {status === 'current' && (
-                  <div className="current-stage-callout">
-                    <div className="callout-header">
-                      <Sparkles size={16} className="sparkle-icon" />
-                      <span>{stageSchemes.length} Opportunities Active Right Now</span>
+                {/* Always show schemes for this age group */}
+                {stageSchemes.length > 0 && (
+                  <div className={`stage-schemes-block ${status}`}>
+                    <div className="schemes-block-header">
+                      <Award size={14} />
+                      <span>{stageSchemes.length} Scheme{stageSchemes.length > 1 ? 's' : ''} for this stage</span>
                     </div>
-                    <div className="active-schemes-list">
+                    <div className="schemes-name-list">
                       {stageSchemes.map(s => (
-                        <div key={s.id} className="active-scheme-item">
-                          <div className="item-meta">
-                            <strong>{s.name}</strong>
-                            <span className="item-benefit text-success">{s.benefit}</span>
+                        <div key={s.id} className={`scheme-name-row ${status}`}>
+                          <div className="scheme-name-left">
+                            <ChevronRight size={14} className="arrow" />
+                            <strong className="scheme-name-title">{s.name}</strong>
                           </div>
-                          <ChevronRight size={18} className="arrow" />
+                          <span className="scheme-benefit-pill">{s.benefit?.split(' (')[0] || 'Benefit available'}</span>
                         </div>
                       ))}
                     </div>
                   </div>
-                )}
-
-                {status !== 'current' && stageSchemes.length > 0 && (
-                  <details className="stage-details-collapsed">
-                    <summary>View {stageSchemes.length} schemes associated with this stage</summary>
-                    <div className="details-schemes-list">
-                      {stageSchemes.map(s => (
-                        <div key={s.id} className="collapsed-scheme-row">
-                          <span>{s.name}</span>
-                          <span className="val text-success">{s.benefit.split(' (')[0]}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </details>
                 )}
               </div>
             </div>

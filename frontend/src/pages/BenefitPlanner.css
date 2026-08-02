@@ -362,3 +362,114 @@
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* --- Always-visible scheme blocks per stage --- */
+.stage-schemes-block {
+  margin-top: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.stage-schemes-block.current {
+  border-color: rgba(99, 102, 241, 0.3);
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.stage-schemes-block.completed {
+  border-color: rgba(16, 185, 129, 0.2);
+  background: rgba(16, 185, 129, 0.06);
+}
+
+.stage-schemes-block.future {
+  border-color: rgba(148, 163, 184, 0.2);
+  background: rgba(148, 163, 184, 0.06);
+}
+
+.schemes-block-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.stage-schemes-block.current .schemes-block-header { color: #a5b4fc; }
+.stage-schemes-block.completed .schemes-block-header { color: #6ee7b7; }
+
+.schemes-name-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.scheme-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  gap: 8px;
+  transition: background 0.15s;
+}
+
+.scheme-name-row:last-child { border-bottom: none; }
+
+.scheme-name-row:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.scheme-name-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.scheme-name-left .arrow {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: rgba(255,255,255,0.35);
+}
+
+.scheme-name-row.current .scheme-name-left .arrow { color: #818cf8; }
+.scheme-name-row.completed .scheme-name-left .arrow { color: #34d399; }
+
+.scheme-name-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.scheme-name-row.current .scheme-name-title { color: #e0e7ff; }
+.scheme-name-row.completed .scheme-name-title { color: #d1fae5; }
+.scheme-name-row.future .scheme-name-title { color: #94a3b8; }
+
+.scheme-benefit-pill {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  white-space: nowrap;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scheme-name-row.future .scheme-benefit-pill {
+  background: rgba(148, 163, 184, 0.1);
+  color: #94a3b8;
+  border-color: rgba(148, 163, 184, 0.2);
+}

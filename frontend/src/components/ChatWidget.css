@@ -429,3 +429,73 @@
     bottom: 20px;
   }
 }
+
+/* ---- VOICE LANGUAGE SELECTOR ---- */
+.cw-voice-lang-row {
+  display: flex;
+  gap: 6px;
+  padding: 8px 12px 4px 12px;
+  background: #fff;
+  border-top: 1px solid #f1f5f9;
+}
+
+.cw-vlang-btn {
+  flex: 1;
+  padding: 5px 8px;
+  border-radius: 20px;
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.cw-vlang-btn.active {
+  background: linear-gradient(135deg, #1a3c6e, #2563eb);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.3);
+}
+
+.cw-vlang-btn:hover:not(.active) {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+/* ---- MIC BUTTON ---- */
+.cw-mic-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s;
+}
+
+.cw-mic-btn:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+  background: #eff6ff;
+}
+
+.cw-mic-btn.listening {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(239,68,68,0.2);
+  animation: mic-pulse 1s ease-in-out infinite;
+}
+
+@keyframes mic-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(239,68,68,0.2); }
+  50% { box-shadow: 0 0 0 8px rgba(239,68,68,0.1); }
+}

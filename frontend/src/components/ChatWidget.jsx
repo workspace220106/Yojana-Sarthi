@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MessageCircle, X, Send, ChevronDown, Bot, User, ShieldCheck } from 'lucide-react';
+import { MessageCircle, X, Send, ChevronDown, Bot, User, ShieldCheck, Mic, MicOff } from 'lucide-react';
 import emblem from '../assets/images/emblem.png';
 import './ChatWidget.css';
 
@@ -86,8 +86,46 @@ const ChatWidget = () => {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [profile, setProfile] = useState(null);
+  const [voiceLang, setVoiceLang] = useState('mr-IN'); // Default Marathi
+  const [isListening, setIsListening] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const recognitionRef = useRef(null);
+
+  const VOICE_LANGS = [
+    { code: 'mr-IN', label: 'मराठी' },
+    { code: 'hi-IN', label: 'हिन्दी' },
+    { code: 'en-IN', label: 'English' },
+  ];
+
+  const initRecognition = (lang) => {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) return null;
+    const rec = new SR();
+    rec.continuous = false;
+    rec.interimResults = false;
+    rec.lang = lang;
+    rec.onstart = () => setIsListening(true);
+    rec.onend = () => setIsListening(false);
+    rec.onerror = () => setIsListening(false);
+    rec.onresult = (e) => {
+      const text = e.results[0][0].transcript;
+      setInput(text);
+      setIsListening(false);
+    };
+    return rec;
+  };
+
+  const toggleVoice = () => {
+    if (isListening) {
+      recognitionRef.current?.stop();
+      return;
+    }
+    const rec = initRecognition(voiceLang);
+    if (!rec) { alert('Voice input not supported in this browser. Please use Chrome.'); return; }
+    recognitionRef.current = rec;
+    rec.start();
+  };
 
   useEffect(() => {
     const saved = localStorage.getItem('yojana_sarthi_profile');
@@ -224,12 +262,31 @@ const ChatWidget = () => {
             <div ref={messagesEndRef} />
           </div>
 
+          {/* Voice Language Selector + Input */}
+          <div className="cw-voice-lang-row">
+            {VOICE_LANGS.map(vl => (
+              <button
+                key={vl.code}
+                className={`cw-vlang-btn ${voiceLang === vl.code ? 'active' : ''}`}
+                onClick={() => { setVoiceLang(vl.code); if (isListening) recognitionRef.current?.stop(); }}
+              >
+                {vl.label}
+              </button>
+            ))}
+          </div>
           {/* Input */}
           <div className="cw-input-row">
+            <button
+              className={`cw-mic-btn ${isListening ? 'listening' : ''}`}
+              onClick={toggleVoice}
+              title={isListening ? 'Stop listening' : `Speak in ${VOICE_LANGS.find(v=>v.code===voiceLang)?.label}`}
+            >
+              {isListening ? <MicOff size={15} /> : <Mic size={15} />}
+            </button>
             <input
               ref={inputRef}
               type="text"
-              placeholder="Ask about schemes, eligibility..."
+              placeholder={isListening ? 'Listening...' : 'Ask about schemes, eligibility...'}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKey}

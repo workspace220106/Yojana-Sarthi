@@ -6,10 +6,20 @@ import ChatWidget from './ChatWidget';
 import emblem from '../assets/images/emblem.png';
 import './Layout.css';
 
+const LANGS = [
+  { code: 'en', label: 'English', native: 'English' },
+  { code: 'hi', label: 'हिन्दी', native: 'Hindi' },
+  { code: 'mr', label: 'मराठी', native: 'Marathi' },
+];
+
 const Layout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [lang, setLang] = useState('English');
+  const [langIndex, setLangIndex] = useState(() => {
+    const saved = localStorage.getItem('ys_lang_index');
+    return saved ? parseInt(saved) : 0;
+  });
   const [currentUser, setCurrentUser] = useState(null);
+  const lang = LANGS[langIndex];
 
   useEffect(() => {
     const handleStorageChange = () => {
@@ -77,10 +87,15 @@ const Layout = ({ children }) => {
 
           <button 
             className="lang-select-btn"
-            onClick={() => setLang(l => l === 'English' ? 'मराठी' : 'English')}
+            onClick={() => {
+              const next = (langIndex + 1) % LANGS.length;
+              setLangIndex(next);
+              localStorage.setItem('ys_lang_index', String(next));
+            }}
+            title={`Switch language (current: ${lang.native})`}
           >
             <Globe size={15} />
-            <span>{lang}</span>
+            <span>{lang.label}</span>
           </button>
 
           <Link to="/profile" className="user-profile-badge-link" title="View Profile Vault">
