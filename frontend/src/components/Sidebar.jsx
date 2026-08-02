@@ -130,7 +130,7 @@ const Sidebar = ({ isOpen, onClose }) => {
           </div>
           <div className="brand-titles">
             <h2>Yojana Sarthi</h2>
-            <span className="brand-subtitle">{isAdmin ? 'Administrator Portal' : 'Government Scheme Navigation'}</span>
+            <span className="brand-subtitle">{isAdmin ? t('nav.admin_sub', 'Administrator Portal') : t('nav.citizen_sub', 'Government Scheme Navigation')}</span>
           </div>
         </Link>
         <button className="close-sidebar-btn" onClick={onClose} title="Close Navigation">

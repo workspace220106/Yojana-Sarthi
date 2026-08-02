@@ -5,7 +5,12 @@
     "voice": "Voice Portal",
     "planner": "Benefit Planner",
     "admin": "Admin Console",
-    "language": "Languages"
+    "language": "Languages",
+    "home": "Portal Home & Finder",
+    "wizard": "Scheme Application Wizard",
+    "docs": "Document Compliance",
+    "predictor": "Rejection Risk Check",
+    "profile": "Citizen Profile"
   },
   "app": {
     "title": "Yojana Sarthi",
