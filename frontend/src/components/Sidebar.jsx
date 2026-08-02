@@ -152,7 +152,7 @@ const Sidebar = ({ isOpen, onClose }) => {
               key={item.path} 
               to={item.path} 
               onClick={onClose}
-              className={`nav-item ${isTabActive ? 'active' : ''}`}
+              className={() => `nav-item ${isTabActive ? 'active' : ''}`}
             >
               <span className="icon">{item.icon}</span>
               <span className="label">{item.name}</span>
